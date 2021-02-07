@@ -29,25 +29,3 @@ jobs:
           prettier: true
 
           
-name: Build
-
-on: [push]
-
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    with:
-      node_version: 14
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 14
-      uses: actions/setup-node@v1
-      with:
-        version: 14
-
-    - name: Install dependencies and build project
-      run: |
-        yarn
-        yarn build
