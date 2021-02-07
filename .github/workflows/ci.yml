@@ -20,9 +20,6 @@ jobs:
       - name: Install Node.js dependencies
         run: yarn
       
-      - name: Build project
-        run: yarn build
-
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
@@ -31,4 +28,5 @@ jobs:
           eslint: true
           prettier: true
 
-          
+      - name: Build project
+        run: yarn build
