@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build-project:
-    name: Build project
+    name: Build project and lint
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,6 @@ jobs:
         run: yarn build
     
   run-linters:
-    name: Lint
     needs: build-project
     runs-on: ubuntu-latest
       
@@ -43,13 +42,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-        
-      - name: Cache Node.js dependencies
-        id: node-cache
-        uses: actions/cache@v2
-        with:
-            path: node_modules
-            key: node-modules-&{{ hashFiles('package-lock.json') }}
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
