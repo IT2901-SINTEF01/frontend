@@ -1,10 +1,10 @@
-name: Verify build 
+name: Build project and lint
 
 on: push
 
 jobs:
   build-project:
-    name: Build project and lint
+    name: Build project
     runs-on: ubuntu-latest
 
     steps:
@@ -15,34 +15,21 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      
-      - name: Cache Node.js dependencies
-        id: node-cache
-        uses: actions/cache@v2
-        with:
-            path: node_modules
-            key: node-modules-&{{ hashFiles('package-lock.json') }}
 
       - name: Install Node.js dependencies
-        if: steps.node-cache.outputs.cache-hit != 'true'
         run: yarn
       
       - name: Build project
         run: yarn build
-    
+
   run-linters:
-    needs: build-project
+    needs:
+      build-project
+
+    name: Run linters
     runs-on: ubuntu-latest
-      
+
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
