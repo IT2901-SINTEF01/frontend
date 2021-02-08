@@ -1,0 +1,42 @@
+# See https://github.com/restyled-io/restyled.io/wiki/Configuring-Restyled
+
+enabled: true
+
+interpreters: []
+
+exclude:
+  - "**/*.patch"
+  - "**/vendor/**/*"
+  - ".github/workflows/**/*" # https://github.com/restyled-io/restyler/issues/73
+
+changed_paths:
+  maximum: 1000
+  outcome: error
+
+remote_files: []
+
+auto: false
+
+commit_template: |
+  ✨ Restyled by ${restyler.name}!
+
+pull_requests: true
+
+comments: false
+
+statuses:
+  differences: true
+  no_differences: true
+  error: true
+
+request_review: author
+
+labels: [linting]
+
+ignore_labels:
+  - restyled-ignore
+
+restylers_version: stable
+
+restylers:
+  - "*"
