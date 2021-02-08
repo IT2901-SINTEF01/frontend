@@ -1,10 +1,10 @@
-name: Build project and lint
+name: Lint
 
 on: push
 
 jobs:
-  build-project:
-    name: Build project
+  run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
 
     steps:
@@ -19,17 +19,6 @@ jobs:
       - name: Install Node.js dependencies
         run: yarn
       
-      - name: Build project
-        run: yarn build
-
-  run-linters:
-    needs:
-      build-project
-
-    name: Run linters
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
