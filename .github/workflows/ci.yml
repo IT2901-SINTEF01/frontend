@@ -21,7 +21,7 @@ jobs:
         uses: actions/cache@v2
         with:
             path: node_modules
-            key: node-modules-${{ hashFiles('package.json') }}
+            key: node-modules-${{ hashFiles('yarn.lock') }}
 
       - name: Install Node.js dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
@@ -49,7 +49,7 @@ jobs:
         uses: actions/cache@v2
         with:
             path: node_modules
-            key: node-modules-${{ hashFiles('package.json') }}
+            key: node-modules-${{ hashFiles('yarn.lock') }}
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
