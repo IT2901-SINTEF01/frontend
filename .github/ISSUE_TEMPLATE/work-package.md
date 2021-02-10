@@ -11,7 +11,7 @@ assignees: ''
 <!-- Explain how this contributes to the finalisation of the linked user story (milestone). -->
 
 ### Subtasks
-- [ ] 
+- [ ] Assign project, milestone, labels and assignees
 
 ### Related sources
 -
