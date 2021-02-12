@@ -28,13 +28,13 @@ yarn start
 
 You can view the project at [http://localhost:3000](http://localhost:3000).
 
-Launch your local instance of [storybook](https://storybook.js.org/) with:
+Launch your local instance of [Storybook.js](https://storybook.js.org/) with:
 
 ```bash
 yarn storybook
 ```
 
-Then you can view Storybook at [http://localhost:6006](http://localhost:6006)
+Then you can view your storybook at [http://localhost:6006](http://localhost:6006)
 
 ## Testing
 
