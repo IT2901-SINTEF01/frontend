@@ -8,29 +8,29 @@ _This repository contains the frontend for the "Open Data Visualisation Platform
 
 ## Overview
 
-The frontend is built with React.js, written in TypeScript. We also utilise the [Storybook.js](https://storybook.js.org/) library to give an **easy to use** and **intuitive** overview of our React components. Refer to our [wiki](https://github.com/IT2901-SINTEF01/frontend/wiki) for more information regarding our choices of architecture and structure.
+The frontend is built with React.js, written in TypeScript. We also utilise the [Storybook.js](https://storybook.js.org/) library to give an **easy to use** and **intuitive** overview of our React components. Refer to our [wiki](https://github.com/IT2901-SINTEF01/frontend/wiki) for more information regarding our architecture and structure.
 
 ## Setup
 
-To setup the project you simply run
+Install the dependencies with:
 
-```
+```bash
 yarn
 ```
 
 ## Running
 
-To launch the project you run
+Run the application in development mode with:
 
-```
+```bash
 yarn start
 ```
 
-You can view the projact at [http://localhost:3000](http://localhost:3000).
+You can view the project at [http://localhost:3000](http://localhost:3000).
 
-If you want to launch [Storybook.js](https://storybook.js.org/) you run
+Launch your local instance of [storybook](https://storybook.js.org/) with:
 
-```
+```bash
 yarn storybook
 ```
 
@@ -38,9 +38,9 @@ Then you can view Storybook at [http://localhost:6006](http://localhost:6006)
 
 ## Testing
 
-You can run the test suite with
+Run the entire test suite with auto-running on file changes with:
 
-```
+```bash
 yarn test
 ```
 
