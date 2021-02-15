@@ -57,3 +57,39 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           eslint: true
           prettier: true
+
+  run-tests:
+    name: Test 
+    needs: [build-project, run-linters]
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Check out Git repository
+       uses: actions/checkout@v2
+
+     - name: Set up Node.js
+       uses: actions/setup-node@v1
+       with:
+        node-version: 14
+        
+     - name: Cache Node.js dependencies
+       id: node-cache
+       uses: actions/cache@v2
+       with:
+        path: node_modules
+        key: node-modules-${{ hashFiles('yarn.lock') }}
+      
+     - name: Cypress run
+       uses: cypress-io/github-action@v2
+    
+     - uses: actions/upload-artifact@v2
+       if: failure()
+       with:
+        name: cypress-screenshots
+        path: cypress/screenshots
+
+     - uses: actions/upload-artifact@v2
+       if: always()
+       with:
+        name: cypress-videos
+        path: cypress/videos
