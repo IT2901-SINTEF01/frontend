@@ -28,3 +28,5 @@ yarn-error.log*
 .vscode/
 
 */videos/
+
+storybook-static/
