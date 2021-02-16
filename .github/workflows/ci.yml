@@ -1,4 +1,4 @@
-name: Verify build 
+name: Build, lint, and test
 
 on: push
 
