@@ -22,7 +22,7 @@ jobs:
         with:
           path: | 
             node_modules
-            /home/runner/.cache/Cypress 
+            ~/.cache/Cypress 
           key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       
       - name: Install Node.js dependencies
@@ -46,12 +46,14 @@ jobs:
         with:
           node-version: 14
         
-      - name: Cache Node.js dependencies
+      - name: Cache Node.js dependencies and Cypress
         id: node-cache
         uses: actions/cache@v2
         with:
-            path: node_modules
-            key: node-modules-${{ hashFiles('yarn.lock') }}
+          path: | 
+            node_modules
+            ~/.cache/Cypress 
+          key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
@@ -74,13 +76,15 @@ jobs:
        with:
           node-version: 14
         
-     - name: Cache Node.js dependencies
+     - name: Cache Node.js dependencies and Cypress
        id: node-cache
        uses: actions/cache@v2
        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('yarn.lock') }}
-      
+        path: | 
+          node_modules
+          ~/.cache/Cypress
+        key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
      - name: Cypress run
        uses: cypress-io/github-action@v2
        with:
