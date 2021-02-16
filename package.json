@@ -29,7 +29,7 @@
     "scripts": {
         "start": "craco start",
         "build": "craco build",
-        "test": "yarn cypress run",
+        "test": "cypress run",
         "lint": "eslint \"src/**/*\"",
         "lint-fix": "eslint --fix \"src/**/*\"",
         "storybook": "start-storybook -p 6006 -s public",
