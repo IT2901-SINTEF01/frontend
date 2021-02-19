@@ -8,13 +8,13 @@ import { curveBasis } from '@visx/curve';
 import { LinePath } from '@visx/shape';
 import { Threshold } from '@visx/threshold';
 
-interface IData {
+type Data = {
     time: string;
     value: number;
-}
+};
 
 export type ThresholdChartProps = {
-    data: IData[];
+    data: Data[];
     width: number;
     height: number;
     margin?: Record<'top' | 'right' | 'bottom' | 'left', number>;
@@ -41,8 +41,8 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
     yLabel,
 }) => {
     // accessors
-    const date = (d: IData) => new Date(d.time).valueOf();
-    const value = (d: IData) => d.value;
+    const date = (d: Data) => new Date(d.time).valueOf();
+    const value = (d: Data) => d.value;
 
     //bounds
     const xMax = width - margin.left - margin.right;
@@ -59,7 +59,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
 
     //prevents the threshold to be outside the graph.
     if (thresholdValue > maxValue) maxValue = thresholdValue + 1;
-    //+1 is needed for the color to work below the graph when the threshold is bigger than the highest value
+    //+1 is needed for the colour to work below the graph when the threshold is bigger than the highest value
     else if (thresholdValue < minValue) minValue = thresholdValue;
 
     const valueScale = scaleLinear({

@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import ThresholdChart, { ThresholdChartProps } from '../components/atoms/ThresholdChart';
 import { Story } from '@storybook/react';
 import { MetApiCompactForecast } from '../mockdata/metApi';
-import { IMetApiCompactAirTemperature } from '../dataTypes/metApi/compact';
+import { MetApiCompactAirTemperature } from '../dataTypes/metApi/compact';
 import { appleStock } from '@visx/mock-data';
 
 export default {
@@ -11,7 +11,7 @@ export default {
     component: ThresholdChart,
 } as Meta;
 
-const formatMetData = (data: IMetApiCompactAirTemperature) =>
+const formatMetData = (data: MetApiCompactAirTemperature) =>
     data.data.forecast.forecastProperties.timeseries.map((el) => ({
         time: el.time,
         value: el.forecastData.instant.details.airTemperature,
