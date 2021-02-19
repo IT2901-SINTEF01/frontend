@@ -29,7 +29,7 @@ const defaultMargin = { top: 40, right: 30, bottom: 50, left: 40 };
 const defaultBackground = '#f3f3f3';
 const defaultThresholdValue = 0;
 
-const TempChart = ({
+const TempChart: React.FC<TempChartProps> = ({
     data,
     width,
     height,
