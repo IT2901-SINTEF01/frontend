@@ -35,36 +35,6 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook
     
-  run-linters:
-    name: Lint
-    needs: build-project
-    runs-on: ubuntu-latest
-      
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-        
-      - name: Cache Node.js dependencies and Cypress
-        id: node-cache
-        uses: actions/cache@v2
-        with:
-          path: | 
-            node_modules
-            ~/.cache/Cypress 
-          key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-
-      - name: Run linters
-        uses: wearerequired/lint-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint: true
-          prettier: true
-
   run-tests:
     name: Test 
     needs: build-project
