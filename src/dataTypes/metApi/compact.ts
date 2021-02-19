@@ -1,4 +1,4 @@
-export interface MetApiCompact {
+export interface IMetApiCompactAirTemperature {
     data: {
         forecast: {
             forecastProperties: {

@@ -1,30 +1,25 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import TempChart, { TempChartProps } from '../components/molecules/TempChart';
+import ThresholdChart, { ThresholdChartProps } from '../components/atoms/ThresholdChart';
 import { Story } from '@storybook/react';
 import { MetApiCompactForecast } from '../mockdata/metApi';
-import { MetApiCompact } from '../dataTypes/metApi/compact';
+import { IMetApiCompactAirTemperature } from '../dataTypes/metApi/compact';
 import { appleStock } from '@visx/mock-data';
 
 export default {
-    title: 'Component/TempChart',
-    component: TempChart,
+    title: 'Component/ThresholdChart',
+    component: ThresholdChart,
 } as Meta;
 
-const formatMetData = (data: MetApiCompact) => {
-    const formatedData: {
-        time: string;
-        value: number;
-    }[] = [];
-    data.data.forecast.forecastProperties.timeseries.forEach((el) => {
-        formatedData.push({ time: el.time, value: el.forecastData.instant.details.airTemperature });
-    });
-    return formatedData;
-};
+const formatMetData = (data: IMetApiCompactAirTemperature) =>
+    data.data.forecast.forecastProperties.timeseries.map((el) => ({
+        time: el.time,
+        value: el.forecastData.instant.details.airTemperature,
+    }));
 
 const data = formatMetData(MetApiCompactForecast);
 
-const Template: Story<TempChartProps> = (args) => <TempChart {...args} />;
+const Template: Story<ThresholdChartProps> = (args) => <ThresholdChart {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = { data: data, width: 600, height: 400, yLabel: 'Celsius' };
