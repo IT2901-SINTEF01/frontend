@@ -18,9 +18,9 @@ linter:
 #       - vendor
 #       - "**/*.min.js"
 #       - exclude_file.rb
-#     targets:
-#       - target_directory
-#       - another_target_directory/foo.rb
+     targets:
+       - src
+       - cypress
 #       - bar.rb
     locale: UK
 #     ignore: center,behavior
