@@ -18,7 +18,7 @@ linter:
         #       - vendor
         #       - "**/*.min.js"
         #       - exclude_file.rb
-        targets:
+        target:
             - src
             - cypress
         #       - bar.rb
