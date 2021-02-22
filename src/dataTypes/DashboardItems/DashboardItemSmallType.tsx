@@ -1,7 +1,7 @@
-import { React } from '@ungap/global-this';
+import { ReactNode } from 'react';
 
 export type DashboardItemSmallType = {
     title: string;
-    graph?: React.FC;
+    children: ReactNode;
     lables?: string[];
 };

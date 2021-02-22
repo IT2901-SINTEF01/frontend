@@ -7,7 +7,7 @@ import { MetApiCompactAirTemperature } from '../dataTypes/metApi/compact';
 import { appleStock } from '@visx/mock-data';
 
 export default {
-    title: 'Component/ThresholdChart',
+    title: 'Graphs/ThresholdChart',
     component: ThresholdChart,
 } as Meta;
 
@@ -25,7 +25,7 @@ export const Primary = Template.bind({});
 Primary.args = { data: data, width: 600, height: 400, yLabel: 'Celsius' };
 
 //Change key
-const appleData = appleStock.map(({ date, close }) => ({ time: date, value: close }));
+export const appleData = appleStock.map(({ date, close }) => ({ time: date, value: close }));
 export const AppleData = Template.bind({});
 AppleData.args = {
     data: appleData,
