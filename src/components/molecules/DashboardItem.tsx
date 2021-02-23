@@ -3,7 +3,7 @@ import React from 'react';
 const DashboardItemStyle = {
     height: '100%',
     width: '100%',
-    backgroundColor: '#ffabee',
+    backgroundColor: '#fff',
 };
 
 type DashboardItemProps = {
