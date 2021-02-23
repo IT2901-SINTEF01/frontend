@@ -10,6 +10,9 @@ const Template: Story<DashboardItemSmallType> = (args) => <DashboardItemSmall {.
 export const Primary = Template.bind({});
 Primary.args = {
     title: 'This is a title',
+    width: 500,
+    height: 300,
+    titleSize: 500,
     children: (
         <ThresholdChart
             data={appleData}
