@@ -8,7 +8,14 @@ const DashboardItemSmall: React.FC<DashboardItemSmallType> = ({ title, children,
             <Heading size={titleSize} marginTop={25} marginLeft={25}>
                 {title}
             </Heading>
-            <Pane alignSelf="center" marginTop="auto" marginBottom="auto" justifyContent="center" width="80%">
+            <Pane
+                alignSelf="center"
+                marginTop="auto"
+                marginBottom="auto"
+                justifyContent="center"
+                width="80%"
+                height="70%"
+            >
                 {children}
             </Pane>
         </Card>

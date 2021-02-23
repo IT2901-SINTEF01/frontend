@@ -4,6 +4,7 @@ import { Story } from '@storybook/react';
 import DashboardItemSmall from '../components/molecules/DashboardItemSmall';
 import { DashboardItemSmallType } from '../dataTypes/DashboardItems/DashboardItemSmallType';
 import { AppleData as ThresholdChart, appleData } from './ThresholdChart.stories';
+import { ParentSize } from '@visx/responsive';
 
 const Template: Story<DashboardItemSmallType> = (args) => <DashboardItemSmall {...args} />;
 
@@ -14,15 +15,19 @@ Primary.args = {
     height: 300,
     titleSize: 500,
     children: (
-        <ThresholdChart
-            data={appleData}
-            width={400}
-            height={200}
-            thresholdValue={150}
-            aboveThresholdColor="green"
-            belowThresholdColor="red"
-            yLabel="Price"
-        />
+        <ParentSize>
+            {(parent) => (
+                <ThresholdChart
+                    data={appleData}
+                    width={parent.width}
+                    height={parent.height}
+                    thresholdValue={150}
+                    aboveThresholdColor="green"
+                    belowThresholdColor="red"
+                    yLabel="Price"
+                />
+            )}
+        </ParentSize>
     ),
 };
 
