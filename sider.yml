@@ -23,8 +23,7 @@ linter:
             - cypress
         #       - bar.rb
         locale: UK
-#     ignore: center,behavior
-
+        ignore: center,behavior
 #   # https://help.sider.review/tools/shellscript/shellcheck
 #   shellcheck:
 #     target: "src/**/*.{sh,bash}"
