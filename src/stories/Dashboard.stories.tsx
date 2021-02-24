@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
-import { Story } from '@storybook/react';
 import Dashboard from '../components/organisms/Dashboard';
 import { DashboardItemSize, DashboardItemInfo, DashboardProps } from '../dataTypes/Dashboard/DashboardTypes';
 
@@ -10,7 +9,7 @@ export default {
     component: Dashboard,
 } as Meta;
 
-export const generateRandomList = (size: number) => {
+export const generateRandomList = (size: number): DashboardItemInfo[] => {
     const result: DashboardItemInfo[] = [];
     for (let i = 0; i < size; i++) {
         const randomNum = Math.floor(Math.random() * 3);
@@ -22,4 +21,4 @@ export const generateRandomList = (size: number) => {
     return result;
 };
 
-export const Primary: React.VFC<DashboardProps> = () => <Dashboard items={generateRandomList(10)} />;
+export const Primary: React.FC<DashboardProps> = () => <Dashboard items={generateRandomList(10)} />;

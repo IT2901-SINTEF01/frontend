@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Pane, Heading } from 'evergreen-ui';
+import { Card } from 'evergreen-ui';
 
 const DashboardItem: React.FC = () => {
     console.log('title');
