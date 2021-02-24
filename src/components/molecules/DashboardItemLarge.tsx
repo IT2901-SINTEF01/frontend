@@ -16,8 +16,16 @@ const DashboardItemLarge: React.FC<DashboardItemLargeType> = ({
             <Heading size={titleSize} marginTop={25} marginLeft={25}>
                 {title}
             </Heading>
-            <Pane width="95%" height="100%" display="flex" flexDirection="row" alignSelf="center" marginTop={10}>
-                <Paragraph width="15%" height="100%" size={textSize} overflow="hidden" textOverflow="-">
+            <Pane
+                width="95%"
+                height="inherit"
+                overflow="auto"
+                display="flex"
+                flexDirection="row"
+                alignSelf="center"
+                marginTop={10}
+            >
+                <Paragraph width="15%" height="100%" size={textSize}>
                     {paragraph}
                 </Paragraph>
                 <Pane marginLeft={15} justifyContent="center" width="80%" height="80%">
