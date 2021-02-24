@@ -23,7 +23,7 @@ linter:
             - cypress
         #       - bar.rb
         locale: UK
-#     ignore: center,behavior
+#     ignore: center,behavior,color
 
 #   # https://help.sider.review/tools/shellscript/shellcheck
 #   shellcheck:
