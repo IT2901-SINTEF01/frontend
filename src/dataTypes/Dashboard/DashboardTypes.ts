@@ -4,9 +4,9 @@ export type DashboardItemInfo = {
 };
 
 export enum DashboardItemSize {
-    small,
-    medium,
-    large,
+    SMALL = 2,
+    MEDIUM = 3,
+    LARGE = 4,
 }
 
 export type DashboardProps = {

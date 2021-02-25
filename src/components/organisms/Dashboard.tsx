@@ -22,23 +22,14 @@ const Dashboard: React.FC<DashboardProps> = ({ items }) => {
     const [layout, setLayout] = useState<Layout[]>();
 
     const checkIfItemFits = (x: number, size: DashboardItemSize) => {
-        if (size === DashboardItemSize.small && x < 5) return true;
-        if (size === DashboardItemSize.medium && x < 4) return true;
-        if (size === DashboardItemSize.large && x < 3) return true;
+        if (size === DashboardItemSize.SMALL && x < 5) return true;
+        if (size === DashboardItemSize.MEDIUM && x < 4) return true;
+        if (size === DashboardItemSize.LARGE && x < 3) return true;
         return false;
     };
 
     const getItemWidth = (dashboardItemSize: DashboardItemSize) => {
-        switch (dashboardItemSize) {
-            case DashboardItemSize.small:
-                return 2;
-            case DashboardItemSize.medium:
-                return 3;
-            case DashboardItemSize.large:
-                return 4;
-            default:
-                return 0;
-        }
+        return dashboardItemSize.valueOf();
     };
 
     useEffect(() => {
