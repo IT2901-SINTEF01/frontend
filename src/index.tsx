@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Filler from './components/atoms/Filler';
+import Dashboard from './components/organisms/Dashboard';
+import './index.css';
 
-render(<Filler />, document.getElementById('root'));
+render(<Dashboard />, document.getElementById('root'));
