@@ -15,7 +15,7 @@ const Dashboard: React.FC<DashboardProps> = ({ items }) => {
     const layout = useMemo(() => resolvePositions(items), [items]);
 
     return (
-        <Pane height="100%" width="80%" marginLeft="10%">
+        <Pane height="100%">
             <ParentSize debounceTime={500}>
                 {({ width: visWidth }) => (
                     <ReactGridLayout
