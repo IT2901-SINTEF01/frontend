@@ -1,15 +1,15 @@
 import React from 'react';
-import { DashboardItemLargeType } from '../../dataTypes/DashboardItems/DashboardItemLargeType';
+import { DashboardItemLarge as DashboardItemLargeT } from '../../types/DashboardItem';
 import { Card, Pane, Heading, Paragraph } from 'evergreen-ui';
 
-const DashboardItemLarge: React.FC<DashboardItemLargeType> = ({
+const DashboardItemLarge: React.FC<DashboardItemLargeT> = ({
     title,
-    children,
     width,
     paragraph,
     height,
     titleSize,
     textSize,
+    children,
 }) => {
     return (
         <Card width={width} height={height} display="flex" flexDirection="column" border="default" elevation={1}>

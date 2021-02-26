@@ -2,22 +2,12 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import DashboardItemLarge from '../components/molecules/DashboardItemLarge';
-import { DashboardItemLargeType } from '../dataTypes/DashboardItems/DashboardItemLargeType';
+import { DashboardItemLarge as DashboardItemLargeT } from '../types/DashboardItem';
 import { AppleData as ThresholdChart, appleData } from './ThresholdChart.stories';
 import { ParentSize } from '@visx/responsive';
 
-const Template: Story<DashboardItemLargeType> = (args) => <DashboardItemLarge {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-    title: 'This is a title',
-    width: 1000,
-    height: 300,
-    titleSize: 500,
-    paragraph:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    textSize: 300,
-    children: (
+const Template: Story<DashboardItemLargeT> = (args) => (
+    <DashboardItemLarge {...args}>
         <ParentSize>
             {(parent) => (
                 <ThresholdChart
@@ -31,10 +21,27 @@ Primary.args = {
                 />
             )}
         </ParentSize>
-    ),
+    </DashboardItemLarge>
+);
+
+export const Large = Template.bind({});
+Large.args = {
+    title: 'This is a title',
+    width: 1000,
+    height: 300,
+    titleSize: 500,
+    paragraph:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    textSize: 300,
 };
 
 export default {
-    title: 'Dashboard/Dashboard Item Large',
-    component: DashboardItemLarge,
+    title: 'Dashboard/Item',
+    component: Large,
+    argTypes: {
+        width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
+        height: { control: { type: 'range', min: 100, max: 1800, step: 10 } },
+        titleSize: { control: { type: 'select', options: [100, 200, 300, 400, 500, 600, 700, 800, 900] } },
+        textSize: { control: { type: 'select', options: [300, 400, 500] } },
+    },
 } as Meta;
