@@ -1,12 +1,11 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
-import DashboardItemLarge from '../components/molecules/DashboardItemLarge';
-import { DashboardItemLarge as DashboardItemLargeT } from '../types/DashboardItem';
+import DashboardItemLarge, { DashboardItemLargeProps } from '../components/molecules/DashboardItemLarge';
 import { AppleData as ThresholdChart, appleData } from './ThresholdChart.stories';
 import { ParentSize } from '@visx/responsive';
 
-const Template: Story<DashboardItemLargeT> = (args) => (
+const Template: Story<DashboardItemLargeProps> = (args) => (
     <DashboardItemLarge {...args}>
         <ParentSize>
             {(parent) => (

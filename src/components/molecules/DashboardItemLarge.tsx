@@ -1,8 +1,12 @@
 import React from 'react';
-import { DashboardItemLarge as DashboardItemLargeT } from '../../types/DashboardItem';
 import { Card, Pane, Heading, Paragraph } from 'evergreen-ui';
 
-const DashboardItemLarge: React.FC<DashboardItemLargeT> = ({
+export type DashboardItemLargeProps = import('./DashboardItemSmall').DashboardItemSmallProps & {
+    paragraph: string;
+    textSize: 300 | 400 | 500;
+};
+
+const DashboardItemLarge: React.FC<DashboardItemLargeProps> = ({
     title,
     width,
     paragraph,
