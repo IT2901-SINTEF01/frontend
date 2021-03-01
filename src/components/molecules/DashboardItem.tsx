@@ -16,7 +16,7 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
     paragraph,
     height,
     titleSize,
-    textSize,
+    textSize = 300,
     children,
 }) => {
     return (
@@ -24,7 +24,7 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
             <Heading size={titleSize} marginTop={25} marginLeft={25}>
                 {title}
             </Heading>
-            {paragraph && textSize ? (
+            {paragraph ? (
                 /* Large with text*/
                 <Pane
                     width="95%"
