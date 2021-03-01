@@ -36,19 +36,13 @@
         "web-vitals": "^0.2.4"
     },
     "scripts": {
-        "start": "craco start",
-        "build": "craco build",
+        "start": "react-scripts yarn start",
+        "build": "react-scripts build",
         "test": "cypress run",
         "lint": "eslint \"src/**/*\"",
         "lint-fix": "eslint --fix \"src/**/*\"",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
     },
     "browserslist": {
         "production": [
@@ -63,7 +57,6 @@
         ]
     },
     "devDependencies": {
-        "@craco/craco": "^6.0.0",
         "@storybook/addon-actions": "^6.1.17",
         "@storybook/addon-essentials": "^6.1.17",
         "@storybook/addon-links": "^6.1.17",
