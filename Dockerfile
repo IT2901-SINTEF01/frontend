@@ -23,4 +23,6 @@ COPY nginx/nginx.conf /etc/nginx/conf.d
 # Doesn't really do anything, but serves as a hint you should forward the port to the host computer
 EXPOSE 80
 
+LABEL org.opencontainers.image.source=https://github.com/it2901-sintef01/frontend
+
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
