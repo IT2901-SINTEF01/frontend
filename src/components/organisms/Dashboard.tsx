@@ -1,15 +1,16 @@
 import React from 'react';
 import { Pane, Select, Text } from 'evergreen-ui';
-import { generateRandomList } from '../../utils/dashboardList';
 import AddComponentButton from '../atoms/AddComponentButton';
 import DashboardItemSmall from '../molecules/DashboardItemSmall';
+import { useReactiveVar } from '@apollo/client';
+import { dashboardItemsVar } from '../../cache/cache';
 
 const Dashboard: React.FC = () => {
-    //Simulates stored state in state manager.
-    const itemList = generateRandomList(3);
+    //Apollo local state
+    const dashboardItems = useReactiveVar(dashboardItemsVar);
 
     return (
-        <Pane width="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
+        <Pane width="100%" height="100%" display="flex" flexDirection="column" alignItems="center" paddingBottom="20px">
             <Pane width="80%" height="100px" position="relative">
                 <Select position="absolute" bottom="20px" width="200px">
                     {/* Placeholders*/}
@@ -30,12 +31,15 @@ const Dashboard: React.FC = () => {
                 gridAutoRows="250px"
                 rowGap="10px"
             >
-                {itemList.map((item, i) => {
+                {dashboardItems.map((item, i) => {
                     return (
                         <Pane key={i} width="100%" height="100%" gridColumn={'span ' + item.size}>
-                            <DashboardItemSmall title="placeholder" height="100%" width="100%" titleSize={100}>
-                                {''}
-                            </DashboardItemSmall>
+                            <DashboardItemSmall
+                                title="placeholder"
+                                height="100%"
+                                width="100%"
+                                titleSize={100}
+                            ></DashboardItemSmall>
                         </Pane>
                     );
                 })}

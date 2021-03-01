@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Text } from 'evergreen-ui';
+import { dashboardItemsVar } from '../../cache/cache';
 
 const AddComponentButton: React.FC = () => {
-    const handleClick = () => {
-        //Change to data explorer page with react router
-        return;
+    const addDashboardItem = () => {
+        dashboardItemsVar([...dashboardItemsVar(), { size: 2, withText: false }]);
     };
 
     return (
@@ -16,7 +16,7 @@ const AddComponentButton: React.FC = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            onClick={handleClick}
+            onClick={addDashboardItem}
             border="muted"
             borderStyle="dotted"
             borderWidth="3px"
