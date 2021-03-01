@@ -25,19 +25,19 @@ const Template: Story<DashboardItemLargeT> = (args) => (
 );
 
 export const Large = Template.bind({});
-Large.args = {
-    title: 'This is a title',
-    width: 1000,
-    height: 300,
-    titleSize: 500,
-    paragraph:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    textSize: 300,
-};
 
 export default {
     title: 'Dashboard/Item/Large',
     component: Large,
+    args: {
+        title: 'This is a title',
+        width: 1000,
+        height: 300,
+        titleSize: 500,
+        paragraph:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        textSize: 300,
+    },
     argTypes: {
         width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
         height: { control: { type: 'range', min: 100, max: 1800, step: 10 } },

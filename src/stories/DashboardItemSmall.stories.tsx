@@ -25,16 +25,16 @@ const Template: Story<DashboardItemSmallTypeT> = (args) => (
 );
 
 export const Small = Template.bind({});
-Small.args = {
-    title: 'This is a title',
-    width: 500,
-    height: 300,
-    titleSize: 500,
-};
 
 export default {
     title: 'Dashboard/Item/Small',
     component: Small,
+    args: {
+        title: 'This is a title',
+        width: 500,
+        height: 300,
+        titleSize: 500,
+    },
     argTypes: {
         width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
         height: { control: { type: 'range', min: 100, max: 1600, step: 10 } },
