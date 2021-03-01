@@ -3,11 +3,11 @@ import { Meta } from '@storybook/react/types-6-0';
 import ThresholdChart, { ThresholdChartProps } from '../components/atoms/ThresholdChart';
 import { Story } from '@storybook/react';
 import { MetApiCompactForecast } from '../mockdata/metApi';
-import { MetApiCompactAirTemperature } from '../dataTypes/metApi/compact';
+import { MetApiCompactAirTemperature } from '../types/compact';
 import { appleStock } from '@visx/mock-data';
 
 export default {
-    title: 'Component/ThresholdChart',
+    title: 'Graphs/ThresholdChart',
     component: ThresholdChart,
 } as Meta;
 
@@ -25,7 +25,7 @@ export const Primary = Template.bind({});
 Primary.args = { data: data, width: 600, height: 400, yLabel: 'Celsius' };
 
 //Change key
-const appleData = appleStock.map(({ date, close }) => ({ time: date, value: close }));
+export const appleData = appleStock.map(({ date, close }) => ({ time: date, value: close }));
 export const AppleData = Template.bind({});
 AppleData.args = {
     data: appleData,
