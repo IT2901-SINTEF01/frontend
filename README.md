@@ -8,6 +8,8 @@ _This repository contains the frontend for the "Open Data Visualisation Platform
 
 ## Overview
 
+You can see our deployed storybooks [here](https://www.chromatic.com/builds?appId=603cc7be306c9a0023f0f937).
+
 The frontend is built with React.js, written in TypeScript. We also utilise the [Storybook.js](https://storybook.js.org/) library to give an **easy to use** and **intuitive** overview of our React components. Refer to our [wiki](https://github.com/IT2901-SINTEF01/frontend/wiki) for more information regarding our architecture and structure.
 
 ## Setup
