@@ -30,3 +30,5 @@ yarn-error.log*
 */videos/
 
 storybook-static/
+
+*.log
