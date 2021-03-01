@@ -33,7 +33,7 @@ Small.args = {
 };
 
 export default {
-    title: 'Dashboard/Item',
+    title: 'Dashboard/Item/Small',
     component: Small,
     argTypes: {
         width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },

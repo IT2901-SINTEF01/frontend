@@ -36,12 +36,12 @@ Large.args = {
 };
 
 export default {
-    title: 'Dashboard/Item',
+    title: 'Dashboard/Item/Large',
     component: Large,
     argTypes: {
         width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
         height: { control: { type: 'range', min: 100, max: 1800, step: 10 } },
+        textSize: { control: { type: 'radio', options: [300, 400, 500] } },
         titleSize: { control: { type: 'select', options: [100, 200, 300, 400, 500, 600, 700, 800, 900] } },
-        textSize: { control: { type: 'select', options: [300, 400, 500] } },
     },
 } as Meta;
