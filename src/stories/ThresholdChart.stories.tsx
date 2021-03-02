@@ -12,7 +12,7 @@ export default {
 } as Meta;
 
 const formatMetData = (data: MetApiCompactAirTemperature) =>
-    data.data.forecast.forecastProperties.timeseries.map((el) => ({
+    data.forecast.forecastProperties.timeseries.map((el) => ({
         time: el.time,
         value: el.forecastData.instant.details.airTemperature,
     }));
