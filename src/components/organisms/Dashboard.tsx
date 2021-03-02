@@ -13,26 +13,38 @@ const Dashboard: React.FC = () => {
     const dashboardItems = useReactiveVar(dashboardItemsVar);
 
     return (
-        <Pane width="100%" height="100%" display="flex" flexDirection="column" alignItems="center" paddingBottom="20px">
-            <Pane width="80%" height="100px" position="relative">
-                <Select position="absolute" bottom="20px" width="200px">
-                    {/* Placeholders*/}
-                    <option value="foo" selected>
-                        Mitt første dashboard
-                    </option>
-                    <option value="bar">Mitt andre dashboard</option>
-                </Select>
-                <Text position="absolute" bottom="25px" left="220px" color="#1070CA" cursor="pointer">
-                    + Legg til dashboard
-                </Text>
+        <Pane width="100%" height="100%" display="flex" flexDirection="column" alignItems="center" paddingBottom="2rem">
+            <Pane
+                width="80%"
+                height="100px"
+                display="flex"
+                flexDirection="row"
+                justifyContent="flex-start"
+                paddingTop="2rem"
+            >
+                <Pane>
+                    <Select>
+                        {/* Placeholders*/}
+                        <option value="foo" selected>
+                            Mitt første dashboard som er veldig langt
+                        </option>
+                        <option value="bar">Mitt andre dashboard</option>
+                    </Select>
+                </Pane>
+                <Pane width="2rem" />
+                <Pane paddingTop="5px">
+                    <Text color="#1070CA" cursor="pointer">
+                        + Legg til dashboard
+                    </Text>
+                </Pane>
             </Pane>
             <Pane
                 width="80%"
                 display="grid"
                 gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr" //Smaller screen size should have 1f 1fr 1f
-                columnGap="10px"
-                gridAutoRows="250px"
-                rowGap="10px"
+                columnGap="1rem"
+                gridAutoRows="18rem"
+                rowGap="1rem"
             >
                 {dashboardItems.map((item, i) => {
                     return (
