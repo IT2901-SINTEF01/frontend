@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 
-//Format: What where
+// Naming convention:
+// <RESOURCE>_<SOURCE>
 export const WEATHER_MET_API = gql`
     query {
         forecast {
