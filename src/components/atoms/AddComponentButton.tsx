@@ -5,7 +5,7 @@ import { WEATHER_MET_API } from '../../queries/metApi';
 
 const AddComponentButton: React.FC = () => {
     const addDashboardItem = () => {
-        dashboardItemsVar([...dashboardItemsVar(), { size: 3, withText: false, query: WEATHER_MET_API }]);
+        dashboardItemsVar([...dashboardItemsVar(), { size: 3, query: WEATHER_MET_API }]);
     };
 
     return (

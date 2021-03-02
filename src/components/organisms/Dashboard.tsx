@@ -37,7 +37,13 @@ const Dashboard: React.FC = () => {
                 {dashboardItems.map((item, i) => {
                     return (
                         <Pane key={i} width="100%" height="100%" gridColumn={'span ' + item.size}>
-                            <DashboardItem title="placeholder" height="100%" width="100%" titleSize={100}>
+                            <DashboardItem
+                                title="placeholder"
+                                height="100%"
+                                width="100%"
+                                titleSize={100}
+                                paragraph={item.paragraph}
+                            >
                                 <ParentSize>
                                     {(parent) => (
                                         <DataWrapper query={item.query}>

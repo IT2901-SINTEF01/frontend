@@ -3,7 +3,7 @@ import { DocumentNode } from '@apollo/client';
 
 export type DashboardItemInfo = {
     size: DashboardItemSize;
-    withText: boolean;
+    paragraph?: string;
     query: DocumentNode;
 };
 
