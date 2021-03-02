@@ -5,8 +5,10 @@ import DashboardItem from '../molecules/DashboardItem';
 import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
-import ThresholdChart from '../atoms/ThresholdChart';
+import ThresholdChart, { TimeEntry } from '../atoms/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
+import { MetApiCompactAirTemperature } from '../../types/compact';
+import { formatMetData } from '../../utils/formatMetData';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -16,11 +18,11 @@ const Dashboard: React.FC = () => {
         <Pane width="100%" height="100%" display="flex" flexDirection="column" alignItems="center" paddingBottom="2rem">
             <Pane
                 width="80%"
-                height="100px"
+                height="8rem"
                 display="flex"
                 flexDirection="row"
                 justifyContent="flex-start"
-                paddingTop="2rem"
+                paddingTop="4rem"
             >
                 <Pane>
                     <Select>
@@ -58,14 +60,19 @@ const Dashboard: React.FC = () => {
                             >
                                 <ParentSize>
                                     {(parent) => (
-                                        <DataWrapper query={item.query}>
-                                            {({ data }) =>
-                                                data.length !== 0 && (
+                                        <DataWrapper<MetApiCompactAirTemperature, TimeEntry[]>
+                                            mappingFunction={formatMetData}
+                                            query={item.query}
+                                        >
+                                            {(data) =>
+                                                data.length !== 0 ? (
                                                     <ThresholdChart
                                                         data={data}
                                                         height={parent.height}
                                                         width={parent.width}
                                                     />
+                                                ) : (
+                                                    <p>Datasettet er tomt!</p>
                                                 )
                                             }
                                         </DataWrapper>
