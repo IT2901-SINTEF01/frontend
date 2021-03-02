@@ -47,19 +47,15 @@ const Dashboard: React.FC = () => {
                                 <ParentSize>
                                     {(parent) => (
                                         <DataWrapper query={item.query}>
-                                            {({ data, loading, error }) => (
-                                                <>
-                                                    {loading && <Text>Loading...</Text>}
-                                                    {error && <Text>{error.message}</Text>}
-                                                    {data && (
-                                                        <ThresholdChart
-                                                            data={data}
-                                                            height={parent.height}
-                                                            width={parent.width}
-                                                        />
-                                                    )}
-                                                </>
-                                            )}
+                                            {({ data }) =>
+                                                data.length !== 0 && (
+                                                    <ThresholdChart
+                                                        data={data}
+                                                        height={parent.height}
+                                                        width={parent.width}
+                                                    />
+                                                )
+                                            }
                                         </DataWrapper>
                                     )}
                                 </ParentSize>
