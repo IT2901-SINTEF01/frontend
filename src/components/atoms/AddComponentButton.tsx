@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card, Text } from 'evergreen-ui';
 import { dashboardItemsVar } from '../../cache/cache';
+import { WEATHER_MET_API } from '../../queries/metApi';
 
 const AddComponentButton: React.FC = () => {
     const addDashboardItem = () => {
-        dashboardItemsVar([...dashboardItemsVar(), { size: 2, withText: false }]);
+        dashboardItemsVar([...dashboardItemsVar(), { size: 3, withText: false, query: WEATHER_MET_API }]);
     };
 
     return (
