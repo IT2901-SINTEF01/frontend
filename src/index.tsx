@@ -8,7 +8,7 @@ import Dashboard from './components/organisms/Dashboard';
 import './index.css';
 
 const client = new ApolloClient({
-    uri: 'https://localhost:5000',
+    uri: '/graphql',
     cache,
 });
 
