@@ -1,5 +1,6 @@
 import { DashboardItemSize, DashboardItemInfo } from '../types/dashboard';
 
+/*
 export const generateRandomList = (size: number): DashboardItemInfo[] =>
     new Array(size).fill(undefined).map(() => ({
         size: [DashboardItemSize.SMALL, DashboardItemSize.MEDIUM, DashboardItemSize.LARGE][
@@ -7,3 +8,4 @@ export const generateRandomList = (size: number): DashboardItemInfo[] =>
         ],
         withText: false,
     }));
+*/
