@@ -6,7 +6,7 @@ import { cache } from './cache';
 import Dashboard from './components/organisms/Dashboard';
 
 const client = new ApolloClient({
-    uri: '/graphql',
+    uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
     cache,
 });
 
