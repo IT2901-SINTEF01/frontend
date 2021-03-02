@@ -5,8 +5,10 @@ import DashboardItem from '../molecules/DashboardItem';
 import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
-import ThresholdChart from '../atoms/ThresholdChart';
+import ThresholdChart, { TimeEntry } from '../atoms/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
+import { MetApiCompactAirTemperature } from '../../types/compact';
+import { formatMetData } from '../../utils/formatMetData';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -46,14 +48,19 @@ const Dashboard: React.FC = () => {
                             >
                                 <ParentSize>
                                     {(parent) => (
-                                        <DataWrapper query={item.query}>
-                                            {({ data }) =>
-                                                data.length !== 0 && (
+                                        <DataWrapper<MetApiCompactAirTemperature, TimeEntry[]>
+                                            mappingFunction={formatMetData}
+                                            query={item.query}
+                                        >
+                                            {(data) =>
+                                                data.length !== 0 ? (
                                                     <ThresholdChart
                                                         data={data}
                                                         height={parent.height}
                                                         width={parent.width}
                                                     />
+                                                ) : (
+                                                    <p>Datasettet er tomt!</p>
                                                 )
                                             }
                                         </DataWrapper>
