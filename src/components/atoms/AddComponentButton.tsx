@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Text } from 'evergreen-ui';
-import { dashboardItemsVar } from '../../cache/cache';
+import { dashboardItemsVar } from '../../cache';
 import { WEATHER_MET_API } from '../../queries/metApi';
 
 const AddComponentButton: React.FC = () => {

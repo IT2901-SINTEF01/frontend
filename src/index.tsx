@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ApolloClient } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
-import { cache } from './cache/cache';
+import { cache } from './cache';
 
 import Dashboard from './components/organisms/Dashboard';
 import './index.css';

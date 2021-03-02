@@ -3,7 +3,7 @@ import { Pane, Select, Text } from 'evergreen-ui';
 import AddComponentButton from '../atoms/AddComponentButton';
 import DashboardItem from '../molecules/DashboardItem';
 import { useReactiveVar } from '@apollo/client';
-import { dashboardItemsVar } from '../../cache/cache';
+import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
 import ThresholdChart from '../atoms/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
