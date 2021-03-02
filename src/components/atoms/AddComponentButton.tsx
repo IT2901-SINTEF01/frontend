@@ -13,7 +13,7 @@ const AddComponentButton: React.FC = () => {
             cursor="pointer"
             width="100%"
             height="100%"
-            gridColumn={'span 2'}
+            gridColumn="span 2"
             display="flex"
             justifyContent="center"
             alignItems="center"
