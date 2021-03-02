@@ -2,30 +2,48 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import DashboardItem, { DashboardItemProps } from '../components/molecules/DashboardItem';
-import { AppleData as ThresholdChart, appleData } from './ThresholdChart.stories';
+import { AppleData as ThresholdChart } from './ThresholdChart.stories';
 import { ParentSize } from '@visx/responsive';
+import DataWrapper from '../components/molecules/DataWrapper';
+import { WEATHER_MET_API } from '../queries/weatherMetApi';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 export default {
     title: 'Dashboard/Item',
     component: DashboardItem,
 } as Meta;
 
+const client = new ApolloClient({
+    uri: 'http://localhost:5000/graphql',
+    cache: new InMemoryCache(),
+});
+
 const Template: Story<DashboardItemProps> = (args) => (
-    <DashboardItem {...args}>
-        <ParentSize>
-            {(parent) => (
-                <ThresholdChart
-                    data={appleData}
-                    width={parent.width}
-                    height={parent.height}
-                    thresholdValue={150}
-                    aboveThresholdColor="green"
-                    belowThresholdColor="red"
-                    yLabel="Price"
-                />
+    <ApolloProvider client={client}>
+        <DataWrapper query={WEATHER_MET_API}>
+            {({ data, loading, error }) => (
+                <DashboardItem {...args}>
+                    {loading || error ? (
+                        <p>I am loading or error</p>
+                    ) : (
+                        <ParentSize>
+                            {(parent) => (
+                                <ThresholdChart
+                                    data={data}
+                                    width={parent.width}
+                                    height={parent.height}
+                                    thresholdValue={150}
+                                    aboveThresholdColor="green"
+                                    belowThresholdColor="red"
+                                    yLabel="Price"
+                                />
+                            )}
+                        </ParentSize>
+                    )}
+                </DashboardItem>
             )}
-        </ParentSize>
-    </DashboardItem>
+        </DataWrapper>
+    </ApolloProvider>
 );
 
 export const Small = Template.bind({});

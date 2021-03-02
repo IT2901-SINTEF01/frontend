@@ -3,19 +3,13 @@ import { Meta } from '@storybook/react/types-6-0';
 import ThresholdChart, { ThresholdChartProps } from '../components/atoms/ThresholdChart';
 import { Story } from '@storybook/react';
 import { MetApiCompactForecast } from '../mockdata/metApi';
-import { MetApiCompactAirTemperature } from '../types/compact';
 import { appleStock } from '@visx/mock-data';
+import { formatMetData } from '../utils/formatMetData';
 
 export default {
     title: 'Graphs/ThresholdChart',
     component: ThresholdChart,
 } as Meta;
-
-const formatMetData = (data: MetApiCompactAirTemperature) =>
-    data.data.forecast.forecastProperties.timeseries.map((el) => ({
-        time: el.time,
-        value: el.forecastData.instant.details.airTemperature,
-    }));
 
 const data = formatMetData(MetApiCompactForecast);
 

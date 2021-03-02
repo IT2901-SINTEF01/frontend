@@ -8,13 +8,13 @@ import { curveBasis } from '@visx/curve';
 import { LinePath } from '@visx/shape';
 import { Threshold } from '@visx/threshold';
 
-type Data = {
+export type TimeEntry = {
     time: string;
     value: number;
 };
 
 export type ThresholdChartProps = {
-    data: Data[];
+    data: TimeEntry[];
     width: number;
     height: number;
     margin?: Record<'top' | 'right' | 'bottom' | 'left', number>;
@@ -41,8 +41,8 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
     yLabel,
 }) => {
     // accessors
-    const date = (d: Data) => new Date(d.time).valueOf();
-    const value = (d: Data) => d.value;
+    const date = (d: TimeEntry) => new Date(d.time).valueOf();
+    const value = (d: TimeEntry) => d.value;
 
     //bounds
     const xMax = width - margin.left - margin.right;

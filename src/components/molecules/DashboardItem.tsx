@@ -38,7 +38,7 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
                     <Paragraph width="15%" height="100%" size={textSize}>
                         {paragraph}
                     </Paragraph>
-                    <Pane marginLeft={15} justifyContent="center" width="80%" height="80%">
+                    <Pane marginLeft={15} justifyContent="center" width="80%" height="100%">
                         {children}
                     </Pane>
                 </Pane>
@@ -49,8 +49,8 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
                     marginTop="auto"
                     marginBottom="auto"
                     justifyContent="center"
-                    width="80%"
-                    height="70%"
+                    width="100%"
+                    height="80%"
                 >
                     {children}
                 </Pane>
