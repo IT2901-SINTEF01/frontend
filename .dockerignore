@@ -1,8 +1,6 @@
 node_modules
 .eslint*
-.eslintrc.js
 .prettier*
-.prettierrc.js
 .restyled.yaml
 cypress.json
 cypress/

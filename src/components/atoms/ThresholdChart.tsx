@@ -25,17 +25,13 @@ export type ThresholdChartProps = {
     yLabel?: string;
 };
 
-const defaultMargin: ThresholdChartProps['margin'] = { top: 40, right: 30, bottom: 50, left: 40 };
-const defaultBackground = '#fff';
-const defaultThresholdValue = 0;
-
 const ThresholdChart: React.FC<ThresholdChartProps> = ({
     data,
     width,
     height,
-    margin = defaultMargin,
-    background = defaultBackground,
-    thresholdValue = defaultThresholdValue,
+    margin = { top: 40, right: 30, bottom: 50, left: 40 },
+    background = '#fff',
+    thresholdValue = 0,
     aboveThresholdColor = 'red',
     belowThresholdColor = 'blue',
     yLabel,
