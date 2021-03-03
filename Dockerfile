@@ -10,8 +10,7 @@ ENV NODE_ENV=production
 RUN yarn install --production --frozen-lockfile
 
 COPY . /app/
-# RUN yarn build
-RUN npx react-scripts build
+RUN yarn build
 
 # Stage 1: Reverse Nginx proxy to prevent React-Router from going "boo-hoo"
 FROM nginx:alpine

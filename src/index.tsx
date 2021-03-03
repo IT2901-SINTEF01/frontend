@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Filler from './components/atoms/Filler';
+import './index.css';
+import App from './App';
 
-render(<Filler />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
