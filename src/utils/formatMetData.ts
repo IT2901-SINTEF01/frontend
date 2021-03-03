@@ -1,4 +1,4 @@
-import { MetApiCompactAirTemperature } from '../types/compact';
+import { MetApiCompactAirTemperature } from '../queries/metApi';
 import { TimeEntry } from '../components/atoms/ThresholdChart';
 
 export const formatMetData = (data: MetApiCompactAirTemperature): TimeEntry[] =>

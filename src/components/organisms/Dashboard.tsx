@@ -7,7 +7,7 @@ import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
 import ThresholdChart, { TimeEntry } from '../atoms/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
-import { MetApiCompactAirTemperature } from '../../types/compact';
+import { MetApiCompactAirTemperature } from '../../queries/metApi';
 import { formatMetData } from '../../utils/formatMetData';
 
 const Dashboard: React.FC = () => {

@@ -23,3 +23,23 @@ export const WEATHER_MET_API = gql`
         }
     }
 `;
+
+export type MetApiCompactAirTemperature = {
+    forecast: {
+        forecastProperties: {
+            meta: {
+                updatedAt: string;
+            };
+            timeseries: {
+                time: string;
+                forecastData: {
+                    instant: {
+                        details: {
+                            airTemperature: number;
+                        };
+                    };
+                };
+            }[];
+        };
+    };
+};
