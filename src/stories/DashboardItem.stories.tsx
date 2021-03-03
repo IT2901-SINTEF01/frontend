@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import DashboardItem, { DashboardItemProps } from '../components/molecules/DashboardItem';
-import { AppleData as ThresholdChart, appleData } from './ThresholdChart.stories';
+import { Primary as ThresholdChart, data } from './ThresholdChart.stories';
 import { ParentSize } from '@visx/responsive';
 
 export default {
@@ -15,7 +15,7 @@ const Template: Story<DashboardItemProps> = (args) => (
         <ParentSize>
             {(parent) => (
                 <ThresholdChart
-                    data={appleData}
+                    data={data}
                     width={parent.width}
                     height={parent.height}
                     thresholdValue={150}
