@@ -1,5 +1,6 @@
 import React from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
+import { InlineAlert, Pane, Spinner } from 'evergreen-ui';
 
 /**
  * @param T The raw output of the GraphQL query.
@@ -11,23 +12,44 @@ export type DataWrapperProps<T, U> = {
     mappingFunction: (data: T) => U;
 };
 
+const CenterPane: React.FC = ({ children }) => {
+    return (
+        <Pane width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
+            {children}
+        </Pane>
+    );
+};
+
 /**
  * This component is responsible for retrieving and mapping a GraphQL query to the expected input to the
  * child function. It is a generic component to support arbitrary children.
  */
+
 const DataWrapper = <T, U>(props: DataWrapperProps<T, U>): JSX.Element => {
     const { loading, error, data } = useQuery<T>(props.query);
 
     if (loading) {
-        return <p>Loading… ⏳</p>;
+        return (
+            <CenterPane>
+                <Spinner />
+            </CenterPane>
+        );
     }
 
     if (error) {
-        return <p>Error: {error.message}</p>;
+        return (
+            <CenterPane>
+                <InlineAlert intent="danger">Vi finner ikke dataen du leter etter.</InlineAlert>
+            </CenterPane>
+        );
     }
 
     if (!data) {
-        return <p>No data retrieved from backend.</p>;
+        return (
+            <CenterPane>
+                <InlineAlert intent="danger">Ingen data mottatt fra serveren.</InlineAlert>
+            </CenterPane>
+        );
     }
 
     return props.children(props.mappingFunction(data));
