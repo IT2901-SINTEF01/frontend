@@ -20,8 +20,12 @@ Primary.argTypes = {
     size: sizeControl,
 };
 
+Primary.storyName = 'Without details';
+
 export const Secondary = Template.bind({});
 Secondary.args = { size: 400, message: 'Error message', moreInfo: 'This is more info about the error' };
 Secondary.argTypes = {
     size: sizeControl,
 };
+
+Secondary.storyName = 'With details';
