@@ -1,6 +1,5 @@
-import { InlineAlert } from 'evergreen-ui';
 import React from 'react';
-import { Text, Pane } from 'evergreen-ui';
+import { Text, Pane, InlineAlert } from 'evergreen-ui';
 
 export type ErrorMessageProps = {
     size?: 300 | 400 | 500 | 600;
