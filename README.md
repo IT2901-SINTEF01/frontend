@@ -1,6 +1,6 @@
 # Open Data Visualisation Platform – Frontend
 
-![Build, lint, and test](https://github.com/IT2901-SINTEF01/frontend/workflows/Build,%20lint,%20and%20test/badge.svg) ![Issues](https://img.shields.io/github/issues/IT2901-SINTEF01/frontend) ![License](https://img.shields.io/github/license/IT2901-SINTEF01/frontend) ![Version](https://img.shields.io/github/v/release/IT2901-SINTEF01/frontend?include_prereleases)
+![Build, lint, and test](https://github.com/IT2901-SINTEF01/frontend/workflows/Build,%20lint,%20and%20test/badge.svg) ![Issues](https://img.shields.io/github/issues/IT2901-SINTEF01/frontend) ![License](https://img.shields.io/github/license/IT2901-SINTEF01/frontend) ![Version](https://img.shields.io/github/v/release/IT2901-SINTEF01/frontend?include_prereleases)[![Codacy Badge](https://app.codacy.com/project/badge/Grade/aa2ba28a1a1c4609b04c3bde2d822bcb)](https://www.codacy.com/gh/IT2901-SINTEF01/frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=IT2901-SINTEF01/frontend&amp;utm_campaign=Badge_Grade)
 
 <img src="./SINTEF_logo.png" alt="SINTEF" height=50 />
 
