@@ -19,42 +19,33 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
     textSize = 300,
     children,
 }) => {
+    const Title = <Heading size={titleSize}>{title}</Heading>;
+    const Subtitle = (
+        <Paragraph size={textSize} marginTop="0.5em">
+            {paragraph}
+        </Paragraph>
+    );
+
+    if (paragraph) {
+    }
+
     return (
-        <Card width={width} height={height} display="flex" flexDirection="column" border="default" elevation={1}>
-            <Heading size={titleSize} marginTop={25} marginLeft={25}>
-                {title}
-            </Heading>
-            {paragraph ? (
-                /* Large with text*/
-                <Pane
-                    width="95%"
-                    height="inherit"
-                    overflow="auto"
-                    display="flex"
-                    flexDirection="row"
-                    alignSelf="center"
-                    marginTop={10}
-                >
-                    <Paragraph width="15%" height="100%" size={textSize}>
-                        {paragraph}
-                    </Paragraph>
-                    <Pane marginLeft={15} justifyContent="center" width="80%" height="80%">
-                        {children}
-                    </Pane>
-                </Pane>
-            ) : (
-                /* Small without text */
-                <Pane
-                    alignSelf="center"
-                    marginTop="auto"
-                    marginBottom="auto"
-                    justifyContent="center"
-                    width="80%"
-                    height="70%"
-                >
-                    {children}
-                </Pane>
-            )}
+        <Card
+            width={width}
+            height={height}
+            border="default"
+            elevation={1}
+            display="flex"
+            flexDirection={paragraph ? 'row' : 'column'}
+            padding="1em"
+        >
+            <Pane width={paragraph ? '45%' : '100%'}>
+                {Title}
+                {paragraph && Subtitle}
+            </Pane>
+            <Pane height="95%" width="100%">
+                {children}
+            </Pane>
         </Card>
     );
 };
