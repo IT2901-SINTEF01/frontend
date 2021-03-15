@@ -11,7 +11,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
     return (
         <Pane width="100%" height="100%">
             <Heading size={600}>{title}</Heading>
-            <Text>{description}</Text>
+            <Text overflow="auto">{description}</Text>
             <Pane display="flex" flexWrap="wrap">
                 {tags.map((tag, index) => (
                     <Badge key={index} color="neutral" marginRight="1rem" marginTop="1rem">
