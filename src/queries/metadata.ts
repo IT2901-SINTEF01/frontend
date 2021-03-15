@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 
-//Waiting for backend to merge.
 export const METADATA = gql`
     query {
         allMetadata {
