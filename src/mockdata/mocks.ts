@@ -8,7 +8,7 @@ const visualisationTypes = ['barchart', 'thresholdchart', 'piechart', 'linechart
 
 const randomListOfWords = () => {
     const wordList = faker.lorem.words(faker.random.number(7)).split(' ');
-    return wordList.length !== 1 ? wordList : [];
+    return wordList[0] ? wordList : [];
 };
 
 const makeMetadata = () => {

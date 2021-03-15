@@ -2,12 +2,12 @@ import React from 'react';
 import { Pane } from 'evergreen-ui';
 import DataResultItem from '../molecules/DataResultItem';
 import { useQuery } from '@apollo/client';
-import { METADATA, MetadataEntry } from '../../queries/metadata';
+import { METADATA, MetadataEntry, Metadata } from '../../queries/metadata';
 import Loading from '../atoms/Loading';
 import ErrorMessage from '../atoms/ErrorMessage';
 
 const DataExplorer: React.FC = () => {
-    const { data, loading, error } = useQuery(METADATA);
+    const { data, loading, error } = useQuery<Metadata>(METADATA);
 
     if (loading) {
         return (
@@ -27,11 +27,12 @@ const DataExplorer: React.FC = () => {
 
     return (
         <Pane>
-            {data.allMetadata.map((el: MetadataEntry) => (
-                <Pane margin="2rem" key={el.id}>
-                    <DataResultItem title={el.name} description={el.description} tags={el.tags} />
-                </Pane>
-            ))}
+            {data &&
+                data.allMetadata.map((el: MetadataEntry) => (
+                    <Pane margin="2rem" key={el.id}>
+                        <DataResultItem title={el.name} description={el.description} tags={el.tags} />
+                    </Pane>
+                ))}
         </Pane>
     );
 };
