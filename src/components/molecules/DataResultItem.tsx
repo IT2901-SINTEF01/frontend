@@ -10,7 +10,7 @@ export type DataResultItemProps = {
 
 const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags }) => {
     const handleOnClick = () => {
-        return 0; //Will route to data customize page later.
+        return 0; //Will route to data customise page later.
     };
 
     return (
