@@ -1,6 +1,6 @@
 import { cache } from '../src/cache';
 import { MockedProvider } from '@apollo/client/testing';
-import mock from '../src/mockdata/metApiMockData';
+import mock from '../src/mockdata/mocks';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
