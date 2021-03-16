@@ -1,10 +1,13 @@
 import React from 'react';
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import DataExplorer from '../components/organisms/DataExplorer';
 
 export default {
-    title: 'Component/DataExplorer',
+    title: 'DataExplorer/DataExplorer',
     component: DataExplorer,
 } as Meta;
 
-export const Primary: React.FC = () => <DataExplorer />;
+const Template: Story = () => <DataExplorer />;
+
+export const Primary = Template.bind({});
+Primary.storyName = 'Data explorer';
