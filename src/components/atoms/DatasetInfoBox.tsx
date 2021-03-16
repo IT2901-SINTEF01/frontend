@@ -13,8 +13,8 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
             <Heading size={600}>{title}</Heading>
             <Text overflow="auto">{description}</Text>
             <Pane display="flex" flexWrap="wrap">
-                {tags.map((tag, index) => (
-                    <Badge key={index} color="neutral" marginRight="1rem" marginTop="1rem">
+                {tags.map((tag) => (
+                    <Badge key={tag} color="neutral" marginRight="1rem" marginTop="1rem">
                         {tag}
                     </Badge>
                 ))}
