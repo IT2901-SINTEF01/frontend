@@ -11,6 +11,7 @@ export const METADATA = gql`
             updated
             tags
             visualisations {
+                type
                 axes {
                     x {
                         name
@@ -32,21 +33,19 @@ export type MetadataEntry = {
     source: string;
     updated: string;
     tags: string[];
-    visualisations: [
-        {
-            type: string;
-            axes: {
-                x: {
-                    name: string;
-                };
-                y: {
-                    name: string;
-                };
+    visualisations: Array<{
+        type: string;
+        axes: {
+            x: {
+                name: string;
             };
-        },
-    ];
+            y: {
+                name: string;
+            };
+        };
+    }>;
 };
 
-export type Metadata = {
+export type AllMetadataResult = {
     allMetadata: MetadataEntry[];
 };
