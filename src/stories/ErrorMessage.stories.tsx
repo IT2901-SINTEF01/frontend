@@ -4,7 +4,7 @@ import ErrorMessage, { ErrorMessageProps } from '../components/atoms/ErrorMessag
 import { Story } from '@storybook/react';
 
 export default {
-    title: 'Atom/ErrorMessage',
+    title: 'Atom/Error message',
     component: ErrorMessage,
 } as Meta;
 

@@ -20,7 +20,7 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                 <DatasetInfoBox title={title} description={description} tags={tags} />
             </Pane>
             <Pane flex="2">
-                <Heading>Forslag til visualisering</Heading>
+                <Heading marginBottom="1rem">Forslag til visualisering</Heading>
                 {/* The template graph will go here */}
                 <Text>{visualisationType}</Text>
             </Pane>
