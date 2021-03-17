@@ -38,7 +38,7 @@ const DataExplorer: React.FC = () => {
 
     return (
         <Pane>
-            {data.allMetadata.map((el: MetadataEntry) => (
+            {data.allMetadata.map((el) => (
                 <Pane margin="2rem" key={el.id}>
                     <DataResultItem
                         title={el.name}
