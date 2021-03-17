@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import DataExplorer from '../components/organisms/DataExplorer';
 
 export default {
-    title: 'DataExplorer/DataExplorer',
+    title: 'DataExplorer',
     component: DataExplorer,
 } as Meta;
 

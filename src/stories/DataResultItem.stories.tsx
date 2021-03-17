@@ -4,7 +4,7 @@ import { Story } from '@storybook/react';
 import DataResultItem, { DataResultItemProps } from '../components/molecules/DataResultItem';
 
 export default {
-    title: 'DataExplorer/DataExplorer/Item',
+    title: 'DataExplorer/Result item',
     component: DataResultItem,
 } as Meta;
 
@@ -18,5 +18,11 @@ Primary.args = {
     tags: ['Energi', 'Miljø', 'Helse', 'Pils', 'Raketter'],
     visualisationType: 'thresholdchart',
 };
+Primary.argTypes = {
+    tags: { control: { type: 'array' } },
+    visualisationType: {
+        control: { type: 'select', options: ['barchart', 'thresholdchart', 'piechart', 'linechart'] },
+    },
+};
 
-Primary.storyName = 'Data explorer result item';
+Primary.storyName = 'Result item';

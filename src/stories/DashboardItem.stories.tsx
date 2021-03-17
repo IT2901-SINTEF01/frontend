@@ -6,7 +6,7 @@ import { Primary as ThresholdChart, data } from './ThresholdChart.stories';
 import { ParentSize } from '@visx/responsive';
 
 export default {
-    title: 'Dashboard/Dashboard/Item',
+    title: 'Dashboard/Visualisation block',
     component: DashboardItem,
 } as Meta;
 
