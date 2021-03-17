@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <ApolloProvider client={client}>
             <BrowserRouter>
                 <Switch>
-                    <Route exact  path="/explore" component={DataExplorer} />
+                    <Route exact path="/explore" component={DataExplorer} />
                     <Route exact path="/" component={Dashboard} />
                     <Route component={NotFound} />
                 </Switch>
