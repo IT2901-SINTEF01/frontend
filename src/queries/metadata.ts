@@ -33,7 +33,7 @@ export type MetadataEntry = {
     source: string;
     updated: string;
     tags: string[];
-    visualisations: Array<{
+    visualisations: {
         type: string;
         axes: {
             x: {
@@ -43,7 +43,7 @@ export type MetadataEntry = {
                 name: string;
             };
         };
-    }>;
+    }[];
 };
 
 export type AllMetadataResult = {
