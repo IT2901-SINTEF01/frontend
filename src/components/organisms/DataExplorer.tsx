@@ -2,7 +2,7 @@ import React from 'react';
 import { InlineAlert, Pane } from 'evergreen-ui';
 import DataResultItem from '../molecules/DataResultItem';
 import { useQuery } from '@apollo/client';
-import { METADATA, MetadataEntry, AllMetadataResult } from '../../queries/metadata';
+import { METADATA, AllMetadataResult } from '../../queries/metadata';
 import Loading from '../atoms/Loading';
 import ErrorMessage from '../atoms/ErrorMessage';
 
