@@ -10,7 +10,9 @@ type DatasetInfoBoxProps = {
 const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tags }) => {
     return (
         <Pane width="100%" height="100%">
-            <Heading size={600}>{title}</Heading>
+            <Heading size={600} marginBottom="1rem">
+                {title}
+            </Heading>
             <Text overflow="auto">{description}</Text>
             <Pane display="flex" flexWrap="wrap">
                 {tags.map((tag) => (
