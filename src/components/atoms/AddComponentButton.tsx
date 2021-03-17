@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card, Text } from 'evergreen-ui';
-import { dashboardItemsVar } from '../../cache';
-import { WEATHER_MET_API } from '../../queries/metApi';
+import { useHistory } from 'react-router-dom';
 
 const AddComponentButton: React.FC = () => {
+    const history = useHistory<string>();
+
     const addDashboardItem = () => {
-        dashboardItemsVar([...dashboardItemsVar(), { size: 3, query: WEATHER_MET_API }]);
+        history.push('/explore');
     };
 
     return (
