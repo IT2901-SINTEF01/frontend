@@ -5,7 +5,7 @@ import { Story } from '@storybook/react';
 import { appleStock } from '@visx/mock-data';
 
 export default {
-    title: 'Graphs/ThresholdChart',
+    title: 'Graphs/Threshold chart',
     component: ThresholdChart,
     excludeStories: ['data'],
 } as Meta;

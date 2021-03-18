@@ -1,6 +1,7 @@
 import { cache } from '../src/cache';
 import { MockedProvider } from '@apollo/client/testing';
-import mock from '../src/mockdata/metApiMockData';
+import mock from '../src/mockdata/mocks';
+import { BrowserRouter } from 'react-router-dom';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -9,7 +10,9 @@ export const parameters = {
 export const decorators = [
     (Story) => (
         <MockedProvider cache={cache} mocks={mock}>
-            <Story />
+            <BrowserRouter>
+                <Story />
+            </BrowserRouter>
         </MockedProvider>
     ),
 ];
