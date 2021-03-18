@@ -1,6 +1,5 @@
 import React from 'react';
-import { ApolloClient } from '@apollo/client';
-import { ApolloProvider } from '@apollo/client';
+import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { cache } from './cache';
 
 import Dashboard from './components/organisms/Dashboard';
