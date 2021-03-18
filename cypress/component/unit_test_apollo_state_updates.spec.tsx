@@ -13,7 +13,7 @@ describe('Apollo state management', () => {
         expect(dashboardItemsVar()).to.deep.equal([]);
     });
     it('adds new item to state', () => {
-        // This has to change when we add more functionality to the "Add button" button
+        // This has to change when we add more functionality to the Add component button.
         mount(<AddComponentButton />);
         cy.contains('Legg til nytt komponent').click();
         expect(dashboardItemsVar()).to.not.equal([]);
