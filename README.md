@@ -1,6 +1,6 @@
 # Open Data Visualisation Platform – Frontend
 
-![Build, lint, and test](https://github.com/IT2901-SINTEF01/frontend/workflows/Build,%20lint,%20and%20test/badge.svg) ![Issues](https://img.shields.io/github/issues/IT2901-SINTEF01/frontend) ![License](https://img.shields.io/github/license/IT2901-SINTEF01/frontend) ![Version](https://img.shields.io/github/v/release/IT2901-SINTEF01/frontend?include_prereleases)[![Codacy Badge](https://app.codacy.com/project/badge/Grade/aa2ba28a1a1c4609b04c3bde2d822bcb)](https://www.codacy.com/gh/IT2901-SINTEF01/frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=IT2901-SINTEF01/frontend&amp;utm_campaign=Badge_Grade)
+![Build, lint, and test](https://github.com/IT2901-SINTEF01/frontend/workflows/Build,%20lint,%20and%20test/badge.svg) ![Issues](https://img.shields.io/github/issues/IT2901-SINTEF01/frontend) ![License](https://img.shields.io/github/license/IT2901-SINTEF01/frontend) ![Version](https://img.shields.io/github/v/release/IT2901-SINTEF01/frontend?include_prereleases) ![Deployment badge](https://img.shields.io/github/deployments/it2901-sintef01/frontend/Production?label=Production%20deployment) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/aa2ba28a1a1c4609b04c3bde2d822bcb)](https://www.codacy.com/gh/IT2901-SINTEF01/frontend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=IT2901-SINTEF01/frontend&amp;utm_campaign=Badge_Grade)
 
 <img src="./SINTEF_logo.png" alt="SINTEF" height=50 />
 
@@ -8,9 +8,9 @@ _This repository contains the frontend for the "Open Data Visualisation Platform
 
 ## Overview
 
-You can see our deployed storybooks [here](https://www.chromatic.com/builds?appId=603cc7be306c9a0023f0f937).
+You can view the current deployment [here](https://frontend-phi-sandy.vercel.app/) and our deployed storybooks [here](https://www.chromatic.com/builds?appId=603cc7be306c9a0023f0f937).
 
-The frontend is built with React.js, written in TypeScript. We also utilise the [Storybook.js](https://storybook.js.org/) library to give an **easy to use** and **intuitive** overview of our React components. Refer to our [wiki](https://github.com/IT2901-SINTEF01/frontend/wiki) for more information regarding our architecture and structure.
+The frontend is built with React.js, written in TypeScript. We also utilise the [Storybook.js](https://storybook.js.org/) library to give an **easy to use** and **intuitive** overview of our React components. For deployment we decided to use [Vercel](https://vercel.com/it2901-sintef01/frontend). Refer to our [wiki](https://github.com/IT2901-SINTEF01/frontend/wiki) for more information regarding our architecture and structure.
 
 ## Setup
 
