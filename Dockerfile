@@ -7,9 +7,13 @@ COPY package.json /app/
 COPY yarn.lock /app/
 
 ENV NODE_ENV=production
-RUN yarn install --production --frozen-lockfile
+RUN yarn install --frozen-lockfile --prod
 
 COPY . /app/
+
+RUN echo "*" > .eslintignore
+RUN rm .eslintrc.js
+
 RUN yarn build
 
 # Stage 1: Reverse Nginx proxy to prevent React-Router from going "boo-hoo"

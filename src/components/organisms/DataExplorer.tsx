@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import { METADATA, AllMetadataResult } from '../../queries/metadata';
 import Loading from '../atoms/Loading';
 import ErrorMessage from '../atoms/ErrorMessage';
+import { Link } from 'react-router-dom';
 
 const DataExplorer: React.FC = () => {
     const { data, loading, error } = useQuery<AllMetadataResult>(METADATA);
@@ -40,12 +41,14 @@ const DataExplorer: React.FC = () => {
         <Pane>
             {data.allMetadata.map((el) => (
                 <Pane margin="2rem" key={el.id}>
-                    <DataResultItem
-                        title={el.name}
-                        description={el.description}
-                        tags={el.tags}
-                        visualisationType={el.visualisations[0].type}
-                    />
+                    <Link to={`/explore/edit/${el.id}`}>
+                        <DataResultItem
+                            title={el.name}
+                            description={el.description}
+                            tags={el.tags}
+                            visualisationType={el.visualisations[0].type}
+                        />
+                    </Link>
                 </Pane>
             ))}
         </Pane>
