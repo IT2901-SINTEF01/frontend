@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('Apollo state management', () => {
     beforeEach(() => {
-        dashboardItemsVar();
+        dashboardItemsVar([]);
     });
     it('dashboard starts out empty', () => {
         mount(
