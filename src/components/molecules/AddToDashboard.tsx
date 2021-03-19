@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
 import { DashboardItemInfo } from '../../types/dashboard';
@@ -11,11 +11,7 @@ type AddToDashboardProps = {
 const AddToDashboard: React.FC<AddToDashboardProps> = (props) => {
     const dashboardItems = useReactiveVar(dashboardItemsVar);
 
-    const [added, setAdded] = useState(false);
-
-    useEffect(() => {
-        setAdded(dashboardItems.some((el) => el.id === props.dashboardItemInfo.id));
-    }, [dashboardItems]);
+    const added = useMemo(() => dashboardItems.some((el) => el.id === props.dashboardItemInfo.id), [dashboardItems]);
 
     const addDashboardItem = () => {
         dashboardItemsVar([...dashboardItemsVar(), props.dashboardItemInfo]);
