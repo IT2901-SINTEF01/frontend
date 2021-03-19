@@ -41,7 +41,7 @@ const DataExplorer: React.FC = () => {
         <Pane>
             {data.allMetadata.map((el) => (
                 <Pane margin="2rem" key={el.id}>
-                    <Link to={`/explore/edit/${el.id}`} style={{ textDecoration: 'none' }}>
+                    <Link to={`/explore/edit/${el.id}`}>
                         <DataResultItem
                             title={el.name}
                             description={el.description}

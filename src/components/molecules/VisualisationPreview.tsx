@@ -13,7 +13,7 @@ type VisualisationPrevewProps = {
 };
 
 const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) => {
-    const [paragraph, setParagraph] = useState<string | undefined>();
+    const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
 
     return (
@@ -23,7 +23,6 @@ const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) =
             display="grid"
             gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
             columnGap="1rem"
-            gridAutoRows="18rem"
             rowGap="1rem"
         >
             <Pane gridColumn="span 1">

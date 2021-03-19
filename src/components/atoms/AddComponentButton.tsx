@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const AddComponentButton: React.FC = () => {
     return (
-        <Link to="/explore" style={{ gridColumn: 'span 2', textDecoration: 'none' }}>
+        <Link to="/explore" style={{ gridColumn: 'span 2' }}>
             <Card
                 width="100%"
                 height="100%"
