@@ -4,10 +4,12 @@ import { WEATHER_MET_API } from '../queries/metApi';
 import { METADATA, MetadataEntry } from '../queries/metadata';
 import faker from 'faker';
 
+faker.seed(42069);
+
 const visualisationTypes = ['barchart', 'thresholdchart', 'piechart', 'linechart'];
 
-const randomListOfWords = () => {
-    const wordList = faker.lorem.words(faker.random.number(7)).split(' ');
+const randomListOfWords = (count: number) => {
+    const wordList = faker.random.words(count % 6).split(' ');
     return wordList[0] ? wordList : [];
 };
 
@@ -20,7 +22,7 @@ export const makeMetadata = () => {
             description: faker.lorem.paragraph(),
             published: faker.date.recent().toString(),
             source: faker.internet.url(),
-            tags: randomListOfWords(),
+            tags: randomListOfWords(i),
             updated: faker.date.recent().toString(),
             visualisations: [
                 {
