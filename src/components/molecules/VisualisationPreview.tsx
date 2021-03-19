@@ -5,8 +5,8 @@ import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import { DashboardItemSize } from '../../types/dashboard';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
-import AddToDashboard from '../atoms/AddToDashboard';
 import { WEATHER_MET_API } from '../../queries/metApi';
+import AddToDashboard from './AddToDashboard';
 
 type VisualisationPrevewProps = {
     metadata: MetadataEntry;
@@ -36,20 +36,16 @@ const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) =
             <Pane gridColumn={`span ${size}`}>
                 <Pane display="flex" flexDirection="row-reverse">
                     <AddToDashboard
-                        size={size}
-                        title={metadata.name}
-                        paragraph={paragraph}
-                        id={metadata.id}
-                        query={WEATHER_MET_API}
+                        dashboardItemInfo={{
+                            size,
+                            title: metadata.name,
+                            paragraph,
+                            id: metadata.id,
+                            query: WEATHER_MET_API,
+                        }}
                     />
                 </Pane>
-                <DashboardItem
-                    title={metadata.name}
-                    height="100%"
-                    width="100%"
-                    titleSize={100}
-                    paragraph={paragraph}
-                ></DashboardItem>
+                <DashboardItem title={metadata.name} height="100%" width="100%" titleSize={100} paragraph={paragraph} />
             </Pane>
             <Pane gridColumn="span 1">
                 <VisualisationParameterSelector setSize={setSize} setParagraph={setParagraph} />
