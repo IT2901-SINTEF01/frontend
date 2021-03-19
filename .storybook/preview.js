@@ -3,7 +3,7 @@ import { MockedProvider } from '@apollo/client/testing';
 import mock from '../src/mockdata/mocks';
 import { BrowserRouter } from 'react-router-dom';
 
-import '../src/index.css';
+import './index.css';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
