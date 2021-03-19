@@ -11,7 +11,7 @@ const randomListOfWords = () => {
     return wordList[0] ? wordList : [];
 };
 
-const makeMetadata = () => {
+export const makeMetadata = () => {
     const allMetadata: MetadataEntry[] = [];
     for (let i = 0; i < 10; i++) {
         allMetadata.push({
