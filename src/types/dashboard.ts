@@ -5,6 +5,8 @@ export type DashboardItemInfo = {
     size: DashboardItemSize;
     paragraph?: string;
     query: DocumentNode;
+    id: string;
+    title: string;
 };
 
 export enum DashboardItemSize {
