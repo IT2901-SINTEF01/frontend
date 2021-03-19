@@ -7,7 +7,7 @@ COPY package.json /app/
 COPY yarn.lock /app/
 
 ENV NODE_ENV=production
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile --prod
 
 COPY . /app/
 RUN yarn build
