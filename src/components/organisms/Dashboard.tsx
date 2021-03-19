@@ -47,11 +47,11 @@ const Dashboard: React.FC = () => {
                 gridAutoRows="18rem"
                 rowGap="1rem"
             >
-                {dashboardItems.map((item, i) => {
+                {dashboardItems.map((item) => {
                     return (
-                        <Pane key={i} width="100%" height="100%" gridColumn={'span ' + item.size}>
+                        <Pane key={item.id} width="100%" height="100%" gridColumn={'span ' + item.size}>
                             <DashboardItem
-                                title="placeholder"
+                                title={item.title}
                                 height="100%"
                                 width="100%"
                                 titleSize={100}
