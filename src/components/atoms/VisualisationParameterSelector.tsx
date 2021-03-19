@@ -11,16 +11,14 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
     const [withText, setWithText] = useState<boolean>(false);
     const [inputText, setInputText] = useState<string>();
 
-    const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        switch (e.currentTarget.value) {
+    const handleSizeChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+        switch (e.currentTarget.value as 'small' | 'medium' | 'large') {
             case 'small':
-                setSize(DashboardItemSize.SMALL);
-                break;
+                return setSize(DashboardItemSize.SMALL);
             case 'medium':
-                setSize(DashboardItemSize.MEDIUM);
-                break;
+                return setSize(DashboardItemSize.MEDIUM);
             case 'large':
-                setSize(DashboardItemSize.LARGE);
+                return setSize(DashboardItemSize.LARGE);
         }
     };
 
@@ -50,7 +48,7 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
             <Switch checked={withText} onChange={handleSwitchChange} />
             <Textarea
                 disabled={!withText}
-                placeholder="Skriv inn ønsket tekst her (max 150 tegn)"
+                placeholder="Skriv inn ønsket tekst her (maks 150 tegn)"
                 onChange={handleTextChange}
             />
         </Pane>

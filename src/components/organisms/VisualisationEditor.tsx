@@ -1,38 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Text } from 'evergreen-ui';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { AllMetadataResult, METADATA, MetadataEntry } from '../../queries/metadata';
+import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
-import VisualisationPrevew from '../molecules/VisualisationPreview';
-
-type ParamType = {
-    id?: string;
-};
+import VisualisationPreview from '../molecules/VisualisationPreview';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
-    const { id } = useParams<ParamType>();
-    const [metadata, setMetadata] = useState<MetadataEntry>();
-
-    useEffect(() => {
-        //Refresh will not work during development since the id is mocked.
-        setMetadata(data?.allMetadata.find((el) => el.id === id));
-    }, [data]);
+    const { id } = useParams<{ id: string }>();
 
     if (error) {
         return <Text>{error.message}</Text>;
     }
 
     if (loading) {
-        return <Text>Loading...</Text>;
+        return <Text>Loading…</Text>;
     }
 
-    if (!metadata) {
+    if (!data || !data.allMetadata.some((el) => el.id === id)) {
         return <Text>Empty</Text>;
     }
 
-    return <VisualisationPrevew metadata={metadata} />;
+    // Safe non-null-assertion due to the .some above
+    // eslint-disable-next-line
+    return <VisualisationPreview metadata={data.allMetadata.find((el) => el.id === id)!} />;
 };
 
 export default VisualisationEditor;
