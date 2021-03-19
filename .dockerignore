@@ -1,6 +1,4 @@
 node_modules
-.eslint*
-.prettier*
 .restyled.yaml
 cypress.json
 cypress/
