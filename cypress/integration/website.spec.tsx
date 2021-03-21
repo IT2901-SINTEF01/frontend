@@ -3,3 +3,5 @@ describe('Dashboard', () => {
         cy.visit('/');
     });
 });
+
+export {};
