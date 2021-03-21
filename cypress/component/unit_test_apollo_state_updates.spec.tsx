@@ -1,9 +1,13 @@
 import React from 'react';
 import { mount } from '@cypress/react';
-import Dashboard from '../../src/components/organisms/Dashboard';
-import AddComponentButton from '../../src/components/atoms/AddComponentButton';
-import { dashboardItemsVar } from '../../src/cache/index';
 import { BrowserRouter } from 'react-router-dom';
+import { dashboardItemsVar } from '../../src/cache/index';
+import { MockedProvider } from '@apollo/client/testing';
+import mocks from '../../src/mockdata/mocks';
+import { cache } from '../../src/cache/index';
+import { WEATHER_MET_API } from '../../src/queries/metApi';
+import Dashboard from '../../src/components/organisms/Dashboard';
+import { DashboardItemSize } from '../../src/types/dashboard';
 
 describe('Apollo state management', () => {
     beforeEach(() => {
@@ -17,14 +21,21 @@ describe('Apollo state management', () => {
         );
         expect(dashboardItemsVar()).to.deep.equal([]);
     });
-    it('adds new item to state', () => {
-        // This has to change when we add more functionality to the Add component button.
+    it('state updates correctly', () => {
         mount(
-            <BrowserRouter>
-                <AddComponentButton />
-            </BrowserRouter>,
+            <MockedProvider mocks={mocks} cache={cache}>
+                <BrowserRouter>
+                    <Dashboard />
+                </BrowserRouter>
+            </MockedProvider>,
         );
-        cy.contains('Legg til nytt komponent').click();
-        expect(dashboardItemsVar()).to.not.equal([]);
+        const item = {
+            title: 'This is a custom title',
+            id: 'This is a custom ID',
+            size: DashboardItemSize.SMALL,
+            query: WEATHER_MET_API,
+        };
+        dashboardItemsVar([item]);
+        expect(dashboardItemsVar()).to.deep.include(item);
     });
 });
