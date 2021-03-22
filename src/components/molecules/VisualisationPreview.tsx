@@ -67,4 +67,4 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata })
     );
 };
 
-export default VisualisationPrevew;
+export default VisualisationPreview;
