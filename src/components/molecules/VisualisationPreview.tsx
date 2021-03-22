@@ -34,11 +34,11 @@ const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) =
                 <Pane gridColumn={`span ${4 - size}`} />
             )}
             <Pane gridColumn={`span ${size}`} display="flex" flexDirection="column">
-                <Pane display="flex" flexDirection="row" marginBottom="1rem">
-                    <Heading size={400} paddingTop="3px">
+                <Pane display="flex" flexDirection="row" marginBottom="1rem" flexWrap="wrap">
+                    <Heading size={400}>
                         Forhåndsvisning
+                        <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
                     </Heading>
-                    <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
                     <Pane flex="1" />
                     <AddToDashboard
                         dashboardItemInfo={{
