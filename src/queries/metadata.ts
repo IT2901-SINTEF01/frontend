@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { DataSourceName } from '../utils/dataSourceMappings';
 
 export const METADATA = gql`
     query {
@@ -27,7 +28,7 @@ export const METADATA = gql`
 
 export type MetadataEntry = {
     id: string;
-    name: string;
+    name: DataSourceName;
     description: string;
     published: string;
     source: string;

@@ -6,3 +6,7 @@ export const metApiCompactAirTemperatureToTimeEntry = (data: MetApiCompactAirTem
         time: el.time,
         value: el.forecastData.instant.details.airTemperature,
     }));
+
+// Export all possible outcomes.
+// Add "| typeof ..." when adding a new data source
+export type RawDataMappedReturnValues = ReturnType<typeof metApiCompactAirTemperatureToTimeEntry>;
