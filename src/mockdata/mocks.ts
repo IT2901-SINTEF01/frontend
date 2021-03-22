@@ -3,6 +3,7 @@ import { addDays } from 'date-fns';
 import { WEATHER_MET_API } from '../queries/metApi';
 import { METADATA, MetadataEntry } from '../queries/metadata';
 import faker from 'faker';
+import { DataSourceName } from '../utils/dataSourceMappings';
 
 faker.seed(42069);
 
@@ -18,7 +19,7 @@ export const makeMetadata = () => {
     for (let i = 0; i < 10; i++) {
         allMetadata.push({
             id: faker.random.uuid(),
-            name: faker.name.title(),
+            name: DataSourceName.MET_API_FORECAST,
             description: faker.lorem.paragraph(),
             published: faker.date.recent().toString(),
             source: faker.internet.url(),
