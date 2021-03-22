@@ -39,12 +39,10 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
     return (
         <Pane height="100%" display="flex" flexDirection="column">
             <Pane height="32px" marginBottom="1rem" />
-            <SelectField label="Velg størrelse" onChange={handleSizeChange}>
+            <SelectField label="Velg størrelse" onChange={handleSizeChange} defaultValue="large">
                 <option value="small">Liten</option>
                 <option value="medium">Medium</option>
-                <option value="large" selected>
-                    Stor
-                </option>
+                <option value="large">Stor</option>
             </SelectField>
             <Heading size={400} marginBottom="1rem">
                 Legg til tekst
