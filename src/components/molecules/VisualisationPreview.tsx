@@ -8,11 +8,11 @@ import VisualisationParameterSelector from '../atoms/VisualisationParameterSelec
 import { WEATHER_MET_API } from '../../queries/metApi';
 import AddToDashboard from './AddToDashboard';
 
-type VisualisationPrevewProps = {
+type VisualisationPreviewProps = {
     metadata: MetadataEntry;
 };
 
-const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) => {
+const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata }) => {
     const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
 
@@ -43,7 +43,7 @@ const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) =
                     <AddToDashboard
                         dashboardItemInfo={{
                             size,
-                            title: metadata.name,
+                            name: metadata.name,
                             paragraph,
                             id: metadata.id,
                             query: WEATHER_MET_API,
