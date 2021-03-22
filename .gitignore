@@ -33,3 +33,6 @@ yarn-error.log*
 storybook-static/
 
 *.log
+
+introspectionSchema.json
+.graphqlconfig
