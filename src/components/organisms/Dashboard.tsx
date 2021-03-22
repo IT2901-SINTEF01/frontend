@@ -7,7 +7,7 @@ import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
 import ThresholdChart from '../atoms/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
-import { metApiCompactAirTemperatureToTimeEntry } from '../../utils/mappingFunctions';
+import dataSourceMappings from '../../utils/dataSourceMappings';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -58,8 +58,8 @@ const Dashboard: React.FC = () => {
                                 <ParentSize>
                                     {(parent) => (
                                         <DataWrapper
-                                            mappingFunction={metApiCompactAirTemperatureToTimeEntry}
-                                            query={item.query}
+                                            mappingFunction={dataSourceMappings[item.name].mapping}
+                                            query={dataSourceMappings[item.name].query}
                                         >
                                             {(data) => (
                                                 <ThresholdChart
