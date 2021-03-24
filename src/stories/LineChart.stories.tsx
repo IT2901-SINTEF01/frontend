@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import LineChart, { LineChartProps } from '../components/atoms/LineChart';
 import { Story } from '@storybook/react';
-import { data } from '../mockdata/appleStock';
+import { historicAppleStockPrice } from '../mockdata/appleStock';
 
 export default {
     title: 'Graphs/Line chart',
@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<LineChartProps> = (args) => (
     <LineChart
-        data={data}
+        data={historicAppleStockPrice}
         width={args.width}
         background={args.background}
         height={args.height}

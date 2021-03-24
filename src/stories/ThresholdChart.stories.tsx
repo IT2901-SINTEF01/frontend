@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import ThresholdChart, { ThresholdChartProps } from '../components/atoms/ThresholdChart';
 import { Story } from '@storybook/react';
-import { data } from '../mockdata/appleStock';
+import { historicAppleStockPrice } from '../mockdata/appleStock';
 
 export default {
     title: 'Graphs/Threshold chart',
@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<ThresholdChartProps> = (args) => (
     <ThresholdChart
-        data={data}
+        data={historicAppleStockPrice}
         width={args.width}
         background={args.background}
         height={args.height}
