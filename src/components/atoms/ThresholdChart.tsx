@@ -7,18 +7,10 @@ import { AxisLeft, AxisBottom } from '@visx/axis';
 import { curveBasis } from '@visx/curve';
 import { LinePath } from '@visx/shape';
 import { Threshold } from '@visx/threshold';
+import { VisualisationProps, TimeEntry } from '../../types/visualisation';
 
-export type TimeEntry = {
-    time: string;
-    value: number;
-};
-
-export type ThresholdChartProps = {
+export type ThresholdChartProps = VisualisationProps & {
     data: TimeEntry[];
-    width: number;
-    height: number;
-    margin?: Record<'top' | 'right' | 'bottom' | 'left', number>;
-    background?: string;
     thresholdValue?: number;
     aboveThresholdColor?: string;
     belowThresholdColor?: string;
