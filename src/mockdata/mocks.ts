@@ -44,7 +44,7 @@ export const makeMetadata = () => {
     return allMetadata;
 };
 
-const makeTimeseries = () => {
+export const makeTimeseries = () => {
     const timeseries = [];
     const dayOne = new Date();
 
