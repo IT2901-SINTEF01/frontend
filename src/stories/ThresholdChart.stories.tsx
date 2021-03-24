@@ -45,3 +45,5 @@ Primary.argTypes = {
     data: { table: { disable: true } },
     margin: { table: { disable: true } },
 };
+
+Primary.storyName = 'Threshold chart';
