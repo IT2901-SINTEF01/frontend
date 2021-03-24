@@ -52,7 +52,7 @@ const Dashboard: React.FC = () => {
                             width="100%"
                             height="100%"
                             gridColumn={'span ' + item.size}
-                            className={'dashboardItem'}
+                            className="dashboardItem"
                         >
                             <DashboardItem
                                 title={item.name}
