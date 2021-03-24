@@ -1,5 +1,5 @@
 import { MetApiCompactAirTemperature } from '../queries/metApi';
-import { TimeEntry } from '../components/atoms/ThresholdChart';
+import { TimeEntry } from '../types/visualisation';
 import { PopulationInNorway } from '../queries/populationInNorway';
 
 export const metApiCompactAirTemperatureToTimeEntry = (data: MetApiCompactAirTemperature): TimeEntry[] =>

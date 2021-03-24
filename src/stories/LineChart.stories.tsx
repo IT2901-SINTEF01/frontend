@@ -1,25 +1,24 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import ThresholdChart, { ThresholdChartProps } from '../components/atoms/ThresholdChart';
+import LineChart, { LineChartProps } from '../components/atoms/LineChart';
 import { Story } from '@storybook/react';
 import { historicAppleStockPrice } from '../mockdata/appleStock';
 
 export default {
-    title: 'Graphs/Threshold chart',
-    component: ThresholdChart,
+    title: 'Graphs/Line chart',
+    component: LineChart,
     excludeStories: ['data'],
 } as Meta;
 
-const Template: Story<ThresholdChartProps> = (args) => (
-    <ThresholdChart
+const Template: Story<LineChartProps> = (args) => (
+    <LineChart
         data={historicAppleStockPrice}
         width={args.width}
         background={args.background}
         height={args.height}
-        thresholdValue={args.thresholdValue}
-        aboveThresholdColor={args.aboveThresholdColor}
-        belowThresholdColor={args.belowThresholdColor}
         yLabel={args.yLabel}
+        strokeColor={args.strokeColor}
+        colorBottom={args.colorBottom}
     />
 );
 
@@ -28,20 +27,18 @@ Primary.args = {
     width: 600,
     height: 400,
     yLabel: 'Price',
-    thresholdValue: 150,
-    aboveThresholdColor: 'green',
-    belowThresholdColor: 'red',
     background: '#fff',
+    strokeColor: '#222',
+    colorBottom: '#BF55EC',
 };
 Primary.argTypes = {
     width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
     height: { control: { type: 'range', min: 100, max: 1600, step: 10 } },
-    thresholdValue: { control: { type: 'range', min: 10, max: 400, step: 5 } },
-    aboveThresholdColor: { control: 'color' },
-    belowThresholdColor: { control: 'color' },
     background: { control: 'color' },
+    strokeColor: { control: 'color' },
+    colorBottom: { control: 'color' },
     data: { table: { disable: true } },
     margin: { table: { disable: true } },
 };
 
-Primary.storyName = 'Threshold chart';
+Primary.storyName = 'Line chart';
