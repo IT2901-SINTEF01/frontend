@@ -47,7 +47,13 @@ const Dashboard: React.FC = () => {
             >
                 {dashboardItems.map((item) => {
                     return (
-                        <Pane key={item.id} width="100%" height="100%" gridColumn={'span ' + item.size}>
+                        <Pane
+                            key={item.id}
+                            width="100%"
+                            height="100%"
+                            gridColumn={'span ' + item.size}
+                            className={'dashboardItem'}
+                        >
                             <DashboardItem
                                 title={item.name}
                                 height="100%"
