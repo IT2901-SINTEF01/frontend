@@ -25,6 +25,32 @@ describe('Dashboard', () => {
     it('successfully loads', () => {
         cy.visit('/');
     });
+    it('adds new component', () => {
+        cy.visit('/');
+        cy.contains('Legg til nytt komponent').click();
+        cy.wait('@METADATA');
+        cy.get('a').first().click();
+        cy.contains('Legg til i ditt dashboard').click();
+        cy.go(-2);
+        cy.get('.dashboardItem').should('be.visible');
+    });
+    it('removes component', () => {
+        cy.visit('/');
+        cy.contains('Legg til nytt komponent').click();
+        cy.wait('@METADATA');
+        cy.get('a').first().click();
+        cy.contains('Legg til i ditt dashboard').click();
+        cy.go(-2);
+        cy.contains('Legg til nytt komponent').click();
+        cy.get('a').first().click();
+        cy.contains('Fjern').click();
+        cy.go(-2);
+        cy.get('.dashboardItem').should('not.exist');
+    });
+    it('goes to 404 if page does not exist', () => {
+        cy.visit('/emilom');
+        cy.contains('404').should('be.visible');
+        cy.visit('/blauks');
+        cy.contains('404').should('be.visible');
+    });
 });
-
-export {};
