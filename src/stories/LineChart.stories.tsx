@@ -2,15 +2,13 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import LineChart, { LineChartProps } from '../components/atoms/LineChart';
 import { Story } from '@storybook/react';
-import { appleStock } from '@visx/mock-data';
+import { data } from '../mockdata/appleStock';
 
 export default {
     title: 'Graphs/Line chart',
     component: LineChart,
     excludeStories: ['data'],
 } as Meta;
-
-export const data = appleStock.map(({ date, close }) => ({ time: date, value: close }));
 
 const Template: Story<LineChartProps> = (args) => (
     <LineChart

@@ -2,15 +2,13 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import ThresholdChart, { ThresholdChartProps } from '../components/atoms/ThresholdChart';
 import { Story } from '@storybook/react';
-import { appleStock } from '@visx/mock-data';
+import { data } from '../mockdata/appleStock';
 
 export default {
     title: 'Graphs/Threshold chart',
     component: ThresholdChart,
     excludeStories: ['data'],
 } as Meta;
-
-export const data = appleStock.map(({ date, close }) => ({ time: date, value: close }));
 
 const Template: Story<ThresholdChartProps> = (args) => (
     <ThresholdChart
