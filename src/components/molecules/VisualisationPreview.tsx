@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pane } from 'evergreen-ui';
+import { Heading, InfoSignIcon, Pane } from 'evergreen-ui';
 import DataInfoBox from '../atoms/DatasetInfoBox';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
@@ -8,22 +8,23 @@ import VisualisationParameterSelector from '../atoms/VisualisationParameterSelec
 import { WEATHER_MET_API } from '../../queries/metApi';
 import AddToDashboard from './AddToDashboard';
 
-type VisualisationPrevewProps = {
+type VisualisationPreviewProps = {
     metadata: MetadataEntry;
 };
 
-const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) => {
+const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata }) => {
     const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
 
     return (
         <Pane
             width="100%"
-            height="20rem"
+            height="25rem"
             display="grid"
             gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
             columnGap="1rem"
             rowGap="1rem"
+            padding="2rem"
         >
             <Pane gridColumn="span 1">
                 <DataInfoBox title={metadata.name} description={metadata.description} tags={metadata.tags} />
@@ -32,19 +33,32 @@ const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) =
                 //Spacer for smaller sizes
                 <Pane gridColumn={`span ${4 - size}`} />
             )}
-            <Pane gridColumn={`span ${size}`}>
-                <Pane display="flex" flexDirection="row-reverse">
+            <Pane gridColumn={`span ${size}`} display="flex" flexDirection="column">
+                <Pane display="flex" flexDirection="row" marginBottom="1rem" flexWrap="wrap">
+                    <Heading size={400}>
+                        Forhåndsvisning
+                        <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
+                    </Heading>
+                    <Pane flex="1" />
                     <AddToDashboard
                         dashboardItemInfo={{
                             size,
-                            title: metadata.name,
+                            name: metadata.name,
                             paragraph,
                             id: metadata.id,
                             query: WEATHER_MET_API,
                         }}
                     />
                 </Pane>
-                <DashboardItem title={metadata.name} height="100%" width="100%" titleSize={100} paragraph={paragraph} />
+                <Pane flex="1">
+                    <DashboardItem
+                        title={metadata.name}
+                        height="100%"
+                        width="100%"
+                        titleSize={100}
+                        paragraph={paragraph}
+                    />
+                </Pane>
             </Pane>
             <Pane gridColumn="span 1">
                 <VisualisationParameterSelector setSize={setSize} setParagraph={setParagraph} />
@@ -53,4 +67,4 @@ const VisualisationPrevew: React.FC<VisualisationPrevewProps> = ({ metadata }) =
     );
 };
 
-export default VisualisationPrevew;
+export default VisualisationPreview;

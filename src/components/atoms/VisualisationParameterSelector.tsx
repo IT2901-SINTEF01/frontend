@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pane, SelectField, Switch, Textarea } from 'evergreen-ui';
+import { Pane, SelectField, Switch, Textarea, Heading, Text } from 'evergreen-ui';
 import { DashboardItemSize } from '../../types/dashboard';
 
 type VisualisationParameterSelectorProps = {
@@ -37,20 +37,29 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
     };
 
     return (
-        <Pane>
-            <SelectField label="Velg størrelse" onChange={handleSizeChange}>
+        <Pane height="100%" display="flex" flexDirection="column">
+            <Pane height="32px" marginBottom="1rem" />
+            <SelectField label="Velg størrelse" onChange={handleSizeChange} defaultValue="large">
                 <option value="small">Liten</option>
                 <option value="medium">Medium</option>
-                <option value="large" selected>
-                    Stor
-                </option>
+                <option value="large">Stor</option>
             </SelectField>
-            <Switch checked={withText} onChange={handleSwitchChange} />
-            <Textarea
-                disabled={!withText}
-                placeholder="Skriv inn ønsket tekst her (maks 150 tegn)"
-                onChange={handleTextChange}
-            />
+            <Heading size={400} marginBottom="1rem">
+                Legg til tekst
+            </Heading>
+            <Pane display="flex" marginBottom="1rem">
+                <Switch checked={withText} onChange={handleSwitchChange} marginRight="0.5rem" />
+                {!withText && <Text size={300}>Ingen tekst</Text>}
+            </Pane>
+            <Pane flex="1">
+                <Textarea
+                    disabled={!withText}
+                    placeholder="Skriv inn ønsket tekst her (maks 150 tegn)"
+                    onChange={handleTextChange}
+                    height="100%"
+                    resize="none"
+                />
+            </Pane>
         </Pane>
     );
 };

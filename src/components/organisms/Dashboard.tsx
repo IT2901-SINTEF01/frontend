@@ -7,7 +7,7 @@ import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
 import ThresholdChart from '../atoms/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
-import { formatMetData } from '../../utils/formatMetData';
+import dataSourceMappings from '../../utils/dataSourceMappings';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -24,11 +24,9 @@ const Dashboard: React.FC = () => {
                 paddingTop="4rem"
             >
                 <Pane>
-                    <Select>
+                    <Select defaultValue="foo">
                         {/* Placeholders*/}
-                        <option value="foo" selected>
-                            Mitt første dashboard som er veldig langt
-                        </option>
+                        <option value="foo">Mitt første dashboard som er veldig langt</option>
                         <option value="bar">Mitt andre dashboard</option>
                     </Select>
                 </Pane>
@@ -51,7 +49,7 @@ const Dashboard: React.FC = () => {
                     return (
                         <Pane key={item.id} width="100%" height="100%" gridColumn={'span ' + item.size}>
                             <DashboardItem
-                                title={item.title}
+                                title={item.name}
                                 height="100%"
                                 width="100%"
                                 titleSize={100}
@@ -59,7 +57,10 @@ const Dashboard: React.FC = () => {
                             >
                                 <ParentSize>
                                     {(parent) => (
-                                        <DataWrapper mappingFunction={formatMetData} query={item.query}>
+                                        <DataWrapper
+                                            mappingFunction={dataSourceMappings[item.name].mapping}
+                                            query={dataSourceMappings[item.name].query}
+                                        >
                                             {(data) => (
                                                 <ThresholdChart
                                                     data={data}
