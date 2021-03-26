@@ -32,9 +32,11 @@ export const makeMetadata = () => {
                     axes: {
                         x: {
                             name: faker.lorem.word(),
+                            type: 'date',
                         },
                         y: {
                             name: faker.lorem.word(),
+                            type: 'date',
                         },
                     },
                 },

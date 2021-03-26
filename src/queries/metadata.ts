@@ -14,6 +14,7 @@ export const METADATA = gql`
             tags
             visualisations {
                 type
+                threshold
                 axes {
                     x {
                         name
@@ -37,12 +38,17 @@ export type MetadataEntry = {
     tags: string[];
     visualisations: {
         type: VisualisationType;
+        threshold?: number;
         axes: {
             x: {
                 name: string;
+                limit?: [number, number];
+                type: string;
             };
             y: {
                 name: string;
+                limit?: [number, number];
+                type: string;
             };
         };
     }[];
