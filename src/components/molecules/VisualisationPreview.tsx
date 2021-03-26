@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Heading, InfoSignIcon, Pane } from 'evergreen-ui';
-import DataInfoBox from '../atoms/DatasetInfoBox';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import { DashboardItemSize } from '../../types/dashboard';
@@ -17,18 +16,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata })
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
 
     return (
-        <Pane
-            width="100%"
-            height="25rem"
-            display="grid"
-            gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
-            columnGap="1rem"
-            rowGap="1rem"
-            padding="2rem"
-        >
-            <Pane gridColumn="span 1">
-                <DataInfoBox title={metadata.name} description={metadata.description} tags={metadata.tags} />
-            </Pane>
+        <>
             {size !== DashboardItemSize.LARGE && (
                 //Spacer for smaller sizes
                 <Pane gridColumn={`span ${4 - size}`} />
@@ -63,7 +51,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata })
             <Pane gridColumn="span 1">
                 <VisualisationParameterSelector setSize={setSize} setParagraph={setParagraph} />
             </Pane>
-        </Pane>
+        </>
     );
 };
 
