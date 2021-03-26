@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heading, InfoSignIcon, Pane } from 'evergreen-ui';
+import { Heading, InfoSignIcon, Pane, Tooltip } from 'evergreen-ui';
 import DataInfoBox from '../atoms/DatasetInfoBox';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
@@ -37,7 +37,9 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata })
                 <Pane display="flex" flexDirection="row" marginBottom="1rem" flexWrap="wrap">
                     <Heading size={400}>
                         Forhåndsvisning
-                        <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
+                        <Tooltip content="Forhåndsvisningen er kun ment som referanse. Størrelse og endelig data vil endres i dashbordet.">
+                            <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
+                        </Tooltip>
                     </Heading>
                     <Pane flex="1" />
                     <AddToDashboard
