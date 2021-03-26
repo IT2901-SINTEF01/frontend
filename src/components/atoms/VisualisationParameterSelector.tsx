@@ -49,7 +49,11 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
             </Heading>
             <Pane display="flex" marginBottom="1rem">
                 <Switch checked={withText} onChange={handleSwitchChange} marginRight="0.5rem" />
-                {!withText && <Text size={300}>Ingen tekst</Text>}
+                {!withText && (
+                    <Text size={300} userSelect="none">
+                        Ingen tekst
+                    </Text>
+                )}
             </Pane>
             <Pane flex="1">
                 <Textarea
