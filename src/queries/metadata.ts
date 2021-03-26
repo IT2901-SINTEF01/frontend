@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 import { DataSourceName } from '../utils/dataSourceMappings';
+import { VisualisationType } from '../types/Metadata';
 
 export const METADATA = gql`
     query {
@@ -35,7 +36,7 @@ export type MetadataEntry = {
     updated: string;
     tags: string[];
     visualisations: {
-        type: string;
+        type: VisualisationType;
         axes: {
             x: {
                 name: string;

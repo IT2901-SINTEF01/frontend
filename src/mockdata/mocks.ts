@@ -4,6 +4,7 @@ import { WEATHER_MET_API } from '../queries/metApi';
 import { METADATA, MetadataEntry } from '../queries/metadata';
 import faker from 'faker';
 import { DataSourceName } from '../utils/dataSourceMappings';
+import { VisualisationType } from '../types/Metadata';
 
 faker.seed(42069);
 
@@ -27,7 +28,7 @@ export const makeMetadata = () => {
             updated: faker.date.recent().toString(),
             visualisations: [
                 {
-                    type: faker.random.objectElement(visualisationTypes),
+                    type: faker.random.objectElement(visualisationTypes) as VisualisationType,
                     axes: {
                         x: {
                             name: faker.lorem.word(),
