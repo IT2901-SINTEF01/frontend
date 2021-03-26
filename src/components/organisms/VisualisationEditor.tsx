@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pane, Text } from 'evergreen-ui';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
@@ -8,10 +8,19 @@ import VisualisationPreview from '../molecules/VisualisationPreview';
 import DataInfoBox from '../atoms/DatasetInfoBox';
 import VisualisationsSelector from '../atoms/VisusalisationsSelector';
 import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
+import { VisualisationType } from '../../types/Metadata';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
     const { id } = useParams<{ id: string }>();
+
+    const [selectedVisualisation, setSelectedVisualisation] = useState<VisualisationType>();
+
+    // Default to first available visualisation
+    useEffect(() => {
+        if (!data) return;
+        setSelectedVisualisation(metadata.visualisations[0].type);
+    }, [data]);
 
     if (error) {
         return <Text>{error.message}</Text>;
@@ -42,13 +51,17 @@ const VisualisationEditor: React.FC = () => {
             <Pane gridColumn="span 1">
                 <DataInfoBox title={metadata.name} description={metadata.description} tags={metadata.tags} />
             </Pane>
-            <VisualisationPreview metadata={metadata} />
+            {/* Safe type cast as we don't render before metadata has been loaded. */}
+            <VisualisationPreview
+                metadata={metadata}
+                selectedVisualisation={selectedVisualisation as VisualisationType}
+            />
             <VisualisationsSelector
                 label="Velg visualisering"
                 options={Object.fromEntries(
                     metadata.visualisations.map((value) => [friendlyNameForVisualisationType(value.type), value.type]),
                 )}
-                onChange={(e) => alert(e.currentTarget.value)}
+                onChange={(e) => setSelectedVisualisation(e.currentTarget.value as VisualisationType)}
             />
         </Pane>
     );
