@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import LineChart, { LineChartProps } from '../components/atoms/LineChart';
+import LineChart, { LineChartProps } from '../components/charts/LineChart';
 import { Story } from '@storybook/react';
 import { historicAppleStockPrice } from '../mockdata/appleStock';
 

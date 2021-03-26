@@ -6,6 +6,8 @@ import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
 import VisualisationPreview from '../molecules/VisualisationPreview';
 import DataInfoBox from '../atoms/DatasetInfoBox';
+import VisualisationsSelector from '../atoms/VisusalisationsSelector';
+import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -41,6 +43,13 @@ const VisualisationEditor: React.FC = () => {
                 <DataInfoBox title={metadata.name} description={metadata.description} tags={metadata.tags} />
             </Pane>
             <VisualisationPreview metadata={metadata} />
+            <VisualisationsSelector
+                label="Velg visualisering"
+                options={Object.fromEntries(
+                    metadata.visualisations.map((value) => [friendlyNameForVisualisationType(value.type), value.type]),
+                )}
+                onChange={(e) => alert(e.currentTarget.value)}
+            />
         </Pane>
     );
 };

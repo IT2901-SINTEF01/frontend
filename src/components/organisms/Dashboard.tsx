@@ -5,7 +5,7 @@ import DashboardItem from '../molecules/DashboardItem';
 import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
-import ThresholdChart from '../atoms/ThresholdChart';
+import ThresholdChart from '../charts/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
 import dataSourceMappings from '../../utils/dataSourceMappings';
 
