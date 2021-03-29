@@ -27,6 +27,7 @@ export const makeMetadata = (): MetadataEntry[] => {
         visualisations: [
             {
                 type: faker.random.arrayElement(visualisationTypes) as VisualisationType,
+                threshold: 0,
                 axes: {
                     x: {
                         name: faker.lorem.word(),
