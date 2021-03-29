@@ -1,7 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { useMemo, useState } from 'react';
-
-import { Heading, InfoSignIcon, Pane } from 'evergreen-ui';
+import { Heading, InfoSignIcon, Pane, Tooltip } from 'evergreen-ui';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import { DashboardItemSize } from '../../types/dashboard';
@@ -10,8 +9,8 @@ import { WEATHER_MET_API } from '../../queries/metApi';
 import AddToDashboard from './AddToDashboard';
 import { VisualisationType } from '../../types/Metadata';
 import ThresholdChart from '../charts/ThresholdChart';
-import LineChart from '../charts/LineChart';
 import { ParentSize } from '@visx/responsive';
+import LineChart from '../charts/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 
 type VisualisationPreviewProps = {
@@ -76,7 +75,9 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                 <Pane display="flex" flexDirection="row" marginBottom="1rem" flexWrap="wrap">
                     <Heading size={400}>
                         Forhåndsvisning
-                        <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
+                        <Tooltip content="Forhåndsvisningen er kun ment som referanse. Størrelse og endelig data vil endres i dashbordet.">
+                            <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
+                        </Tooltip>
                     </Heading>
                     <Pane flex="1" />
                     <AddToDashboard

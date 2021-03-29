@@ -20,7 +20,7 @@ export const makeMetadata = () => {
     for (let i = 0; i < 10; i++) {
         allMetadata.push({
             id: faker.random.uuid(),
-            name: DataSourceName.MET_API_FORECAST,
+            name: faker.random.arrayElement(Object.values(DataSourceName)),
             description: faker.lorem.paragraph(),
             published: faker.date.recent().toString(),
             source: faker.internet.url(),
