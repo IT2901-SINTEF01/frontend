@@ -15,36 +15,31 @@ const randomListOfWords = (count: number) => {
     return wordList[0] ? wordList : [];
 };
 
-export const makeMetadata = () => {
-    const allMetadata: MetadataEntry[] = [];
-    for (let i = 0; i < 10; i++) {
-        allMetadata.push({
-            id: faker.random.uuid(),
-            name: faker.random.arrayElement(Object.values(DataSourceName)),
-            description: faker.lorem.paragraph(),
-            published: faker.date.recent().toString(),
-            source: faker.internet.url(),
-            tags: randomListOfWords(i),
-            updated: faker.date.recent().toString(),
-            visualisations: [
-                {
-                    type: faker.random.objectElement(visualisationTypes) as VisualisationType,
-                    axes: {
-                        x: {
-                            name: faker.lorem.word(),
-                            type: 'date',
-                        },
-                        y: {
-                            name: faker.lorem.word(),
-                            type: 'date',
-                        },
+export const makeMetadata = (): MetadataEntry[] => {
+    return Object.keys(new Array(10).fill(null)).map((i) => ({
+        id: faker.random.uuid(),
+        name: faker.random.arrayElement(Object.values(DataSourceName)),
+        description: faker.lorem.paragraph(),
+        published: faker.date.recent().toString(),
+        source: faker.internet.url(),
+        tags: randomListOfWords(Number(i)),
+        updated: faker.date.recent().toString(),
+        visualisations: [
+            {
+                type: faker.random.arrayElement(visualisationTypes) as VisualisationType,
+                axes: {
+                    x: {
+                        name: faker.lorem.word(),
+                        type: 'date',
+                    },
+                    y: {
+                        name: faker.lorem.word(),
+                        type: 'date',
                     },
                 },
-            ],
-        });
-    }
-
-    return allMetadata;
+            },
+        ],
+    }));
 };
 
 export const makeTimeseries = () => {
