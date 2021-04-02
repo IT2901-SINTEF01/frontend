@@ -7,6 +7,7 @@ import Dashboard from './components/organisms/Dashboard';
 import DataExplorer from './components/organisms/DataExplorer';
 import VisualisationEditor from './components/organisms/VisualisationEditor';
 import NotFound from './components/organisms/NotFound';
+import Footer from './components/atoms/Footer';
 
 const client = new ApolloClient({
     uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
@@ -24,6 +25,7 @@ const App: React.FC = () => {
                     <Route component={NotFound} />
                 </Switch>
             </BrowserRouter>
+            <Footer />
         </ApolloProvider>
     );
 };
