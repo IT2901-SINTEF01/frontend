@@ -1,17 +1,17 @@
 import { MetApiCompactAirTemperature } from '../queries/metApi';
-import { TimeEntry } from '../types/visualisation';
+import { ChartEntry } from '../types/visualisation';
 import { PopulationInNorway } from '../queries/populationInNorway';
 
-export const metApiCompactAirTemperatureToTimeEntry = (data: MetApiCompactAirTemperature): TimeEntry[] =>
+export const metApiCompactAirTemperatureToTimeEntry = (data: MetApiCompactAirTemperature): ChartEntry[] =>
     data.forecast.forecastProperties.timeseries.map((el) => ({
-        time: el.time,
-        value: el.forecastData.instant.details.airTemperature,
+        x: el.time,
+        y: el.forecastData.instant.details.airTemperature,
     }));
 
-export const ssbPopulationInNorwayToTimeEntry = (data: PopulationInNorway): TimeEntry[] =>
+export const ssbPopulationInNorwayToTimeEntry = (data: PopulationInNorway): ChartEntry[] =>
     data.populationsInNorway.dataset.value.map((value) => ({
-        time: new Date().toISOString(),
-        value: value,
+        x: new Date().toISOString(),
+        y: value,
     }));
 
 // Export all possible outcomes.
