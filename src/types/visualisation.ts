@@ -5,7 +5,7 @@ export type VisualisationProps = {
     background?: string;
 };
 
-export type TimeEntry = {
-    time: string;
-    value: number;
+export type ChartEntry = {
+    x: string | number;
+    y: number;
 };
