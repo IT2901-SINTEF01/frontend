@@ -45,9 +45,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
         range: [0, xMax],
     };
 
-    const xScale = () => {
-        return typeof data[0].x === 'number' ? scaleLinear(xScaleValues) : scaleTime(xScaleValues);
-    };
+    const xScale = typeof data[0].x === 'number' ? scaleLinear(xScaleValues) : scaleTime(xScaleValues);
 
     let maxValue = Math.max(...data.map(yValue));
     let minValue = Math.min(...data.map(yValue));
@@ -70,15 +68,15 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
             <rect x={0} y={0} width={width} height={height} fill={background} rx={14} />
             <Group left={margin.left} top={margin.top}>
                 <GridRows scale={yScale} width={xMax} height={yMax} stroke="#e0e0e0" />
-                <GridColumns scale={xScale()} width={xMax} height={yMax} stroke="#e0e0e0" />
+                <GridColumns scale={xScale} width={xMax} height={yMax} stroke="#e0e0e0" />
                 <line
-                    x1={xScale()(firstX)}
+                    x1={xScale(firstX)}
                     x2={xMax}
                     y1={yScale(thresholdValue)}
                     y2={yScale(thresholdValue)}
                     stroke="black"
                 />
-                <AxisBottom top={yMax} scale={xScale()} />
+                <AxisBottom top={yMax} scale={xScale} />
                 <AxisLeft scale={yScale} />
                 <text x="5" y="2" fontSize={12}>
                     {yLabel}
@@ -86,7 +84,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
                 <Threshold
                     id={`${Math.random()}`}
                     data={data}
-                    x={(d) => xScale()(xValue(d))}
+                    x={(d) => xScale(xValue(d))}
                     y0={(d) => yScale(yValue(d))}
                     y1={yScale(thresholdValue)}
                     clipAboveTo={0}
@@ -104,7 +102,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
                 <LinePath
                     data={data}
                     curve={curveBasis}
-                    x={(d) => xScale()(xValue(d)) ?? 0}
+                    x={(d) => xScale(xValue(d)) ?? 0}
                     y={(d) => yScale(yValue(d)) ?? 0}
                     stroke="#222"
                     strokeWidth={1.5}
