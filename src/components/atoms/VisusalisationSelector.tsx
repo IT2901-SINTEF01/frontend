@@ -7,7 +7,7 @@ type Props = {
     onChange: React.ChangeEventHandler<HTMLSelectElement>;
 };
 
-const VisualisationsSelector: React.FC<Props> = (props) => (
+const VisualisationSelector: React.FC<Props> = (props) => (
     <SelectField label={props.label} defaultValue={Object.values(props.options)[0]} onChange={props.onChange}>
         {Object.entries(props.options).map(([label, value]) => (
             <option key={value} value={value}>
@@ -17,4 +17,4 @@ const VisualisationsSelector: React.FC<Props> = (props) => (
     </SelectField>
 );
 
-export default VisualisationsSelector;
+export default VisualisationSelector;

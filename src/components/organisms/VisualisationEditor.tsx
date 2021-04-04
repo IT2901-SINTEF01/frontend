@@ -6,7 +6,7 @@ import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
 import VisualisationPreview from '../molecules/VisualisationPreview';
 import DataInfoBox from '../atoms/DatasetInfoBox';
-import VisualisationsSelector from '../atoms/VisusalisationsSelector';
+import VisualisationSelector from '../atoms/VisusalisationSelector';
 import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 import { VisualisationType } from '../../types/Metadata';
 
@@ -56,7 +56,7 @@ const VisualisationEditor: React.FC = () => {
                 metadata={metadata}
                 selectedVisualisation={selectedVisualisation as VisualisationType}
             />
-            <VisualisationsSelector
+            <VisualisationSelector
                 label="Velg visualisering"
                 options={Object.fromEntries(
                     metadata.visualisations.map((value) => [friendlyNameForVisualisationType(value.type), value.type]),
