@@ -4,7 +4,7 @@ export function friendlyNameForVisualisationType(type: VisualisationType): strin
     return {
         [VisualisationType.LINE]: 'Linjediagram',
         [VisualisationType.BAR]: 'Søylediagram',
-        [VisualisationType.PIE]: 'Kakediagram',
+        [VisualisationType.PIE]: 'Sektordiagram',
         [VisualisationType.THRESHOLD]: 'Linjediagram med grenseverdi',
     }[type];
 }
