@@ -42,9 +42,7 @@ const LineChart: React.FC<LineChartProps> = ({
         range: [0, xMax],
     };
 
-    const xScale = () => {
-        return typeof data[0].x === 'number' ? scaleLinear(xScaleValues) : scaleTime(xScaleValues);
-    };
+    const xScale = typeof data[0].x === 'number' ? scaleLinear(xScaleValues) : scaleTime(xScaleValues);
 
     const maxValue = Math.max(...data.map(yValue));
     const minValue = Math.min(...data.map(yValue));
@@ -60,8 +58,8 @@ const LineChart: React.FC<LineChartProps> = ({
             <rect x={0} y={0} width={width} height={height} fill={background} rx={14} />
             <Group left={margin.left} top={margin.top}>
                 <GridRows scale={yScale} width={xMax} height={yMax} stroke="#e0e0e0" />
-                <GridColumns scale={xScale()} width={xMax} height={yMax} stroke="#e0e0e0" />
-                <AxisBottom top={yMax} scale={xScale()} />
+                <GridColumns scale={xScale} width={xMax} height={yMax} stroke="#e0e0e0" />
+                <AxisBottom top={yMax} scale={xScale} />
                 <AxisLeft scale={yScale} />
                 <text x="5" y="2" fontSize={12} fontFamily={'Arial, Helvetica, sans-serif'}>
                     {yLabel}
@@ -70,7 +68,7 @@ const LineChart: React.FC<LineChartProps> = ({
                 <LinePath
                     data={data}
                     curve={curveBasis}
-                    x={(d) => xScale()(xValue(d)) ?? 0}
+                    x={(d) => xScale(xValue(d)) ?? 0}
                     y={(d) => yScale(yValue(d)) ?? 0}
                     stroke={strokeColor}
                     strokeWidth={1.5}
@@ -78,7 +76,7 @@ const LineChart: React.FC<LineChartProps> = ({
                 />
                 <AreaClosed
                     data={data}
-                    x={(d) => xScale()(xValue(d)) ?? 0}
+                    x={(d) => xScale(xValue(d)) ?? 0}
                     y={(d) => yScale(yValue(d)) ?? 0}
                     yScale={yScale}
                     strokeWidth={1}
