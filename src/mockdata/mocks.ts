@@ -33,6 +33,7 @@ export const makeMetadata = (): MetadataEntry[] => {
                     },
                     y: {
                         name: faker.lorem.word(),
+                        limit: [0, 100],
                         type: 'date',
                     },
                 },
