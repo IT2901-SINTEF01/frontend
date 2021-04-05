@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import LineChart, { LineChartProps } from '../components/charts/LineChart';
 import { Story } from '@storybook/react';
-import { historicAppleStockPrice } from '../mockdata/appleStock';
+import { historicAppleStockPrice, numericAppleStockPrice } from '../mockdata/appleStock';
 
 export default {
     title: 'Graphs/Line chart',
@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<LineChartProps> = (args) => (
     <LineChart
-        data={historicAppleStockPrice}
+        data={args.data}
         width={args.width}
         background={args.background}
         height={args.height}
@@ -24,6 +24,7 @@ const Template: Story<LineChartProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
+    data: historicAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0)),
     width: 600,
     height: 400,
     yLabel: 'Price',
@@ -31,6 +32,18 @@ Primary.args = {
     strokeColor: '#222',
     colorBottom: '#BF55EC',
 };
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+    data: numericAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0)),
+    width: 600,
+    height: 400,
+    yLabel: 'Some value',
+    background: '#fff',
+    strokeColor: '#222',
+    colorBottom: '#BF55EC',
+};
+
 Primary.argTypes = {
     width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
     height: { control: { type: 'range', min: 100, max: 1600, step: 10 } },
@@ -41,4 +54,7 @@ Primary.argTypes = {
     margin: { table: { disable: true } },
 };
 
-Primary.storyName = 'Line chart';
+Secondary.argTypes = Primary.argTypes;
+
+Primary.storyName = 'With dates';
+Secondary.storyName = 'With numbers';

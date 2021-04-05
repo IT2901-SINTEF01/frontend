@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import ThresholdChart, { ThresholdChartProps } from '../components/charts/ThresholdChart';
 import { Story } from '@storybook/react';
-import { historicAppleStockPrice } from '../mockdata/appleStock';
+import { historicAppleStockPrice, numericAppleStockPrice } from '../mockdata/appleStock';
 
 export default {
     title: 'Graphs/Threshold chart',
@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<ThresholdChartProps> = (args) => (
     <ThresholdChart
-        data={historicAppleStockPrice}
+        data={args.data}
         width={args.width}
         background={args.background}
         height={args.height}
@@ -25,6 +25,7 @@ const Template: Story<ThresholdChartProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
+    data: historicAppleStockPrice,
     width: 600,
     height: 400,
     yLabel: 'Price',
@@ -33,6 +34,19 @@ Primary.args = {
     belowThresholdColor: 'red',
     background: '#fff',
 };
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+    data: numericAppleStockPrice,
+    width: 600,
+    height: 400,
+    yLabel: 'Price',
+    thresholdValue: 150,
+    aboveThresholdColor: 'green',
+    belowThresholdColor: 'red',
+    background: '#fff',
+};
+
 Primary.argTypes = {
     width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
     height: { control: { type: 'range', min: 100, max: 1600, step: 10 } },
@@ -44,4 +58,7 @@ Primary.argTypes = {
     margin: { table: { disable: true } },
 };
 
-Primary.storyName = 'Threshold chart';
+Secondary.argTypes = Primary.argTypes;
+
+Primary.storyName = 'With dates';
+Secondary.storyName = 'With numbers';
