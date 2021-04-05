@@ -1,6 +1,6 @@
-import { TimeEntry } from '../types/visualisation';
+import { ChartEntry } from '../types/visualisation';
 import { addDays } from 'date-fns';
-import faker from 'faker';
+import { random } from 'faker';
 
 /**
  * Generate sample time entries for use in vis. editor.
@@ -9,8 +9,8 @@ import faker from 'faker';
  * @param min Minimum value of time entry value.
  * @param max Maximum value of time entry value.
  */
-export default function (size: number, [min, max]: [number, number] = [0, 100]): TimeEntry[] {
-    const values = new Array(size).fill(null).map(() => faker.random.number(max) + min);
+export default function (size: number, [min, max]: [number, number] = [0, 100]): ChartEntry[] {
+    const values = new Array(size).fill(null).map(() => random.number(max) + min);
     const timeseries = Object.keys(new Array(size).fill(null)).map((i) => addDays(new Date(2020, 12, 31), Number(i)));
-    return values.map((e, i) => ({ value: e, time: timeseries[i].toISOString() }));
+    return values.map((e, i) => ({ y: e, x: timeseries[i].toISOString() }));
 }
