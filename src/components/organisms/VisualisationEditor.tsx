@@ -6,7 +6,7 @@ import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
 import VisualisationPreview from '../molecules/VisualisationPreview';
 import DataInfoBox from '../atoms/DatasetInfoBox';
-import VisualisationSelector from '../atoms/VisusalisationSelector';
+import VisualisationSelector from '../atoms/VisualisationSelector';
 import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 import { VisualisationType } from '../../types/Metadata';
 
