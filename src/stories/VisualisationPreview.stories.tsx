@@ -5,15 +5,21 @@ import { makeMetadata } from '../mockdata/mocks';
 import { VisualisationType } from '../types/Metadata';
 
 export default {
-    title: 'VisualisationEditor/Visualisation preview',
+    title: 'Visualisation editor/Visualisation preview',
     component: VisualisationPreview,
 } as Meta;
 
-const metadata = makeMetadata()[0];
-
-const Template: Story = () => (
-    <VisualisationPreview metadata={metadata} selectedVisualisation={VisualisationType.LINE} />
-);
+const Template: Story = () => {
+    /**
+     * Since the example is using a LINE chart, we need to update the generated visualisation to fit this.
+     */
+    let metadata = makeMetadata()[0];
+    metadata = {
+        ...metadata,
+        visualisations: metadata.visualisations.map((vis) => ({ ...vis, type: VisualisationType.LINE })),
+    };
+    return <VisualisationPreview metadata={metadata} selectedVisualisation={VisualisationType.LINE} />;
+};
 
 export const Primary = Template.bind({});
 Primary.storyName = 'Visualisation preview';
