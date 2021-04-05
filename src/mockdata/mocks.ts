@@ -6,8 +6,6 @@ import faker from 'faker';
 import { DataSourceName } from '../utils/dataSourceMappings';
 import { VisualisationType } from '../types/Metadata';
 
-faker.seed(42069);
-
 const visualisationTypes = ['barchart', 'thresholdchart', 'piechart', 'linechart'];
 
 const randomListOfWords = (count: number) => {
