@@ -53,9 +53,9 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                     />
                 );
             case VisualisationType.BAR:
-                return (width: number, height: number) => <LineChart width={width} height={height} data={[]} />; // TODO: replace with proper
+                return () => null; // TODO: replace with proper
             case VisualisationType.PIE:
-                return (width: number, height: number) => <LineChart width={width} height={height} data={[]} />; // TODO: replace with proper
+                return () => null; // TODO: replace with proper
             default:
                 return () => null;
         }
