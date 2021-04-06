@@ -19,7 +19,7 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
             padding="1rem"
             role="button"
             aria-pressed="false"
-            aria-label={`Gå til visualiserings velger for ${title}.`}
+            aria-label={`Gå til visualiseringsvelger for ${title}.`}
         >
             <Pane flex="1" marginRight="2rem">
                 <DatasetInfoBox title={title} description={description} tags={tags} />
