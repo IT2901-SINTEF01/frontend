@@ -10,12 +10,17 @@ export type DataResultItemProps = {
 };
 
 const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags, visualisationType }) => {
-    const handleOnClick = () => {
-        return 0; //Will route to data customise page later.
-    };
-
     return (
-        <Card width="100%" height="20rem" elevation={1} display="flex" onClick={handleOnClick} padding="1rem">
+        <Card
+            width="100%"
+            height="20rem"
+            elevation={1}
+            display="flex"
+            padding="1rem"
+            role="button"
+            aria-pressed="false"
+            aria-label={`Gå til visualiserings velger for ${title}.`}
+        >
             <Pane flex="1" marginRight="2rem">
                 <DatasetInfoBox title={title} description={description} tags={tags} />
             </Pane>
