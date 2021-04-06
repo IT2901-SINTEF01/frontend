@@ -8,6 +8,7 @@ import DataWrapper from '../molecules/DataWrapper';
 import ThresholdChart from '../charts/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
 import dataSourceMappings from '../../utils/dataSourceMappings';
+import { Link } from 'react-router-dom';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -32,9 +33,9 @@ const Dashboard: React.FC = () => {
                 </Pane>
                 <Pane width="2rem" />
                 <Pane paddingTop="5px">
-                    <Text color="#1070CA" cursor="pointer">
-                        + Legg til dashboard
-                    </Text>
+                    <Link to="/">
+                        <Text color="#1070CA">+ Legg til dashboard</Text>
+                    </Link>
                 </Pane>
             </Pane>
             <Pane
