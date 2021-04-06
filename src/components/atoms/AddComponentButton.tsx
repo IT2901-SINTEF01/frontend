@@ -14,6 +14,8 @@ const AddComponentButton: React.FC = () => {
                 border="muted"
                 borderStyle="dotted"
                 borderWidth="3px"
+                role="button"
+                aria-pressed="false"
             >
                 <Text>Legg til nytt komponent + </Text>
             </Card>
