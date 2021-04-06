@@ -8,9 +8,9 @@ _This repository contains the frontend for the "Open Data Visualisation Platform
 
 ## Overview
 
-You can view the current deployment [here](https://frontend-phi-sandy.vercel.app/?utm_source=IT2901-SINTEF01&utm_campaign=oss) and our deployed storybooks [here](https://www.chromatic.com/builds?appId=603cc7be306c9a0023f0f937).
+You can view the current deployment [here](https://sintef01.netlify.app/) and our deployed storybooks [here](https://www.chromatic.com/builds?appId=603cc7be306c9a0023f0f937).
 
-The frontend is built with React.js, written in TypeScript. We also utilise the [Storybook.js](https://storybook.js.org/) library to give an **easy to use** and **intuitive** overview of our React components. For deployment we decided to use [Vercel](https://vercel.com/it2901-sintef01/frontend/?utm_source=IT2901-SINTEF01&utm_campaign=oss). Refer to our [wiki](https://github.com/IT2901-SINTEF01/frontend/wiki) for more information regarding our architecture and structure.
+The frontend is built with React.js, written in TypeScript. We also utilise the [Storybook.js](https://storybook.js.org/) library to give an **easy to use** and **intuitive** overview of our React components. For deployment we decided to use [Netlify](https://www.netlify.com/). Refer to our [wiki](https://github.com/IT2901-SINTEF01/frontend/wiki) for more information regarding our architecture and structure.
 
 ## Setup
 
@@ -61,5 +61,3 @@ yarn test
 > WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 > See the License for the specific language governing permissions and
 > limitations under the License.
-
-<img src="./powered-by-vercel.svg"/>
