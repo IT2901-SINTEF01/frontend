@@ -25,7 +25,6 @@ const App: React.FC = () => {
                     <Route component={NotFound} />
                 </Switch>
             </BrowserRouter>
-            <Footer />
         </ApolloProvider>
     );
 };
