@@ -34,7 +34,9 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
                     <Heading size={titleSize} marginBottom="0.5rem">
                         {title}
                     </Heading>
-                    <Paragraph overflow="hidden">{paragraph}</Paragraph>
+                    <Paragraph overflow="hidden" size={textSize}>
+                        {paragraph}
+                    </Paragraph>
                 </Pane>
                 <Pane height="100%" width="80%">
                     {children}
