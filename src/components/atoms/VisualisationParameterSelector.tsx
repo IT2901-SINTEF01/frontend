@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Pane, SelectField, Switch, Textarea, Heading, Text } from 'evergreen-ui';
+import React from 'react';
+import { Pane, SelectField, Textarea, Label } from 'evergreen-ui';
 import { DashboardItemSize } from '../../types/dashboard';
 
 type VisualisationParameterSelectorProps = {
@@ -8,9 +8,6 @@ type VisualisationParameterSelectorProps = {
 };
 
 const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorProps> = ({ setSize, setParagraph }) => {
-    const [withText, setWithText] = useState<boolean>(false);
-    const [inputText, setInputText] = useState<string>();
-
     const handleSizeChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
         switch (e.currentTarget.value as 'small' | 'medium' | 'large') {
             case 'small':
@@ -22,17 +19,7 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
         }
     };
 
-    const handleSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setWithText(e.currentTarget.checked);
-        if (!withText) {
-            setParagraph(inputText);
-        } else {
-            setParagraph(undefined);
-        }
-    };
-
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setInputText(e.currentTarget.value);
         setParagraph(e.currentTarget.value);
     };
 
@@ -44,20 +31,13 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
                 <option value="medium">Medium</option>
                 <option value="large">Stor</option>
             </SelectField>
-            <Heading size={400} marginBottom="1rem">
-                Legg til tekst
-            </Heading>
-            <Pane display="flex" marginBottom="1rem">
-                <Switch checked={withText} onChange={handleSwitchChange} marginRight="0.5rem" />
-                {!withText && (
-                    <Text size={300} userSelect="none">
-                        Ingen tekst
-                    </Text>
-                )}
-            </Pane>
+            <Label htmlFor="textarea" marginBottom={12}>
+                Legg til text
+            </Label>
             <Pane flex="1">
                 <Textarea
-                    disabled={!withText}
+                    id="textarea"
+                    maxLength={150}
                     placeholder="Skriv inn ønsket tekst her (maks 150 tegn)"
                     onChange={handleTextChange}
                     height="100%"
