@@ -19,7 +19,7 @@ const LineChart: React.FC<LineChartProps> = ({
     data,
     width,
     height,
-    margin = { top: 40, right: 30, bottom: 50, left: 40 },
+    margin = { top: 15, right: 30, bottom: 40, left: 40 },
     background = '#fff',
     yLabel,
     strokeColor = '#111',
