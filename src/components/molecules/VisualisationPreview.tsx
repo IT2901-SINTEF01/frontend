@@ -92,6 +92,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                             paragraph,
                             id: metadata.id,
                             query: WEATHER_MET_API,
+                            visualisationType: selectedVisualisation,
                         }}
                     />
                 </Pane>
