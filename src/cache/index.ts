@@ -15,9 +15,6 @@ export const cache = new InMemoryCache({
     },
 });
 
-const initValue = [];
 const storage = window.localStorage.getItem('dashboard');
-if (storage) {
-    initValue.push(...JSON.parse(storage));
-}
+const initValue: DashboardItemInfo[] = storage ? JSON.parse(storage) : [];
 export const dashboardItemsVar = makeVar<DashboardItemInfo[]>(initValue);
