@@ -1,11 +1,12 @@
 import { gql } from '@apollo/client';
-import { DataSourceName } from '../utils/dataSourceMappings';
+import { DataSourceID } from '../utils/dataSourceMappings';
 import { VisualisationType } from '../types/Metadata';
 
 export const METADATA = gql`
     query {
         allMetadata {
             id
+            datasourceId
             name
             description
             published
@@ -30,7 +31,8 @@ export const METADATA = gql`
 
 export type MetadataEntry = {
     id: string;
-    name: DataSourceName;
+    name: string;
+    datasourceId: DataSourceID;
     description: string;
     published: string;
     source: string;

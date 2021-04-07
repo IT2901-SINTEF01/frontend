@@ -1,6 +1,6 @@
 // Can be expanded with visualisation method if needed.
 import { DocumentNode } from '@apollo/client';
-import { DataSourceName } from '../utils/dataSourceMappings';
+import { DataSourceID } from '../utils/dataSourceMappings';
 
 /**
  * Represents an entry in the dashboard organism.
@@ -11,7 +11,8 @@ export type DashboardItemInfo = {
     paragraph?: string;
     query: DocumentNode;
     id: string; // Based on the ID from the metadata
-    name: DataSourceName; // Used for mapping DashboardItem to mapping function and GraphQL query (DocumentNode)
+    datasourceId: DataSourceID; // Used for mapping DashboardItem to mapping function and GraphQL query (DocumentNode)
+    name: string;
 };
 
 export enum DashboardItemSize {
