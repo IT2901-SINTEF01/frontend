@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Heading, InfoSignIcon, Pane, Tooltip } from 'evergreen-ui';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
@@ -12,6 +12,8 @@ import ThresholdChart from '../charts/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
 import LineChart from '../charts/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
+import { useReactiveVar } from '@apollo/client';
+import { dashboardItemsVar } from '../../cache';
 
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;
@@ -21,6 +23,16 @@ type VisualisationPreviewProps = {
 const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, selectedVisualisation }) => {
     const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
+    const dashboardItems = useReactiveVar(dashboardItemsVar);
+
+    useEffect(() => {
+        if (!dashboardItems) return;
+        const item = dashboardItems.find((el) => el.id === metadata.id);
+        if (item?.size) {
+            setSize(item.size);
+        }
+        setParagraph(item?.paragraph);
+    }, []);
 
     const visualisation = useMemo(() => metadata.visualisations.find((md) => md.type === selectedVisualisation), [
         metadata,
@@ -113,7 +125,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                 </Pane>
             </Pane>
             <Pane gridColumn="span 1">
-                <VisualisationParameterSelector setSize={setSize} setParagraph={setParagraph} />
+                <VisualisationParameterSelector size={size} setSize={setSize} setParagraph={setParagraph} />
             </Pane>
         </>
     );
