@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 import { BrowserRouter } from 'react-router-dom';
-import { cache, dashboardItemsVar } from '../../src/cache/index';
+import { cache, dashboardItemsVar } from '../../src/cache';
 import { MockedProvider } from '@apollo/client/testing';
 import mocks from '../../src/mockdata/mocks';
 import { WEATHER_MET_API } from '../../src/queries/metApi';
 import Dashboard from '../../src/components/organisms/Dashboard';
 import { DashboardItemInfo, DashboardItemSize } from '../../src/types/dashboard';
-import { DataSourceName } from '../../src/utils/dataSourceMappings';
+import { DataSourceID } from '../../src/utils/dataSourceMappings';
 
 describe('Apollo state management', () => {
     beforeEach(() => {
@@ -30,7 +30,8 @@ describe('Apollo state management', () => {
             </MockedProvider>,
         );
         const item: DashboardItemInfo = {
-            name: DataSourceName.MET_API_FORECAST,
+            datasourceId: DataSourceID.MET_API_FORECAST,
+            name: 'Test',
             id: 'This is a custom ID',
             size: DashboardItemSize.SMALL,
             query: WEATHER_MET_API,

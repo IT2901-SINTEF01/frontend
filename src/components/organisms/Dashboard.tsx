@@ -65,8 +65,8 @@ const Dashboard: React.FC = () => {
                                 <ParentSize>
                                     {(parent) => (
                                         <DataWrapper
-                                            mappingFunction={dataSourceMappings[item.name].mapping}
-                                            query={dataSourceMappings[item.name].query}
+                                            mappingFunction={dataSourceMappings[item.datasourceId].mapping}
+                                            query={dataSourceMappings[item.datasourceId].query}
                                         >
                                             {(data) => (
                                                 <ThresholdChart
