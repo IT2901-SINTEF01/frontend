@@ -14,11 +14,15 @@ const AddToDashboard: React.FC<AddToDashboardProps> = (props) => {
     const added = useMemo(() => dashboardItems.some((el) => el.id === props.dashboardItemInfo.id), [dashboardItems]);
 
     const addDashboardItem = () => {
-        dashboardItemsVar([...dashboardItemsVar(), props.dashboardItemInfo]);
+        const dashboardContent = [...dashboardItemsVar(), props.dashboardItemInfo];
+        dashboardItemsVar(dashboardContent);
+        window.localStorage.setItem('dashboard', JSON.stringify(dashboardContent));
     };
 
     const removeDashboardItem = () => {
-        dashboardItemsVar(dashboardItemsVar().filter((el) => el.id !== props.dashboardItemInfo.id));
+        const dashboardContent = dashboardItemsVar().filter((el) => el.id !== props.dashboardItemInfo.id);
+        dashboardItemsVar(dashboardContent);
+        window.localStorage.setItem('dashboard', JSON.stringify(dashboardContent));
     };
 
     return (
