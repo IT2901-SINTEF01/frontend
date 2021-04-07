@@ -34,7 +34,7 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
                     <Heading size={titleSize} marginBottom="0.5rem">
                         {title}
                     </Heading>
-                    <Paragraph size={textSize} wordWrap="break-word">
+                    <Paragraph size={textSize} wordWrap="break-word" whiteSpace="pre-wrap" wordBreak="break-all">
                         {paragraph}
                     </Paragraph>
                 </Pane>
