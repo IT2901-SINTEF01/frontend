@@ -123,7 +123,12 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                 </Pane>
             </Pane>
             <Pane gridColumn="span 1">
-                <VisualisationParameterSelector size={size} setSize={setSize} setParagraph={setParagraph} />
+                <VisualisationParameterSelector
+                    size={size}
+                    setSize={setSize}
+                    paragraph={paragraph}
+                    setParagraph={setParagraph}
+                />
             </Pane>
         </>
     );
