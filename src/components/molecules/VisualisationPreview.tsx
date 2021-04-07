@@ -32,13 +32,15 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
             return () => null;
         }
 
+        const timeEntryMockData = mockTimeEntry(100, visualisation.axes.y.limit);
+
         switch (visualisation.type) {
             case VisualisationType.THRESHOLD:
                 return (width: number, height: number) => (
                     <ThresholdChart
                         width={width}
                         height={height}
-                        data={mockTimeEntry(100, visualisation.axes.y.limit)}
+                        data={timeEntryMockData}
                         thresholdValue={visualisation.threshold}
                         yLabel={visualisation.axes.y.name}
                     />
@@ -48,8 +50,10 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                     <LineChart
                         width={width}
                         height={height}
-                        data={mockTimeEntry(100, visualisation.axes.y.limit)}
+                        data={timeEntryMockData}
                         yLabel={visualisation.axes.y.name}
+                        strokeColor="#66CCCC"
+                        colorBottom="#E0EEEE"
                     />
                 );
             case VisualisationType.BAR:
@@ -93,7 +97,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                 <Pane flex="1" height="100%">
                     <DashboardItem
                         title={metadata.name}
-                        height="25rem"
+                        height="20rem"
                         width="100%"
                         titleSize={100}
                         paragraph={paragraph}

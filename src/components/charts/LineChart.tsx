@@ -19,7 +19,7 @@ const LineChart: React.FC<LineChartProps> = ({
     data,
     width,
     height,
-    margin = { top: 40, right: 30, bottom: 50, left: 40 },
+    margin = { top: 15, right: 30, bottom: 40, left: 40 },
     background = '#fff',
     yLabel,
     strokeColor = '#111',
@@ -59,7 +59,7 @@ const LineChart: React.FC<LineChartProps> = ({
             <Group left={margin.left} top={margin.top}>
                 <GridRows scale={yScale} width={xMax} height={yMax} stroke="#e0e0e0" />
                 <GridColumns scale={xScale} width={xMax} height={yMax} stroke="#e0e0e0" />
-                <AxisBottom top={yMax} scale={xScale} />
+                <AxisBottom top={yMax} scale={xScale} numTicks={width / 100} />
                 <AxisLeft scale={yScale} />
                 <text x="5" y="2" fontSize={12} fontFamily={'Arial, Helvetica, sans-serif'}>
                     {yLabel}

@@ -21,7 +21,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
     data,
     width,
     height,
-    margin = { top: 40, right: 30, bottom: 50, left: 40 },
+    margin = { top: 15, right: 30, bottom: 40, left: 40 },
     background = '#fff',
     thresholdValue = 0,
     aboveThresholdColor = 'red',
@@ -76,9 +76,9 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
                     y2={yScale(thresholdValue)}
                     stroke="black"
                 />
-                <AxisBottom top={yMax} scale={xScale} />
+                <AxisBottom top={yMax} scale={xScale} numTicks={width / 100} />
                 <AxisLeft scale={yScale} />
-                <text x="5" y="2" fontSize={12}>
+                <text x="5" y="2" fontSize={12} fontFamily={'Arial, Helvetica, sans-serif'}>
                     {yLabel}
                 </text>
                 <Threshold

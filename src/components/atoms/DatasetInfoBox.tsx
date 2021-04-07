@@ -16,7 +16,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
             <Text overflow="auto">{description}</Text>
             <Pane display="flex" flexWrap="wrap">
                 {tags.map((tag) => (
-                    <Badge key={tag} color="neutral" marginRight="1rem" marginTop="1rem">
+                    <Badge key={tag} color="neutral" marginRight="1rem" marginTop="1rem" overflow="hidden">
                         {tag}
                     </Badge>
                 ))}

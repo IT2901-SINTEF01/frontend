@@ -19,31 +19,36 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
     textSize = 300,
     children,
 }) => {
-    const Title = <Heading size={titleSize}>{title}</Heading>;
-    const Subtitle = (
-        <Paragraph size={textSize} marginTop="0.5em">
-            {paragraph}
-        </Paragraph>
-    );
-
     if (paragraph) {
+        return (
+            <Card
+                width={width}
+                height={height}
+                border="default"
+                elevation={1}
+                padding="1rem"
+                paddingBottom="0"
+                display="flex"
+            >
+                <Pane width="20%">
+                    <Heading size={titleSize} marginBottom="0.5rem">
+                        {title}
+                    </Heading>
+                    <Paragraph size={textSize} wordWrap="break-word" whiteSpace="pre-wrap" wordBreak="break-all">
+                        {paragraph}
+                    </Paragraph>
+                </Pane>
+                <Pane height="100%" width="80%">
+                    {children}
+                </Pane>
+            </Card>
+        );
     }
 
     return (
-        <Card
-            width={width}
-            height={height}
-            border="default"
-            elevation={1}
-            display="flex"
-            flexDirection={paragraph ? 'row' : 'column'}
-            padding="1em"
-        >
-            <Pane width={paragraph ? '45%' : '100%'}>
-                {Title}
-                {paragraph && Subtitle}
-            </Pane>
-            <Pane height="95%" width="100%">
+        <Card width={width} height={height} border="default" elevation={1} padding="1rem" paddingBottom="0">
+            <Heading size={titleSize}>{title}</Heading>
+            <Pane height="90%" width="100%">
                 {children}
             </Pane>
         </Card>
