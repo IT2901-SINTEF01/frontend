@@ -31,12 +31,12 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
                 <option value="medium">Medium</option>
                 <option value="large">Stor</option>
             </SelectField>
-            <Label htmlFor="textarea" marginBottom={12}>
-                Legg til text
+            <Label htmlFor="visualisation-text-input" marginBottom={12}>
+                Legg til text (valgfritt)
             </Label>
             <Pane flex="1">
                 <Textarea
-                    id="textarea"
+                    id="visualisation-text-input"
                     maxLength={150}
                     placeholder="Skriv inn ønsket tekst her (maks 150 tegn)"
                     onChange={handleTextChange}
