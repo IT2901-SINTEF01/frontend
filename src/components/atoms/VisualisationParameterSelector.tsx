@@ -3,6 +3,7 @@ import { Pane, SelectField, Textarea, Label } from 'evergreen-ui';
 import { DashboardItemSize } from '../../types/dashboard';
 
 type VisualisationParameterSelectorProps = {
+    paragraph?: string;
     size: DashboardItemSize;
     setSize: (size: DashboardItemSize) => void;
     setParagraph: (text: string | undefined) => void;
@@ -11,6 +12,7 @@ type VisualisationParameterSelectorProps = {
 const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorProps> = ({
     size,
     setSize,
+    paragraph,
     setParagraph,
 }) => {
     const handleSizeChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
@@ -52,6 +54,7 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
             </Label>
             <Pane flex="1">
                 <Textarea
+                    value={paragraph}
                     id="visualisation-text-input"
                     maxLength={150}
                     placeholder="Skriv inn ønsket tekst her (maks 150 tegn)"
