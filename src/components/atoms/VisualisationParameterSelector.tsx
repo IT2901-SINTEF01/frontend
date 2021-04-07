@@ -3,11 +3,16 @@ import { Pane, SelectField, Textarea, Label } from 'evergreen-ui';
 import { DashboardItemSize } from '../../types/dashboard';
 
 type VisualisationParameterSelectorProps = {
+    size: DashboardItemSize;
     setSize: (size: DashboardItemSize) => void;
     setParagraph: (text: string | undefined) => void;
 };
 
-const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorProps> = ({ setSize, setParagraph }) => {
+const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorProps> = ({
+    size,
+    setSize,
+    setParagraph,
+}) => {
     const handleSizeChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
         switch (e.currentTarget.value as 'small' | 'medium' | 'large') {
             case 'small':
@@ -19,6 +24,17 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
         }
     };
 
+    const defaultValue = () => {
+        switch (size) {
+            case DashboardItemSize.LARGE:
+                return 'large';
+            case DashboardItemSize.MEDIUM:
+                return 'medium';
+            case DashboardItemSize.SMALL:
+                return 'small';
+        }
+    };
+
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setParagraph(e.currentTarget.value);
     };
@@ -26,7 +42,7 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
     return (
         <Pane height="100%" display="flex" flexDirection="column">
             <Pane height="32px" marginBottom="1rem" />
-            <SelectField label="Velg størrelse" onChange={handleSizeChange} defaultValue="large">
+            <SelectField label="Velg størrelse" onChange={handleSizeChange} defaultValue={defaultValue()}>
                 <option value="small">Liten</option>
                 <option value="medium">Medium</option>
                 <option value="large">Stor</option>
