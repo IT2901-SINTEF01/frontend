@@ -9,6 +9,7 @@ import ThresholdChart from '../charts/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
 import dataSourceMappings from '../../utils/dataSourceMappings';
 import { Link } from 'react-router-dom';
+import MapMarkerVisualisation from '../atoms/MapMarkerVisualisation';
 
 const Dashboard: React.FC = () => {
     //Apollo local state

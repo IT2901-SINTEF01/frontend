@@ -12,6 +12,7 @@ import ThresholdChart from '../charts/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
 import LineChart from '../charts/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
+import MapMarkerVisualisation from '../atoms/MapMarkerVisualisation';
 
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;
@@ -112,6 +113,9 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
             </Pane>
             <Pane gridColumn="span 1">
                 <VisualisationParameterSelector setSize={setSize} setParagraph={setParagraph} />
+            </Pane>
+            <Pane gridColumn="span 6" display="flex" height="500px">
+                <MapMarkerVisualisation />
             </Pane>
         </>
     );
