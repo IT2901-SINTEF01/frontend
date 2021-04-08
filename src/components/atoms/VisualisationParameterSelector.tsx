@@ -16,25 +16,7 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
     setParagraph,
 }) => {
     const handleSizeChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
-        switch (e.currentTarget.value as 'small' | 'medium' | 'large') {
-            case 'small':
-                return setSize(DashboardItemSize.SMALL);
-            case 'medium':
-                return setSize(DashboardItemSize.MEDIUM);
-            case 'large':
-                return setSize(DashboardItemSize.LARGE);
-        }
-    };
-
-    const defaultValue = () => {
-        switch (size) {
-            case DashboardItemSize.LARGE:
-                return 'large';
-            case DashboardItemSize.MEDIUM:
-                return 'medium';
-            case DashboardItemSize.SMALL:
-                return 'small';
-        }
+        setSize(+e.currentTarget.value);
     };
 
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -44,10 +26,10 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
     return (
         <Pane height="100%" display="flex" flexDirection="column">
             <Pane height="32px" marginBottom="1rem" />
-            <SelectField label="Velg størrelse" onChange={handleSizeChange} defaultValue={defaultValue()}>
-                <option value="small">Liten</option>
-                <option value="medium">Medium</option>
-                <option value="large">Stor</option>
+            <SelectField label="Velg størrelse" onChange={handleSizeChange} defaultValue={size}>
+                <option value={DashboardItemSize.SMALL}>Liten</option>
+                <option value={DashboardItemSize.MEDIUM}>Medium</option>
+                <option value={DashboardItemSize.LARGE}>Stor</option>
             </SelectField>
             <Label htmlFor="visualisation-text-input" marginBottom={12}>
                 Legg til text (valgfritt)
