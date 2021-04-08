@@ -54,7 +54,6 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                                         width={parent.width}
                                         height={height > 0 ? height : parent.height}
                                         data={timeEntryMockData}
-                                        thresholdValue={undefined}
                                         yLabel="Threshold chart"
                                     />
                                 );
@@ -63,7 +62,6 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                         }
                     }}
                 </ParentSize>
-                {/*<Text>{visualisationType}</Text>*/}
             </Pane>
         </Card>
     );
