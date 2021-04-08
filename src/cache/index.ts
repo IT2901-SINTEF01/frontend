@@ -15,7 +15,7 @@ export const cache = new InMemoryCache({
     },
 });
 
-export const updateLocalstorage = (saveData: DashboardItemInfo[]) => {
+export const updateLocalstorage = (saveData: DashboardItemInfo[]): void => {
     window.localStorage.setItem('dashboard', JSON.stringify(saveData));
 };
 
