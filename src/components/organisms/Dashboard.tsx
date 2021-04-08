@@ -89,7 +89,7 @@ const Dashboard: React.FC = () => {
                                                             />
                                                         );
                                                     default:
-                                                        return <Text>Visualisation currently not supported.</Text>;
+                                                        return <Text>Denne visualiseringstypen er ikke støttet.</Text>;
                                                 }
                                             }}
                                         </DataWrapper>
