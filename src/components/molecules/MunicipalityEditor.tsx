@@ -26,11 +26,17 @@ const MunicipalityEditor: React.FC = () => {
         return <Text>Empty</Text>;
     }
 
+    const setMunicipality = (name: string) => {
+        localStorage.setItem('municipality', name);
+    };
+
     return (
         <MunicipalitySelector
             label="Velg kommune"
             options={data.populationsInNorway.municipalitiesWithKeys}
-            onChange={(e) => setselectedMunicipality(e.currentTarget.value as string)}
+            onChange={(e) => (
+                setselectedMunicipality(e.currentTarget.value as string), setMunicipality(e.currentTarget.value)
+            )}
         />
     );
 };

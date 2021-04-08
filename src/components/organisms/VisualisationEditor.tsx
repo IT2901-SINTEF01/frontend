@@ -9,7 +9,7 @@ import DataInfoBox from '../atoms/DatasetInfoBox';
 import VisualisationSelector from '../atoms/VisualisationSelector';
 import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 import { VisualisationType } from '../../types/Metadata';
-import MunicipalitySelector from '../molecules/MunicipalitySelector';
+import MunicipalitySelector from '../molecules/MunicipalityEditor';
 import { DataSourceID } from '../../utils/dataSourceMappings';
 
 const VisualisationEditor: React.FC = () => {
