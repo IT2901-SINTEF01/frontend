@@ -1,8 +1,39 @@
 {
     "name": "data-visualisation-platform",
-    "version": "0.1.0",
-    "private": true,
+    "version": "1.0.1",
+    "description": "A simple library for visualising open data",
+    "private": false,
+    "author": {
+        "name": "Jonathan Brooks"
+    },
+    "contributors": [
+        {
+            "name": "Emil Ommundsen"
+        },
+        {
+            "name": "Fredrik August Madsen-Malmo"
+        },
+        {
+            "name": "Thomas Everleigh Rankin"
+        },
+        {
+            "name": "Karl Petter Aubert"
+        },
+        {
+            "name": "Fredrik Wilhelm Butler Wang"
+        }
+    ],
+    "files": [
+        "dist/index.js",
+        "dist/index.d.ts"
+    ],
+    "main": "dist/index.js",
     "proxy": "http://localhost:5000",
+    "babel": {
+        "presets": [
+            "@babel/preset-react"
+        ]
+    },
     "dependencies": {
         "@apollo/client": "^3.3.6",
         "@types/classnames": "^2.2.11",
