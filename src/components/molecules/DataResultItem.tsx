@@ -62,7 +62,6 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                         }
                     }}
                 </ParentSize>
-                {/*<Text>{visualisationType}</Text>*/}
             </Pane>
         </Card>
     );
