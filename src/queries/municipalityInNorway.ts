@@ -10,6 +10,6 @@ export const MUNICIPALITY_IN_NORWAY = gql`
 
 export type MunicipalityInNorway = {
     populationsInNorway: {
-        municipalitiesWithKeys: [[string]];
+        municipalitiesWithKeys: [string, string][];
     };
 };
