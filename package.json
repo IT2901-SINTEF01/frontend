@@ -45,7 +45,9 @@
         "lint-fix": "eslint --fix \"src/**/*\"",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public",
-        "chromatic": "npx chromatic"
+    "peerDependencies": {
+        "react": "^16.8.0",
+        "react-dom": "^16.8.0"
     },
     "browserslist": {
         "production": [
