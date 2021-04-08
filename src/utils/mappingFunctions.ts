@@ -9,10 +9,9 @@ export const metApiCompactAirTemperatureToTimeEntry = (data: MetApiCompactAirTem
     }));
 
 export const ssbPopulationInNorwayToTimeEntry = (data: PopulationInNorway): ChartEntry[] =>
-    data.populationsInNorway.dataset.value.map((value) => ({
-        x: new Date().toISOString(),
-        y: value,
-    }));
+    data.populationsInNorway.dataset.value.flatMap((value) =>
+        value.populationForYear.map((popForYear) => ({ x: popForYear.year, y: popForYear.population })),
+    );
 
 // Export all possible outcomes.
 // Add "| typeof ..." when adding a new data source

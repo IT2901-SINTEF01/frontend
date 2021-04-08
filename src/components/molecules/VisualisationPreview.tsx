@@ -100,9 +100,11 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         dashboardItemInfo={{
                             size,
                             name: metadata.name,
+                            datasourceId: metadata.datasourceId,
                             paragraph,
                             id: metadata.id,
                             query: WEATHER_MET_API,
+                            visualisationType: selectedVisualisation,
                         }}
                     />
                 </Pane>
