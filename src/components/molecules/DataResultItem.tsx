@@ -35,7 +35,7 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                 <Heading marginBottom="1rem">Forslag til visualisering</Heading>
                 <ParentSize>
                     {(parent) => {
-                        const height = (parent.height ?? 288) - 40;
+                        const height = parent.height - 40;
                         switch (visualisationType) {
                             case VisualisationType.LINE:
                                 return (
