@@ -15,7 +15,7 @@ export type DataResultItemProps = {
 };
 
 const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags, visualisationType }) => {
-    const timeEntryMockData = mockTimeEntry(100, undefined);
+    const timeEntryMockData = mockTimeEntry(100);
 
     return (
         <Card
