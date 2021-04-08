@@ -12,17 +12,12 @@ const AddToDashboard: React.FC<AddToDashboardProps> = (props) => {
     const dashboardItems = useReactiveVar(dashboardItemsVar);
     const added = useMemo(() => dashboardItems.some((el) => el.id === props.dashboardItemInfo.id), [dashboardItems]);
 
-    const updateStorage = (content: DashboardItemInfo[]) => {
-        dashboardItemsVar(content);
-        window.localStorage.setItem('dashboard', JSON.stringify(content));
-    };
-
     const addDashboardItem = () => {
-        updateStorage([...dashboardItemsVar(), props.dashboardItemInfo]);
+        dashboardItemsVar([...dashboardItemsVar(), props.dashboardItemInfo]);
     };
 
     const removeDashboardItem = () => {
-        updateStorage(dashboardItemsVar().filter((el) => el.id !== props.dashboardItemInfo.id));
+        dashboardItemsVar(dashboardItemsVar().filter((el) => el.id !== props.dashboardItemInfo.id));
     };
 
     return (

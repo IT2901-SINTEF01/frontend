@@ -32,7 +32,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
             setSize(item.size);
         }
         setParagraph(item?.paragraph);
-    }, []);
+    }, [DashboardItem]);
 
     const visualisation = useMemo(() => metadata.visualisations.find((md) => md.type === selectedVisualisation), [
         metadata,
