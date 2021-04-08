@@ -9,6 +9,7 @@ import DataInfoBox from '../atoms/DatasetInfoBox';
 import VisualisationSelector from '../atoms/VisualisationSelector';
 import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 import { VisualisationType } from '../../types/Metadata';
+import MunicipalitySelector from '../molecules/MunicipalitySelector';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -38,6 +39,11 @@ const VisualisationEditor: React.FC = () => {
     // eslint-disable-next-line
     const metadata = data.allMetadata.find((el) => el.id === id)!;
 
+    let municipalitySelector;
+    if (id === '6038ea4bdc2fdbd2bb7ad8db') {
+        municipalitySelector = <MunicipalitySelector />;
+    }
+
     return (
         <Pane
             width="100%"
@@ -63,6 +69,7 @@ const VisualisationEditor: React.FC = () => {
                 )}
                 onChange={(e) => setSelectedVisualisation(e.currentTarget.value as VisualisationType)}
             />
+            {municipalitySelector}
         </Pane>
     );
 };
