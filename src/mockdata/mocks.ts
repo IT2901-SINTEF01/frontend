@@ -3,7 +3,7 @@ import { addDays } from 'date-fns';
 import { WEATHER_MET_API } from '../queries/metApi';
 import { METADATA, MetadataEntry } from '../queries/metadata';
 import faker from 'faker';
-import { DataSourceName } from '../utils/dataSourceMappings';
+import { DataSourceID } from '../utils/dataSourceMappings';
 import { VisualisationType } from '../types/Metadata';
 
 const visualisationTypes = ['barchart', 'thresholdchart', 'piechart', 'linechart'];
@@ -16,7 +16,8 @@ const randomListOfWords = (count: number) => {
 export const makeMetadata = (): MetadataEntry[] => {
     return Object.keys(new Array(10).fill(null)).map((i) => ({
         id: faker.random.uuid(),
-        name: faker.random.arrayElement(Object.values(DataSourceName)),
+        datasourceId: faker.random.arrayElement(Object.values(DataSourceID)),
+        name: faker.hacker.phrase(),
         description: faker.lorem.paragraph(),
         published: faker.date.recent().toString(),
         source: faker.internet.url(),

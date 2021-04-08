@@ -9,6 +9,8 @@ import ThresholdChart from '../charts/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
 import dataSourceMappings from '../../utils/dataSourceMappings';
 import { Link } from 'react-router-dom';
+import LineChart from '../charts/LineChart';
+import { VisualisationType } from '../../types/Metadata';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -65,16 +67,31 @@ const Dashboard: React.FC = () => {
                                 <ParentSize>
                                     {(parent) => (
                                         <DataWrapper
-                                            mappingFunction={dataSourceMappings[item.name].mapping}
-                                            query={dataSourceMappings[item.name].query}
+                                            mappingFunction={dataSourceMappings[item.datasourceId].mapping}
+                                            query={dataSourceMappings[item.datasourceId].query}
                                         >
-                                            {(data) => (
-                                                <ThresholdChart
-                                                    data={data}
-                                                    height={parent.height}
-                                                    width={parent.width}
-                                                />
-                                            )}
+                                            {(data) => {
+                                                switch (item.visualisationType) {
+                                                    case VisualisationType.LINE:
+                                                        return (
+                                                            <LineChart
+                                                                width={parent.width}
+                                                                height={parent.height}
+                                                                data={data}
+                                                            />
+                                                        );
+                                                    case VisualisationType.THRESHOLD:
+                                                        return (
+                                                            <ThresholdChart
+                                                                data={data}
+                                                                height={parent.height}
+                                                                width={parent.width}
+                                                            />
+                                                        );
+                                                    default:
+                                                        return <Text>Denne visualiseringstypen er ikke støttet.</Text>;
+                                                }
+                                            }}
                                         </DataWrapper>
                                     )}
                                 </ParentSize>

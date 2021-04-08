@@ -9,9 +9,9 @@ import {
 import { WEATHER_MET_API } from '../queries/metApi';
 import { POPULATION_IN_NORWAY } from '../queries/populationInNorway';
 
-export enum DataSourceName {
-    SSB_POPULATION = 'Befolkning. Kommuner, pr. 1.1., 1986 - siste år',
-    MET_API_FORECAST = 'MetAPI Forecast',
+export enum DataSourceID {
+    SSB_POPULATION = 'SSB_POPULATION',
+    MET_API_FORECAST = 'MET_API',
 }
 
 export type DataSourceMetaInformation = {
@@ -19,14 +19,14 @@ export type DataSourceMetaInformation = {
     mapping: (rawData: RawQueryDataTypes) => RawDataMappedReturnValues;
 };
 
-type DataSourceMapping = Record<DataSourceName, DataSourceMetaInformation>;
+type DataSourceMapping = Record<DataSourceID, DataSourceMetaInformation>;
 
 export default {
-    [DataSourceName.MET_API_FORECAST]: {
+    [DataSourceID.MET_API_FORECAST]: {
         query: WEATHER_MET_API,
         mapping: metApiCompactAirTemperatureToTimeEntry,
     },
-    [DataSourceName.SSB_POPULATION]: {
+    [DataSourceID.SSB_POPULATION]: {
         query: POPULATION_IN_NORWAY,
         mapping: ssbPopulationInNorwayToTimeEntry,
     },
