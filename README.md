@@ -51,7 +51,7 @@ yarn test
 Our NPM package can be found [here](https://www.npmjs.com/package/data-visualisation-platform). More information about this package can be found in the wiki.
 
 ```bash
-npm i data-visualisation-platform
+npm i data-visualisation-platform --save
 
 or
 
