@@ -6,6 +6,7 @@ import ThresholdChart from '../charts/ThresholdChart';
 import LineChart from '../charts/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { VisualisationType } from '../../types/Metadata';
+import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 
 export type DataResultItemProps = {
     visualisationType: VisualisationType;
@@ -32,7 +33,9 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                 <DatasetInfoBox title={title} description={description} tags={tags} />
             </Pane>
             <Pane flex="2">
-                <Heading marginBottom="1rem">Forslag til visualisering</Heading>
+                <Heading marginBottom="1rem">
+                    Forslag til visualisering: {friendlyNameForVisualisationType(visualisationType)}
+                </Heading>
                 <ParentSize>
                     {(parent) => {
                         const height = parent.height - 40;
@@ -43,7 +46,6 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                                         width={parent.width}
                                         height={height > 0 ? height : parent.height}
                                         data={timeEntryMockData}
-                                        yLabel="Line chart"
                                         strokeColor="#66CCCC"
                                         colorBottom="#E0EEEE"
                                     />
@@ -54,7 +56,6 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                                         width={parent.width}
                                         height={height > 0 ? height : parent.height}
                                         data={timeEntryMockData}
-                                        yLabel="Threshold chart"
                                     />
                                 );
                             default:

@@ -25,15 +25,6 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
     const dashboardItems = useReactiveVar(dashboardItemsVar);
 
-    useEffect(() => {
-        if (!dashboardItems) return;
-        const item = dashboardItems.find((el) => el.id === metadata.id);
-        if (item?.size) {
-            setSize(item.size);
-        }
-        setParagraph(item?.paragraph);
-    }, [DashboardItem]);
-
     const visualisation = useMemo(() => metadata.visualisations.find((md) => md.type === selectedVisualisation), [
         metadata,
         selectedVisualisation,
@@ -111,7 +102,6 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                             paragraph,
                             id: metadata.id,
                             query: WEATHER_MET_API,
-                            visualisationType: selectedVisualisation,
                         }}
                     />
                 </Pane>
