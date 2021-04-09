@@ -94,8 +94,8 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
 
     return (
         <>
-            <Pane gridColumn="span 4" display="flex" flexDirection="column">
-                <Pane display="flex" flexDirection="row" marginBottom="1rem" flexWrap="wrap">
+            <Pane gridColumn="span 4" display="flex" flexDirection="column" width="100%">
+                <Pane display="flex" flexDirection="row" marginBottom="1rem">
                     <Heading size={400}>
                         Forhåndsvisning
                         <Tooltip content="Forhåndsvisningen er kun ment som referanse. Størrelse og endelig data vil endres i dashbordet.">
@@ -123,7 +123,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         titleSize={100}
                         paragraph={paragraph}
                     >
-                        <ParentSize>
+                        <ParentSize debounceTime={400}>
                             {(parent) => {
                                 return child(parent.width, parent.height);
                             }}
