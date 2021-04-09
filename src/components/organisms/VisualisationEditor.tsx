@@ -41,7 +41,6 @@ const VisualisationEditor: React.FC = () => {
     return (
         <Pane
             width="100%"
-            height="25rem"
             display="grid"
             gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
             columnGap="1rem"
