@@ -2,18 +2,21 @@
 import React from 'react';
 import LineChart, { LineChartProps } from '../../components/charts/LineChart';
 import ThresholdChart, { ThresholdChartProps } from '../../components/charts/ThresholdChart';
-import { DataSourceID } from '../../utils/dataSourceMappings';
-import VisualiserWrapper from './VisualiserWrapper';
+import dataSourceMappings from '../../utils/dataSourceMappings';
+import DataWrapper from '../../components/molecules/DataWrapper';
 
-export const SsbBefolkning = {
-    Line: ({
-        width = 600,
-        height = 300,
-        yLabel,
-        strokeColor,
-        colorBottom,
-    }: Omit<LineChartProps, 'data'>): JSX.Element => (
-        <VisualiserWrapper dataSource={DataSourceID.SSB_POPULATION}>
+const SsbBefolkningLine: React.FC<Omit<LineChartProps, 'data'>> = ({
+    width = 600,
+    height = 200,
+    yLabel,
+    strokeColor,
+    colorBottom,
+}) => {
+    return (
+        <DataWrapper
+            mappingFunction={dataSourceMappings.SSB_POPULATION.mapping}
+            query={dataSourceMappings.SSB_POPULATION.query}
+        >
             {(data) => (
                 <LineChart
                     data={data}
@@ -24,17 +27,23 @@ export const SsbBefolkning = {
                     colorBottom={colorBottom}
                 />
             )}
-        </VisualiserWrapper>
-    ),
-    Threshold: ({
-        width = 600,
-        height = 300,
-        thresholdValue,
-        aboveThresholdColor,
-        belowThresholdColor,
-        yLabel,
-    }: Omit<ThresholdChartProps, 'data'>): JSX.Element => (
-        <VisualiserWrapper dataSource={DataSourceID.SSB_POPULATION}>
+        </DataWrapper>
+    );
+};
+
+const SsbBefolkningThreshold: React.FC<Omit<ThresholdChartProps, 'data'>> = ({
+    width = 600,
+    height = 200,
+    thresholdValue,
+    aboveThresholdColor,
+    belowThresholdColor,
+    yLabel,
+}) => {
+    return (
+        <DataWrapper
+            mappingFunction={dataSourceMappings.SSB_POPULATION.mapping}
+            query={dataSourceMappings.SSB_POPULATION.query}
+        >
             {(data) => (
                 <ThresholdChart
                     data={data}
@@ -46,8 +55,11 @@ export const SsbBefolkning = {
                     yLabel={yLabel}
                 />
             )}
-        </VisualiserWrapper>
-    ),
+        </DataWrapper>
+    );
 };
 
-export default SsbBefolkning;
+export const SsbBefolkning = {
+    Line: SsbBefolkningLine,
+    Threshold: SsbBefolkningThreshold,
+};

@@ -2,18 +2,18 @@
 import React from 'react';
 import LineChart, { LineChartProps } from '../../components/charts/LineChart';
 import ThresholdChart, { ThresholdChartProps } from '../../components/charts/ThresholdChart';
-import { DataSourceID } from '../../utils/dataSourceMappings';
-import VisualiserWrapper from './VisualiserWrapper';
+import dataSourceMappings from '../../utils/dataSourceMappings';
+import DataWrapper from '../../components/molecules/DataWrapper';
 
-export const MetApi = {
-    Line: ({
-        width = 600,
-        height = 300,
-        yLabel,
-        strokeColor,
-        colorBottom,
-    }: Omit<LineChartProps, 'data'>): JSX.Element => (
-        <VisualiserWrapper dataSource={DataSourceID.MET_API_FORECAST}>
+const MetApiLine: React.FC<Omit<LineChartProps, 'data'>> = ({
+    width = 600,
+    height = 200,
+    yLabel,
+    strokeColor,
+    colorBottom,
+}) => {
+    return (
+        <DataWrapper mappingFunction={dataSourceMappings.MET_API.mapping} query={dataSourceMappings.MET_API.query}>
             {(data) => (
                 <LineChart
                     data={data}
@@ -24,17 +24,20 @@ export const MetApi = {
                     colorBottom={colorBottom}
                 />
             )}
-        </VisualiserWrapper>
-    ),
-    Threshold: ({
-        width = 600,
-        height = 300,
-        thresholdValue,
-        aboveThresholdColor,
-        belowThresholdColor,
-        yLabel,
-    }: Omit<ThresholdChartProps, 'data'>): JSX.Element => (
-        <VisualiserWrapper dataSource={DataSourceID.MET_API_FORECAST}>
+        </DataWrapper>
+    );
+};
+
+const MetApiThreshold: React.FC<Omit<ThresholdChartProps, 'data'>> = ({
+    width = 600,
+    height = 200,
+    thresholdValue,
+    aboveThresholdColor,
+    belowThresholdColor,
+    yLabel,
+}) => {
+    return (
+        <DataWrapper mappingFunction={dataSourceMappings.MET_API.mapping} query={dataSourceMappings.MET_API.query}>
             {(data) => (
                 <ThresholdChart
                     data={data}
@@ -46,8 +49,11 @@ export const MetApi = {
                     yLabel={yLabel}
                 />
             )}
-        </VisualiserWrapper>
-    ),
+        </DataWrapper>
+    );
 };
 
-export default MetApi;
+export const MetApi = {
+    Line: MetApiLine,
+    Threshold: MetApiThreshold,
+};
