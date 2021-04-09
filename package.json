@@ -3,6 +3,7 @@
     "version": "1.0.1",
     "description": "A simple library for visualising open data",
     "private": false,
+    "license": "Apache-2.0",
     "author": {
         "name": "Jonathan Brooks"
     },
