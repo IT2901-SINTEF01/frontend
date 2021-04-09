@@ -18,7 +18,7 @@ export default [
             typescript({ outfile: 'index.js' }),
             replace({
                 preventAssignment: true,
-                'process.env.AZURE_GRAPHQL_URI': JSON.stringify(process.env.AZURE_GRAPHQL_URI),
+                'process.env.GRAPHQL_URI': JSON.stringify(process.env.GRAPHQL_URI),
             }),
         ],
         external: ['react', 'react-dom'],

@@ -5,7 +5,7 @@ import { ChartEntry } from '../../types/visualisation';
 import dataSourceMappings, { DataSourceID } from '../../utils/dataSourceMappings';
 
 const client = new ApolloClient({
-    uri: process.env.AZURE_GRAPHQL_URI,
+    uri: process.env.GRAPHQL_URI,
     cache: new InMemoryCache({}),
 });
 
