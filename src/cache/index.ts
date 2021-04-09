@@ -1,5 +1,5 @@
 import { InMemoryCache, makeVar } from '@apollo/client';
-import { DashboardItemInfo } from '../types/dashboard';
+import { Visualisation } from '../types/visualisations';
 
 export const cache = new InMemoryCache({
     typePolicies: {
@@ -22,3 +22,4 @@ export const updateLocalstorage = (saveData: DashboardItemInfo[]): void => {
 const storage = window.localStorage.getItem('dashboard');
 const initValue: DashboardItemInfo[] = storage ? JSON.parse(storage) : [];
 export const dashboardItemsVar = makeVar<DashboardItemInfo[]>(initValue);
+export const dashboardItemsVar = makeVar<Visualisation[]>([]);

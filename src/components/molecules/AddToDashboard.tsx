@@ -3,6 +3,7 @@ import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
 import { DashboardItemInfo } from '../../types/dashboard';
 import AddToDashboardButton from '../atoms/AddToDashboardButton';
+import visualisations from '../../types/visualisations';
 
 type AddToDashboardProps = {
     dashboardItemInfo: DashboardItemInfo;
@@ -10,14 +11,19 @@ type AddToDashboardProps = {
 
 const AddToDashboard: React.FC<AddToDashboardProps> = (props) => {
     const dashboardItems = useReactiveVar(dashboardItemsVar);
-    const added = useMemo(() => dashboardItems.some((el) => el.id === props.dashboardItemInfo.id), [dashboardItems]);
+
+    const added = useMemo(
+        () => dashboardItems.some((el) => el.dataSource.dataSourceId === props.dashboardItemInfo.datasourceId),
+        [dashboardItems],
+    );
 
     const addDashboardItem = () => {
-        dashboardItemsVar([...dashboardItemsVar(), props.dashboardItemInfo]);
+        const newVis = visualisations.SSBPopulationLineChart;
+        dashboardItemsVar([...dashboardItemsVar(), newVis]);
     };
 
     const removeDashboardItem = () => {
-        dashboardItemsVar(dashboardItemsVar().filter((el) => el.id !== props.dashboardItemInfo.id));
+        // dashboardItemsVar(dashboardItemsVar().filter((el) => el.id !== props.dashboardItemInfo.id));
     };
 
     return (

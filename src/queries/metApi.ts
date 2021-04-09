@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const WEATHER_MET_API = gql`
-    query {
-        forecast {
+    query($lat: Float, $lon: Float) {
+        forecast(lat: $lat, lon: $lon) {
             forecastProperties {
                 meta {
                     updatedAt
