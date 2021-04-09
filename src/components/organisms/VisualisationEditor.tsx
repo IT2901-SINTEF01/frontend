@@ -11,6 +11,7 @@ import { friendlyNameForVisualisationType } from '../../utils/visualisationLabel
 import { VisualisationType } from '../../types/Metadata';
 import MunicipalitySelector from '../molecules/MunicipalityEditor';
 import { DataSourceID } from '../../utils/dataSourceMappings';
+import YearSlider from '../atoms/YearSlider';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -41,7 +42,12 @@ const VisualisationEditor: React.FC = () => {
     const metadata = data.allMetadata.find((el) => el.id === id)!;
     let municipalitySelector;
     if (metadata.datasourceId === DataSourceID.SSB_POPULATION) {
-        municipalitySelector = <MunicipalitySelector />;
+        municipalitySelector = (
+            <>
+                <MunicipalitySelector />
+                <YearSlider />
+            </>
+        );
     }
 
     return (
