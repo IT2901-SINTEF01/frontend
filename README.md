@@ -46,6 +46,42 @@ Run the entire test suite with auto-running on file changes with:
 yarn test
 ```
 
+## Installation of NPM package
+
+Our NPM package can be found [here](https://www.npmjs.com/package/data-visualisation-platform). More information about this package can be found in the wiki.
+
+```bash
+npm i data-visualisation-platform
+
+or
+
+yarn add data-visualisation-platform
+```
+
+### Example usage
+
+```JSX
+import React from 'react';
+import { MetApi, SsbBefolkning, VisualiserProvider } from 'data-visualisation-platform';
+
+const App: React.FC = () => {
+    return (
+        <VisualiserProvider>
+            <Charts />
+        </VisualiserProvider>
+    );
+};
+
+const Charts: React.FC = () => {
+    return (
+        <div>
+            <MetApi.Line width={600} height={200} />
+            <SsbBefolkning.Threshold width={600} height={300} thresholdValue={4} />
+        </div>
+    );
+};
+```
+
 ## License
 
 > Copyright 2021 SINTEF AS
