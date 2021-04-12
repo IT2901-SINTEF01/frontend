@@ -81,14 +81,21 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
         return null;
     }
 
+    const getSizeInPercentage = () => {
+        switch (size) {
+            case DashboardItemSize.LARGE:
+                return '100%';
+            case DashboardItemSize.MEDIUM:
+                return '75%';
+            case DashboardItemSize.SMALL:
+                return '50%';
+        }
+    };
+
     return (
         <>
-            {size !== DashboardItemSize.LARGE && (
-                //Spacer for smaller sizes
-                <Pane gridColumn={`span ${4 - size}`} />
-            )}
-            <Pane gridColumn={`span ${size}`} display="flex" flexDirection="column">
-                <Pane display="flex" flexDirection="row" marginBottom="1rem" flexWrap="wrap">
+            <Pane gridColumn="span 4" display="flex" flexDirection="column" width="100%">
+                <Pane display="flex" flexDirection="row" marginBottom="1rem">
                     <Heading size={400}>
                         Forhåndsvisning
                         <Tooltip content="Forhåndsvisningen er kun ment som referanse. Størrelse og endelig data vil endres i dashbordet.">
@@ -112,11 +119,11 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                     <DashboardItem
                         title={metadata.name}
                         height="20rem"
-                        width="100%"
+                        width={getSizeInPercentage()}
                         titleSize={100}
                         paragraph={paragraph}
                     >
-                        <ParentSize>
+                        <ParentSize debounceTime={400}>
                             {(parent) => {
                                 return child(parent.width, parent.height);
                             }}
