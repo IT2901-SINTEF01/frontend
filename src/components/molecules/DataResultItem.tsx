@@ -1,15 +1,22 @@
 import React from 'react';
-import { Card, Pane, Heading, Text } from 'evergreen-ui';
+import { Card, Heading, Pane, Text } from 'evergreen-ui';
 import DatasetInfoBox from '../atoms/DatasetInfoBox';
+import { ParentSize } from '@visx/responsive';
+import ThresholdChart from '../charts/ThresholdChart';
+import LineChart from '../charts/LineChart';
+import mockTimeEntry from '../../mockdata/mockTimeEntry';
+import { VisualisationType } from '../../types/Metadata';
 
 export type DataResultItemProps = {
-    visualisationType: string;
+    visualisationType: VisualisationType;
     title: string;
     description: string;
     tags: string[];
 };
 
 const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags, visualisationType }) => {
+    const timeEntryMockData = mockTimeEntry(100);
+
     return (
         <Card
             width="100%"
@@ -26,8 +33,35 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
             </Pane>
             <Pane flex="2">
                 <Heading marginBottom="1rem">Forslag til visualisering</Heading>
-                {/* The template graph will go here */}
-                <Text>{visualisationType}</Text>
+                <ParentSize>
+                    {(parent) => {
+                        const height = parent.height - 40;
+                        switch (visualisationType) {
+                            case VisualisationType.LINE:
+                                return (
+                                    <LineChart
+                                        width={parent.width}
+                                        height={height > 0 ? height : parent.height}
+                                        data={timeEntryMockData}
+                                        yLabel="Line chart"
+                                        strokeColor="#66CCCC"
+                                        colorBottom="#E0EEEE"
+                                    />
+                                );
+                            case VisualisationType.THRESHOLD:
+                                return (
+                                    <ThresholdChart
+                                        width={parent.width}
+                                        height={height > 0 ? height : parent.height}
+                                        data={timeEntryMockData}
+                                        yLabel="Threshold chart"
+                                    />
+                                );
+                            default:
+                                return <Text>{visualisationType}</Text>;
+                        }
+                    }}
+                </ParentSize>
             </Pane>
         </Card>
     );
