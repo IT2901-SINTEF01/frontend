@@ -1,6 +1,6 @@
-import React from 'react';
-import { ApolloClient, ApolloProvider } from '@apollo/client';
-import { cache } from './cache';
+import React, { useEffect } from 'react';
+import { ApolloClient, ApolloProvider, useReactiveVar } from '@apollo/client';
+import { cache, dashboardItemsVar, updateLocalstorage } from './cache';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Dashboard from './components/organisms/Dashboard';
@@ -14,6 +14,12 @@ const client = new ApolloClient({
 });
 
 const App: React.FC = () => {
+    const dashboardItems = useReactiveVar(dashboardItemsVar);
+
+    useEffect(() => {
+        updateLocalstorage(dashboardItems);
+    }, [dashboardItems]);
+
     return (
         <ApolloProvider client={client}>
             <BrowserRouter>

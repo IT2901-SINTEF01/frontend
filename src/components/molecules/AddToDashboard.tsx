@@ -10,7 +10,6 @@ type AddToDashboardProps = {
 
 const AddToDashboard: React.FC<AddToDashboardProps> = (props) => {
     const dashboardItems = useReactiveVar(dashboardItemsVar);
-
     const added = useMemo(() => dashboardItems.some((el) => el.id === props.dashboardItemInfo.id), [dashboardItems]);
 
     const addDashboardItem = () => {
