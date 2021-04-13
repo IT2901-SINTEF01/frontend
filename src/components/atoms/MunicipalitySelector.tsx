@@ -8,10 +8,10 @@ type Props = {
 };
 
 const MunicipalitySelector: React.FC<Props> = (props) => (
-    <SelectField label={props.label} defaultValue={'Oslo'} onChange={props.onChange}>
-        {Object.entries(props.options).map((value) => (
-            <option key={value[1][0]} value={value[1][0]}>
-                {value[1][1]}
+    <SelectField label={props.label} onChange={props.onChange}>
+        {Object.values(props.options).map(([municipalityKey, municipalityName]) => (
+            <option key={municipalityKey} value={municipalityKey}>
+                {municipalityName}
             </option>
         ))}
     </SelectField>

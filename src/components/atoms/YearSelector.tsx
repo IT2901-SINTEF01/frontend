@@ -1,8 +1,8 @@
 import { Combobox } from 'evergreen-ui';
 import React, { useState } from 'react';
 
-const YearSlider: React.FC = () => {
-    const [beginYear, setBeginYear] = useState('2010');
+const YearSelector: React.FC = () => {
+    const [beginYear, setBeginYear] = useState('1986');
     const currentYear = (new Date().getFullYear() - 1).toString();
     const [endYear, setEndYear] = useState(currentYear);
     const yearList = Array<string>();
@@ -13,11 +13,14 @@ const YearSlider: React.FC = () => {
     const changeBeginYear = (e: string) => {
         setBeginYear(e);
         setEndYearList(yearList.slice(yearList.indexOf(e)));
-        localStorage.setItem('beginYear', beginYear);
+        if (e > endYear) {
+            setEndYear(e);
+        }
+        localStorage.setItem('beginYear', e);
     };
     const changeEndYear = (e: string) => {
         setEndYear(e);
-        localStorage.setItem('endYear', endYear);
+        localStorage.setItem('endYear', e);
     };
 
     return (
@@ -27,15 +30,17 @@ const YearSlider: React.FC = () => {
                 items={yearList}
                 onChange={(selected) => changeBeginYear(selected)}
                 placeholder="Startår"
+                selectedItem={beginYear}
             />
             <Combobox
                 openOnFocus
                 items={endYearList}
                 onChange={(selected) => changeEndYear(selected)}
                 placeholder="Sluttår"
+                selectedItem={endYear}
             />
         </>
     );
 };
 
-export default YearSlider;
+export default YearSelector;
