@@ -42,8 +42,8 @@ const PlotlyThresholdChart: React.FC<PlotlyThresholdChartProps> = ({
                 autosize: true,
                 title: title,
                 margin: {
-                    l: 30,
-                    r: 30,
+                    l: 40,
+                    r: 10,
                     b: 40,
                     t: 40,
                     pad: 4,
