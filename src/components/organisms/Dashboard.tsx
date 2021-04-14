@@ -75,8 +75,6 @@ const Dashboard: React.FC = () => {
                                                         title={item.name}
                                                         data={data}
                                                         lineColor={`lightblue`}
-                                                        yAxisLabel={'må endres'}
-                                                        xAxisLabel={'må endres'}
                                                     />
                                                 );
                                             case VisualisationType.THRESHOLD:

@@ -51,14 +51,7 @@ const DataResultItem: React.FC<DataResultItemProps> = ({
                 <DatasetInfoBox title={title} description={description} tags={tags} />
             </Pane>
             <Pane flex="2">
-                <PlotlyLineChart
-                    title={title}
-                    lineColor={`lightblue`}
-                    data={timeEntryMockData}
-                    isPreview={true}
-                    yAxisLabel={yLabel}
-                    xAxisLabel={xLabel}
-                />
+                <PlotlyLineChart title={title} lineColor={`lightblue`} data={timeEntryMockData} isPreview={true} />
             </Pane>
         </Card>
     );

@@ -75,8 +75,6 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         lineColor="lightblue"
                         data={timeEntryMockData}
                         isPreview={true}
-                        xAxisLabel="temp"
-                        yAxisLabel="temp"
                     />
                 );
             case VisualisationType.BAR:

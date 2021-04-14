@@ -3,8 +3,6 @@ import { ChartEntry } from '../../types/visualisation';
 import Plot from 'react-plotly.js';
 
 type PlotlyLineChartProps = {
-    yAxisLabel: string;
-    xAxisLabel: string;
     title?: string;
     lineColor?: string;
     markerColor?: string;
@@ -18,8 +16,6 @@ const PlotlyLineChart: React.FC<PlotlyLineChartProps> = ({
     markerColor = 'black',
     data,
     isPreview = false,
-    xAxisLabel,
-    yAxisLabel,
 }) => {
     return (
         <Plot
@@ -44,12 +40,6 @@ const PlotlyLineChart: React.FC<PlotlyLineChartProps> = ({
                     b: 20,
                     t: 40,
                     pad: 4,
-                },
-                yaxis: {
-                    title: yAxisLabel,
-                },
-                xaxis: {
-                    title: xAxisLabel,
                 },
             }}
             config={{ staticPlot: isPreview }}
