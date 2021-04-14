@@ -61,12 +61,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         thresholdValue={visualisation.threshold}
                         yLabel={visualisation.axes.y.name}
                     />*/
-                    <PlotlyThresholdChart
-                        title={metadata.name}
-                        color={`lightblue`}
-                        data={timeEntryMockData}
-                        isPreview={true}
-                    />
+                    <PlotlyThresholdChart title={metadata.name} data={timeEntryMockData} isPreview={true} />
                 );
             case VisualisationType.LINE:
                 return (width: number, height: number) => (
@@ -78,7 +73,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         strokeColor="#66CCCC"
                         colorBottom="#E0EEEE"
                     />*/
-                    <PlotlyLineChart title={metadata.name} color={`blue`} data={timeEntryMockData} isPreview={true} />
+                    <PlotlyLineChart title={metadata.name} data={timeEntryMockData} isPreview={true} />
                 );
             case VisualisationType.BAR:
                 return () => null; // TODO: replace with proper

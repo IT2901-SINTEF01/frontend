@@ -75,21 +75,9 @@ const Dashboard: React.FC = () => {
                                             {(data) => {
                                                 switch (item.visualisationType) {
                                                     case VisualisationType.LINE:
-                                                        return (
-                                                            <PlotlyLineChart
-                                                                title={item.name}
-                                                                data={data}
-                                                                color={`lightblue`}
-                                                            />
-                                                        );
+                                                        return <PlotlyLineChart title={item.name} data={data} />;
                                                     case VisualisationType.THRESHOLD:
-                                                        return (
-                                                            <PlotlyThresholdChart
-                                                                title={item.name}
-                                                                data={data}
-                                                                color={`lightblue`}
-                                                            />
-                                                        );
+                                                        return <PlotlyThresholdChart title={item.name} data={data} />;
                                                     default:
                                                         return <Text>Denne visualiseringstypen er ikke støttet.</Text>;
                                                 }
