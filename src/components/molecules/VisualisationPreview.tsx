@@ -4,7 +4,6 @@ import { Heading, InfoSignIcon, Pane, Tooltip } from 'evergreen-ui';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
-import AddToDashboard from './AddToDashboard';
 import { VisualisationType } from '../../types/Metadata';
 import ThresholdChart from '../visualisations/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
@@ -90,7 +89,6 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         </Tooltip>
                     </Heading>
                     <Pane flex="1" />
-                    <AddToDashboard />
                 </Pane>
                 <Pane flex="1" height="100%">
                     <DashboardItem
