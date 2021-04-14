@@ -98,7 +98,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                         title={metadata.name}
                         height="20rem"
                         width={getSizeInPercentage()}
-                        titleSize={100}
+                        titleSize={400}
                         paragraph={paragraph}
                     >
                         <ParentSize debounceTime={400}>
