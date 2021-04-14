@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pane, Text } from 'evergreen-ui';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
@@ -10,9 +10,12 @@ import VisualisationSelector from '../atoms/VisualisationSelector';
 import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 import { VisualisationType } from '../../types/Metadata';
 
+import { useHistory } from 'react-router';
+
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
     const { id } = useParams<{ id: string }>();
+    const history = useHistory();
 
     const [selectedVisualisation, setSelectedVisualisation] = useState<VisualisationType>();
 
@@ -25,12 +28,17 @@ const VisualisationEditor: React.FC = () => {
     }
 
     if (!data || !data.allMetadata.some((el) => el.id === id)) {
-        return <Text>Empty</Text>;
+        // No metadata was found. Go back
+        history.push('/explore');
+        return null;
     }
 
     // Safe non-null-assertion due to the .some above
     // eslint-disable-next-line
     const metadata = data.allMetadata.find((el) => el.id === id)!;
+
+    // Set the first available visualisation to active
+    useEffect(() => setSelectedVisualisation(metadata.visualisations[0].type), [metadata]);
 
     return (
         <Pane
