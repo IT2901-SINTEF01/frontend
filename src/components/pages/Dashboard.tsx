@@ -14,7 +14,7 @@ const Dashboard: React.FC = () => {
                 display="grid"
                 gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr" //Smaller screen size should have 1f 1fr 1f
                 columnGap="1rem"
-                gridAutoRows="18rem"
+                gridAutoRows="22rem"
                 rowGap="1rem"
             >
                 <DashboardItems />
