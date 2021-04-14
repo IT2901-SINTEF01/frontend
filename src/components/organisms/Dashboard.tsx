@@ -74,7 +74,7 @@ const Dashboard: React.FC = () => {
                                                     <PlotlyLineChart
                                                         title={item.name}
                                                         data={data}
-                                                        color={`lightblue`}
+                                                        lineColor={`lightblue`}
                                                         yAxisLabel={'må endres'}
                                                         xAxisLabel={'må endres'}
                                                     />

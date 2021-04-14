@@ -53,7 +53,7 @@ const DataResultItem: React.FC<DataResultItemProps> = ({
             <Pane flex="2">
                 <PlotlyLineChart
                     title={title}
-                    color={`lightblue`}
+                    lineColor={`lightblue`}
                     data={timeEntryMockData}
                     isPreview={true}
                     yAxisLabel={yLabel}
