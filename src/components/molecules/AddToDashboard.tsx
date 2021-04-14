@@ -6,6 +6,7 @@ import dashboard from '../../redux/slices/dashboard';
 import { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
 import { RootState } from '../../redux';
 import { useHistory } from 'react-router';
+import { toaster } from 'evergreen-ui';
 
 type Props = {
     dashboardItem: DashboardVisualisation;
@@ -21,11 +22,13 @@ const AddToDashboard: React.FC<Props> = (props) => {
 
     const add = () => {
         dispatch(dashboard.actions.add(props.dashboardItem));
+        toaster.success('Visualiseringen ble lagt til i dashboardet ditt.');
         history.push('/');
     };
 
     const remove = () => {
         dispatch(dashboard.actions.remove(key));
+        toaster.success('Visualiseringen ble fjernet.');
     };
 
     return <AddToDashboardButton added={added} onAdd={add} onRemove={remove} />;
