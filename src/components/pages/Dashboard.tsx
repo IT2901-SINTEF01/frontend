@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pane, Select, Text } from 'evergreen-ui';
+import { Pane, Text } from 'evergreen-ui';
 import AddComponentButton from '../atoms/AddComponentButton';
 import DashboardItem from '../molecules/DashboardItem';
 import { useReactiveVar } from '@apollo/client';
@@ -11,6 +11,7 @@ import dataSourceMappings from '../../utils/dataSourceMappings';
 import { Link } from 'react-router-dom';
 import LineChart from '../charts/LineChart';
 import { VisualisationType } from '../../types/Metadata';
+import DashboardSelector from '../atoms/DashbaordSelector';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -26,14 +27,7 @@ const Dashboard: React.FC = () => {
                 justifyContent="flex-start"
                 paddingTop="4rem"
             >
-                <Pane>
-                    <Select defaultValue="foo">
-                        {/* Placeholders*/}
-                        <option value="foo">Mitt første dashboard som er veldig langt</option>
-                        <option value="bar">Mitt andre dashboard</option>
-                    </Select>
-                </Pane>
-                <Pane width="2rem" />
+                <DashboardSelector />
                 <Pane paddingTop="5px">
                     <Link to="/">
                         <Text color="#1070CA">+ Legg til dashboard</Text>

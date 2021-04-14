@@ -3,10 +3,10 @@ import { ApolloClient, ApolloProvider, useReactiveVar } from '@apollo/client';
 import { cache, dashboardItemsVar, updateLocalstorage } from './cache';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Dashboard from './components/organisms/Dashboard';
-import DataExplorer from './components/organisms/DataExplorer';
-import VisualisationEditor from './components/organisms/VisualisationEditor';
-import NotFound from './components/organisms/NotFound';
+import Dashboard from './components/pages/Dashboard';
+import DataExplorer from './components/pages/DataExplorer';
+import VisualisationEditor from './components/pages/VisualisationEditor';
+import NotFound from './components/pages/NotFound';
 
 const client = new ApolloClient({
     uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
