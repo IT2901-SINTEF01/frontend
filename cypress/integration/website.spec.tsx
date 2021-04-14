@@ -31,7 +31,6 @@ describe('Dashboard', () => {
         cy.wait('@METADATA');
         cy.get('a').first().click();
         cy.contains('Legg til i ditt dashboard').click();
-        cy.go(-2);
         cy.get('.dashboardItem').should('be.visible');
     });
     it('removes component', () => {
@@ -40,11 +39,7 @@ describe('Dashboard', () => {
         cy.wait('@METADATA');
         cy.get('a').first().click();
         cy.contains('Legg til i ditt dashboard').click();
-        cy.go(-2);
-        cy.contains('Legg til nytt komponent').click();
-        cy.get('a').first().click();
-        cy.contains('Fjern').click();
-        cy.go(-2);
+        cy.get('[data-icon=trash]').click();
         cy.get('.dashboardItem').should('not.exist');
     });
     it('goes to 404 if page does not exist', () => {
