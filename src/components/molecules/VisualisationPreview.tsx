@@ -1,9 +1,8 @@
 /* eslint-disable react/display-name */
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Heading, InfoSignIcon, Pane, Tooltip } from 'evergreen-ui';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
-import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
 import { VisualisationType } from '../../types/Metadata';
 import ThresholdChart from '../visualisations/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
@@ -14,12 +13,16 @@ import { DashboardItemSize } from '../../types/DashboardVisualisation';
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;
     selectedVisualisation: VisualisationType;
+    size: DashboardItemSize;
+    paragraph?: string;
 };
 
-const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, selectedVisualisation }) => {
-    const [paragraph, setParagraph] = useState<string>();
-    const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
-
+const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
+    metadata,
+    selectedVisualisation,
+    size,
+    paragraph,
+}) => {
     const visualisation = useMemo(() => metadata.visualisations.find((md) => md.type === selectedVisualisation), [
         metadata,
         selectedVisualisation,
@@ -105,14 +108,6 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         </ParentSize>
                     </DashboardItem>
                 </Pane>
-            </Pane>
-            <Pane gridColumn="span 1">
-                <VisualisationParameterSelector
-                    size={size}
-                    setSize={setSize}
-                    paragraph={paragraph}
-                    setParagraph={setParagraph}
-                />
             </Pane>
         </>
     );
