@@ -1,16 +1,11 @@
 import React from 'react';
 import { Pane } from 'evergreen-ui';
 import AddComponentButton from '../atoms/AddComponentButton';
-import { useReactiveVar } from '@apollo/client';
-import { dashboardItemsVar } from '../../cache';
 import DashboardSelector from '../atoms/DashbaordSelector';
 import AddNewDashboardButton from '../atoms/AddNewDashboardButton';
 import DashboardItems from '../organisms/DashboardItems';
 
 const Dashboard: React.FC = () => {
-    //Apollo local state
-    const dashboardItems = useReactiveVar(dashboardItemsVar);
-
     return (
         <Pane display="flex" flexDirection="column" paddingBottom="2rem" width="80%" margin="auto">
             <Pane height="8rem" display="flex" flexDirection="row" justifyContent="flex-start" paddingTop="4rem">
@@ -25,7 +20,7 @@ const Dashboard: React.FC = () => {
                 rowGap="1rem"
             >
                 <AddComponentButton />
-                <DashboardItems dashboardItems={dashboardItems} />
+                <DashboardItems />
             </Pane>
         </Pane>
     );

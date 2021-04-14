@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pane, SelectField, Textarea, Label } from 'evergreen-ui';
-import { DashboardItemSize } from '../../types/dashboard';
+import { DashboardItemSize } from '../../types/DashboardVisualisation';
 
 type VisualisationParameterSelectorProps = {
     paragraph?: string;

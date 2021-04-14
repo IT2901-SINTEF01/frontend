@@ -3,8 +3,8 @@ import { addDays } from 'date-fns';
 import { WEATHER_MET_API } from '../queries/metApi';
 import { METADATA, MetadataEntry } from '../queries/metadata';
 import faker from 'faker';
-import { DataSourceID } from '../utils/dataSourceMappings';
 import { VisualisationType } from '../types/Metadata';
+import { DataSourceID } from '../types/DataSource';
 
 const visualisationTypes = ['barchart', 'thresholdchart', 'piechart', 'linechart'];
 
