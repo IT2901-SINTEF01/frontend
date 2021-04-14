@@ -2,15 +2,13 @@ import React from 'react';
 import { Pane } from 'evergreen-ui';
 import AddComponentButton from '../atoms/AddComponentButton';
 import DashboardSelector from '../atoms/DashbaordSelector';
-import AddNewDashboardButton from '../atoms/AddNewDashboardButton';
 import DashboardItems from '../organisms/DashboardItems';
 
 const Dashboard: React.FC = () => {
     return (
-        <Pane display="flex" flexDirection="column" paddingBottom="2rem" width="80%" margin="auto">
-            <Pane height="8rem" display="flex" flexDirection="row" justifyContent="flex-start" paddingTop="4rem">
+        <Pane display="flex" flexDirection="column" width="80%" margin="auto">
+            <Pane display="flex" flexDirection="row" justifyContent="flex-start" paddingY="2em">
                 <DashboardSelector />
-                <AddNewDashboardButton />
             </Pane>
             <Pane
                 display="grid"
@@ -19,8 +17,8 @@ const Dashboard: React.FC = () => {
                 gridAutoRows="18rem"
                 rowGap="1rem"
             >
-                <AddComponentButton />
                 <DashboardItems />
+                <AddComponentButton />
             </Pane>
         </Pane>
     );

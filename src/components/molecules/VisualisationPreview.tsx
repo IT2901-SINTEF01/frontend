@@ -88,12 +88,12 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                     <Heading size={400}>
                         Forhåndsvisning
                         <Tooltip content="Forhåndsvisningen er kun ment som referanse. Størrelse og endelig data vil endres i dashbordet.">
-                            <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
+                            <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} verticalAlign="sub" />
                         </Tooltip>
                     </Heading>
                     <Pane flex="1" />
                 </Pane>
-                <Pane flex="1" height="100%">
+                <Pane backgroundColor="white">
                     <DashboardItem
                         title={metadata.name}
                         height="20rem"

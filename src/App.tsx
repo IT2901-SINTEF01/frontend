@@ -11,6 +11,7 @@ import VisualisationEditor from './components/pages/VisualisationEditor';
 import NotFound from './components/pages/NotFound';
 
 import { store } from './redux';
+import Page from './components/layout/Page';
 
 const client = new ApolloClient({
     uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
@@ -22,12 +23,14 @@ const App: React.FC = () => {
         <Provider store={store}>
             <ApolloProvider client={client}>
                 <BrowserRouter>
-                    <Switch>
-                        <Route exact path="/explore/edit/:id" component={VisualisationEditor} />
-                        <Route exact path="/explore" component={DataExplorer} />
-                        <Route exact path="/" component={Dashboard} />
-                        <Route component={NotFound} />
-                    </Switch>
+                    <Page>
+                        <Switch>
+                            <Route exact path="/explore/edit/:id" component={VisualisationEditor} />
+                            <Route exact path="/explore" component={DataExplorer} />
+                            <Route exact path="/" component={Dashboard} />
+                            <Route component={NotFound} />
+                        </Switch>
+                    </Page>
                 </BrowserRouter>
             </ApolloProvider>
         </Provider>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pane, Text } from 'evergreen-ui';
+import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { AllMetadataResult, METADATA } from '../../queries/metadata';
@@ -47,45 +47,56 @@ const VisualisationEditor: React.FC = () => {
     useEffect(() => setSelectedVisualisation(metadata.visualisations[0].type), [metadata]);
 
     return (
-        <Pane
-            width="100%"
-            display="grid"
-            gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
-            columnGap="1rem"
-            rowGap="1rem"
-            padding="2rem"
-        >
-            <Pane gridColumn="span 1">
-                <DataInfoBox title={metadata.name} description={metadata.description} tags={metadata.tags} />
+        <>
+            <Button iconBefore={CircleArrowLeftIcon} appearance="minimal" onClick={() => history.push('/explore')}>
+                Tilbake til datautforsker
+            </Button>
+            <Pane
+                width="90%"
+                margin="auto"
+                display="grid"
+                gridTemplateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
+                columnGap="2rem"
+                rowGap="1rem"
+                padding="2rem"
+            >
+                <Pane gridColumn="span 1">
+                    <DataInfoBox title={metadata.name} description={metadata.description} tags={metadata.tags} />
+                </Pane>
+                {/* Safe type cast as we don't render before metadata has been loaded. */}
+                <VisualisationPreview
+                    metadata={metadata}
+                    selectedVisualisation={selectedVisualisation as VisualisationType}
+                    size={size}
+                />
+                <VisualisationParameterSelector
+                    size={size}
+                    setSize={setSize}
+                    paragraph={paragraph}
+                    setParagraph={setParagraph}
+                />
+                <VisualisationSelector
+                    label="Velg visualisering"
+                    default={selectedVisualisation as VisualisationType}
+                    options={Object.fromEntries(
+                        metadata.visualisations.map((value) => [
+                            friendlyNameForVisualisationType(value.type),
+                            value.type,
+                        ]),
+                    )}
+                    onChange={(e) => setSelectedVisualisation(e.currentTarget.value as VisualisationType)}
+                />
+                <Pane gridColumn={6}>
+                    <AddToDashboard
+                        dashboardItem={{
+                            visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
+                            dataSourceId: metadata.datasourceId,
+                            options: { size, paragraph },
+                        }}
+                    />
+                </Pane>
             </Pane>
-            {/* Safe type cast as we don't render before metadata has been loaded. */}
-            <VisualisationPreview
-                metadata={metadata}
-                selectedVisualisation={selectedVisualisation as VisualisationType}
-                size={size}
-            />
-            <VisualisationParameterSelector
-                size={size}
-                setSize={setSize}
-                paragraph={paragraph}
-                setParagraph={setParagraph}
-            />
-            <VisualisationSelector
-                label="Velg visualisering"
-                default={selectedVisualisation as VisualisationType}
-                options={Object.fromEntries(
-                    metadata.visualisations.map((value) => [friendlyNameForVisualisationType(value.type), value.type]),
-                )}
-                onChange={(e) => setSelectedVisualisation(e.currentTarget.value as VisualisationType)}
-            />
-            <AddToDashboard
-                dashboardItem={{
-                    visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
-                    dataSourceId: metadata.datasourceId,
-                    options: { size, paragraph },
-                }}
-            />
-        </Pane>
+        </>
     );
 };
 
