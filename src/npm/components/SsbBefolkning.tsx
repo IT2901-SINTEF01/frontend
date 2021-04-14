@@ -6,35 +6,17 @@ import DataWrapper from '../../components/molecules/DataWrapper';
 import visualisationMapping from '../../utils/visualisationMapping';
 import { POPULATION_IN_NORWAY } from '../../queries/populationInNorway';
 
-const SsbBefolkningLine: React.FC<Omit<LineChartProps, 'data'>> = ({
-    width = 600,
-    height = 200,
-    yLabel,
-    strokeColor,
-    colorBottom,
-}) => {
+const SsbBefolkningLine: React.FC<Omit<LineChartProps, 'data'>> = ({ yLabel, strokeColor }) => {
     return (
         <DataWrapper mappingFunction={visualisationMapping[`SSB_POPULATION-linechart`]} query={POPULATION_IN_NORWAY}>
-            {(data) => (
-                <LineChart
-                    data={data}
-                    width={width}
-                    height={height}
-                    yLabel={yLabel}
-                    strokeColor={strokeColor}
-                    colorBottom={colorBottom}
-                />
-            )}
+            {(data) => <LineChart data={data} yLabel={yLabel} strokeColor={strokeColor} />}
         </DataWrapper>
     );
 };
 
 const SsbBefolkningThreshold: React.FC<Omit<ThresholdChartProps, 'data'>> = ({
-    width = 600,
-    height = 200,
     thresholdValue,
-    aboveThresholdColor,
-    belowThresholdColor,
+    thresholdColors,
     yLabel,
 }) => {
     return (
@@ -45,11 +27,8 @@ const SsbBefolkningThreshold: React.FC<Omit<ThresholdChartProps, 'data'>> = ({
             {(data) => (
                 <ThresholdChart
                     data={data}
-                    width={width}
-                    height={height}
                     thresholdValue={thresholdValue}
-                    aboveThresholdColor={aboveThresholdColor}
-                    belowThresholdColor={belowThresholdColor}
+                    thresholdColors={thresholdColors}
                     yLabel={yLabel}
                 />
             )}
