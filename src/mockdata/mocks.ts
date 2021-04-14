@@ -6,8 +6,6 @@ import faker from 'faker';
 import { VisualisationType } from '../types/Metadata';
 import { DataSourceID } from '../types/DataSource';
 
-const visualisationTypes = ['barchart', 'thresholdchart', 'piechart', 'linechart'];
-
 const randomListOfWords = (count: number) => {
     const wordList = faker.random.words(count % 6).split(' ');
     return wordList[0] ? wordList : [];
@@ -25,7 +23,7 @@ export const makeMetadata = (): MetadataEntry[] => {
         updated: faker.date.recent().toString(),
         visualisations: [
             {
-                type: faker.random.arrayElement(visualisationTypes) as VisualisationType,
+                type: VisualisationType.LINE,
                 threshold: 0,
                 axes: {
                     x: {
