@@ -5,9 +5,10 @@ import { cache, dashboardItemsVar } from '../../src/cache';
 import { MockedProvider } from '@apollo/client/testing';
 import mocks from '../../src/mockdata/mocks';
 import { WEATHER_MET_API } from '../../src/queries/metApi';
-import Dashboard from '../../src/components/organisms/Dashboard';
+import Dashboard from '../../src/components/pages/Dashboard';
 import { DashboardItemInfo, DashboardItemSize } from '../../src/types/dashboard';
 import { DataSourceID } from '../../src/utils/dataSourceMappings';
+import { VisualisationType } from '../../src/types/Metadata';
 
 describe('Apollo state management', () => {
     beforeEach(() => {
@@ -35,6 +36,7 @@ describe('Apollo state management', () => {
             id: 'This is a custom ID',
             size: DashboardItemSize.SMALL,
             query: WEATHER_MET_API,
+            visualisationType: VisualisationType.LINE,
         };
         dashboardItemsVar([item]);
         expect(dashboardItemsVar()).to.deep.include(item);
