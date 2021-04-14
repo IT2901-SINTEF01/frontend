@@ -5,11 +5,8 @@ import DashboardItem from '../molecules/DashboardItem';
 import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
 import DataWrapper from '../molecules/DataWrapper';
-import ThresholdChart from '../charts/ThresholdChart';
-import { ParentSize } from '@visx/responsive';
 import dataSourceMappings from '../../utils/dataSourceMappings';
 import { Link } from 'react-router-dom';
-import LineChart from '../charts/LineChart';
 import { VisualisationType } from '../../types/Metadata';
 import PlotlyLineChart from '../charts/PlotlyLineChart';
 import PlotlyThresholdChart from '../charts/PlotlyThresholdChart';
@@ -66,37 +63,35 @@ const Dashboard: React.FC = () => {
                                 titleSize={100}
                                 paragraph={item.paragraph}
                             >
-                                <ParentSize>
-                                    {(parent) => (
-                                        <DataWrapper
-                                            mappingFunction={dataSourceMappings[item.datasourceId].mapping}
-                                            query={dataSourceMappings[item.datasourceId].query}
-                                        >
-                                            {(data) => {
-                                                switch (item.visualisationType) {
-                                                    case VisualisationType.LINE:
-                                                        return (
-                                                            <PlotlyLineChart
-                                                                title={item.name}
-                                                                data={data}
-                                                                color={`lightblue`}
-                                                            />
-                                                        );
-                                                    case VisualisationType.THRESHOLD:
-                                                        return (
-                                                            <PlotlyThresholdChart
-                                                                title={item.name}
-                                                                data={data}
-                                                                color={`lightblue`}
-                                                            />
-                                                        );
-                                                    default:
-                                                        return <Text>Denne visualiseringstypen er ikke støttet.</Text>;
-                                                }
-                                            }}
-                                        </DataWrapper>
-                                    )}
-                                </ParentSize>
+                                <DataWrapper
+                                    mappingFunction={dataSourceMappings[item.datasourceId].mapping}
+                                    query={dataSourceMappings[item.datasourceId].query}
+                                >
+                                    {(data) => {
+                                        switch (item.visualisationType) {
+                                            case VisualisationType.LINE:
+                                                return (
+                                                    <PlotlyLineChart
+                                                        title={item.name}
+                                                        data={data}
+                                                        color={`lightblue`}
+                                                        yAxisLabel={'må endres'}
+                                                        xAxisLabel={'må endres'}
+                                                    />
+                                                );
+                                            case VisualisationType.THRESHOLD:
+                                                return (
+                                                    <PlotlyThresholdChart
+                                                        title={item.name}
+                                                        data={data}
+                                                        color={`lightblue`}
+                                                    />
+                                                );
+                                            default:
+                                                return <Text>Denne visualiseringstypen er ikke støttet.</Text>;
+                                        }
+                                    }}
+                                </DataWrapper>
                             </DashboardItem>
                         </Pane>
                     );

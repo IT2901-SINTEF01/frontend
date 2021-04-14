@@ -3,8 +3,6 @@ import { Card, Pane } from 'evergreen-ui';
 import DatasetInfoBox from '../atoms/DatasetInfoBox';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { VisualisationType } from '../../types/Metadata';
-import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
-import Plot from 'react-plotly.js';
 import PlotlyLineChart from '../charts/PlotlyLineChart';
 
 export type DataResultItemProps = {
@@ -12,9 +10,18 @@ export type DataResultItemProps = {
     title: string;
     description: string;
     tags: string[];
+    yLabel: string;
+    xLabel: string;
 };
 
-const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags, visualisationType }) => {
+const DataResultItem: React.FC<DataResultItemProps> = ({
+    title,
+    description,
+    tags,
+    visualisationType,
+    xLabel,
+    yLabel,
+}) => {
     let valueRange: [number, number];
     switch (visualisationType) {
         case VisualisationType.THRESHOLD:
@@ -28,10 +35,6 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
             break;
     }
     const timeEntryMockData = mockTimeEntry(100, valueRange);
-
-    const colors: string[] = timeEntryMockData.map((asd) => {
-        return asd.y > 0 ? 'red' : 'blue';
-    });
 
     return (
         <Card
@@ -48,7 +51,14 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                 <DatasetInfoBox title={title} description={description} tags={tags} />
             </Pane>
             <Pane flex="2">
-                <PlotlyLineChart title={title} color={`lightblue`} data={timeEntryMockData} isPreview={true} />
+                <PlotlyLineChart
+                    title={title}
+                    color={`lightblue`}
+                    data={timeEntryMockData}
+                    isPreview={true}
+                    yAxisLabel={yLabel}
+                    xAxisLabel={xLabel}
+                />
             </Pane>
         </Card>
     );

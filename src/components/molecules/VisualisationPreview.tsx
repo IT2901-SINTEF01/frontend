@@ -8,9 +8,6 @@ import VisualisationParameterSelector from '../atoms/VisualisationParameterSelec
 import { WEATHER_MET_API } from '../../queries/metApi';
 import AddToDashboard from './AddToDashboard';
 import { VisualisationType } from '../../types/Metadata';
-import ThresholdChart from '../charts/ThresholdChart';
-import { ParentSize } from '@visx/responsive';
-import LineChart from '../charts/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
@@ -53,7 +50,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
 
         switch (visualisation.type) {
             case VisualisationType.THRESHOLD:
-                return (width: number, height: number) => (
+                return (
                     /*<ThresholdChart
                         width={width}
                         height={height}
@@ -69,7 +66,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                     />
                 );
             case VisualisationType.LINE:
-                return (width: number, height: number) => (
+                return (
                     /*<LineChart
                         width={width}
                         height={height}
@@ -78,7 +75,14 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         strokeColor="#66CCCC"
                         colorBottom="#E0EEEE"
                     />*/
-                    <PlotlyLineChart title={metadata.name} color={`blue`} data={timeEntryMockData} isPreview={true} />
+                    <PlotlyLineChart
+                        title={metadata.name}
+                        color="lightblue"
+                        data={timeEntryMockData}
+                        isPreview={true}
+                        xAxisLabel="temp"
+                        yAxisLabel="temp"
+                    />
                 );
             case VisualisationType.BAR:
                 return () => null; // TODO: replace with proper
@@ -135,11 +139,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         titleSize={100}
                         paragraph={paragraph}
                     >
-                        <ParentSize debounceTime={400}>
-                            {(parent) => {
-                                return child(parent.width, parent.height);
-                            }}
-                        </ParentSize>
+                        {child}
                     </DashboardItem>
                 </Pane>
             </Pane>

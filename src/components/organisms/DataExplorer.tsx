@@ -47,6 +47,8 @@ const DataExplorer: React.FC = () => {
                             description={el.description}
                             tags={el.tags}
                             visualisationType={el.visualisations[0].type}
+                            yLabel={el.visualisations[0].axes.x.name}
+                            xLabel={el.visualisations[0].axes.y.name}
                         />
                     </Link>
                 </Pane>

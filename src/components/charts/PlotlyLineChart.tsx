@@ -3,13 +3,22 @@ import { ChartEntry } from '../../types/visualisation';
 import Plot from 'react-plotly.js';
 
 type PlotlyLineChartProps = {
+    yAxisLabel: string;
+    xAxisLabel: string;
     title?: string;
     color: string;
     data: ChartEntry[];
     isPreview?: boolean;
 };
 
-const PlotlyLineChart: React.FC<PlotlyLineChartProps> = ({ title, color, data, isPreview = false }) => {
+const PlotlyLineChart: React.FC<PlotlyLineChartProps> = ({
+    title,
+    color,
+    data,
+    isPreview = false,
+    yAxisLabel,
+    xAxisLabel,
+}) => {
     return (
         <Plot
             data={[
@@ -19,7 +28,7 @@ const PlotlyLineChart: React.FC<PlotlyLineChartProps> = ({ title, color, data, i
                     fillcolor: 'rgba(0,0,255,0.10)',
                     type: 'scatter',
                     mode: 'lines+markers',
-                    line: { color: 'lightblue', shape: 'spline', width: 1.337 },
+                    line: { color: color, shape: 'spline', width: 1.337 },
                     marker: { color: 'black', size: 3, symbol: 'celsius' },
                     text: `°C`,
                 },
@@ -36,10 +45,10 @@ const PlotlyLineChart: React.FC<PlotlyLineChartProps> = ({ title, color, data, i
                     pad: 4,
                 },
                 yaxis: {
-                    title: 'Temperatur',
+                    title: yAxisLabel,
                 },
                 xaxis: {
-                    title: 'Tid',
+                    title: xAxisLabel,
                 },
             }}
             config={{ staticPlot: isPreview }}
