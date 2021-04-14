@@ -10,18 +10,9 @@ export type DataResultItemProps = {
     title: string;
     description: string;
     tags: string[];
-    yLabel: string;
-    xLabel: string;
 };
 
-const DataResultItem: React.FC<DataResultItemProps> = ({
-    title,
-    description,
-    tags,
-    visualisationType,
-    xLabel,
-    yLabel,
-}) => {
+const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags, visualisationType }) => {
     let valueRange: [number, number];
     switch (visualisationType) {
         case VisualisationType.THRESHOLD:
