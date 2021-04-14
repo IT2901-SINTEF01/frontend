@@ -9,7 +9,7 @@ import VisualisationEditor from './components/organisms/VisualisationEditor';
 import NotFound from './components/organisms/NotFound';
 
 const client = new ApolloClient({
-    uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+    uri: `https://sintef01.azurewebsites.net/graphql`, // process.env.REACT_APP_GRAPHQL_ENDPOINT,
     cache,
 });
 

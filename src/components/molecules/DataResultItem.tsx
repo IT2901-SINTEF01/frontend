@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, Heading, Pane, Text } from 'evergreen-ui';
+import { Card, Pane } from 'evergreen-ui';
 import DatasetInfoBox from '../atoms/DatasetInfoBox';
-import { ParentSize } from '@visx/responsive';
-import ThresholdChart from '../charts/ThresholdChart';
-import LineChart from '../charts/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { VisualisationType } from '../../types/Metadata';
+import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
+import Plot from 'react-plotly.js';
+import PlotlyLineChart from '../charts/PlotlyLineChart';
 
 export type DataResultItemProps = {
     visualisationType: VisualisationType;
@@ -15,7 +15,23 @@ export type DataResultItemProps = {
 };
 
 const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags, visualisationType }) => {
-    const timeEntryMockData = mockTimeEntry(100);
+    let valueRange: [number, number];
+    switch (visualisationType) {
+        case VisualisationType.THRESHOLD:
+            valueRange = [-30, 30];
+            break;
+        case VisualisationType.BAR:
+        case VisualisationType.PIE:
+        case VisualisationType.LINE:
+        default:
+            valueRange = [0, 50];
+            break;
+    }
+    const timeEntryMockData = mockTimeEntry(100, valueRange);
+
+    const colors: string[] = timeEntryMockData.map((asd) => {
+        return asd.y > 0 ? 'red' : 'blue';
+    });
 
     return (
         <Card
@@ -32,36 +48,7 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
                 <DatasetInfoBox title={title} description={description} tags={tags} />
             </Pane>
             <Pane flex="2">
-                <Heading marginBottom="1rem">Forslag til visualisering</Heading>
-                <ParentSize>
-                    {(parent) => {
-                        const height = parent.height - 40;
-                        switch (visualisationType) {
-                            case VisualisationType.LINE:
-                                return (
-                                    <LineChart
-                                        width={parent.width}
-                                        height={height > 0 ? height : parent.height}
-                                        data={timeEntryMockData}
-                                        yLabel="Line chart"
-                                        strokeColor="#66CCCC"
-                                        colorBottom="#E0EEEE"
-                                    />
-                                );
-                            case VisualisationType.THRESHOLD:
-                                return (
-                                    <ThresholdChart
-                                        width={parent.width}
-                                        height={height > 0 ? height : parent.height}
-                                        data={timeEntryMockData}
-                                        yLabel="Threshold chart"
-                                    />
-                                );
-                            default:
-                                return <Text>{visualisationType}</Text>;
-                        }
-                    }}
-                </ParentSize>
+                <PlotlyLineChart title={title} color={`lightblue`} data={timeEntryMockData} isPreview={true} />
             </Pane>
         </Card>
     );

@@ -14,6 +14,8 @@ import LineChart from '../charts/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { useReactiveVar } from '@apollo/client';
 import { dashboardItemsVar } from '../../cache';
+import PlotlyLineChart from '../charts/PlotlyLineChart';
+import PlotlyThresholdChart from '../charts/PlotlyThresholdChart';
 
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;
@@ -44,29 +46,39 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
             return () => null;
         }
 
-        const timeEntryMockData = mockTimeEntry(100, visualisation.axes.y.limit);
+        const timeEntryMockData = mockTimeEntry(
+            100,
+            selectedVisualisation === VisualisationType.THRESHOLD ? [-100, 100] : visualisation.axes.y.limit,
+        );
 
         switch (visualisation.type) {
             case VisualisationType.THRESHOLD:
                 return (width: number, height: number) => (
-                    <ThresholdChart
+                    /*<ThresholdChart
                         width={width}
                         height={height}
                         data={timeEntryMockData}
                         thresholdValue={visualisation.threshold}
                         yLabel={visualisation.axes.y.name}
+                    />*/
+                    <PlotlyThresholdChart
+                        title={metadata.name}
+                        color={`lightblue`}
+                        data={timeEntryMockData}
+                        isPreview={true}
                     />
                 );
             case VisualisationType.LINE:
                 return (width: number, height: number) => (
-                    <LineChart
+                    /*<LineChart
                         width={width}
                         height={height}
                         data={timeEntryMockData}
                         yLabel={visualisation.axes.y.name}
                         strokeColor="#66CCCC"
                         colorBottom="#E0EEEE"
-                    />
+                    />*/
+                    <PlotlyLineChart title={metadata.name} color={`blue`} data={timeEntryMockData} isPreview={true} />
                 );
             case VisualisationType.BAR:
                 return () => null; // TODO: replace with proper

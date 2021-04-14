@@ -11,6 +11,8 @@ import dataSourceMappings from '../../utils/dataSourceMappings';
 import { Link } from 'react-router-dom';
 import LineChart from '../charts/LineChart';
 import { VisualisationType } from '../../types/Metadata';
+import PlotlyLineChart from '../charts/PlotlyLineChart';
+import PlotlyThresholdChart from '../charts/PlotlyThresholdChart';
 
 const Dashboard: React.FC = () => {
     //Apollo local state
@@ -74,18 +76,18 @@ const Dashboard: React.FC = () => {
                                                 switch (item.visualisationType) {
                                                     case VisualisationType.LINE:
                                                         return (
-                                                            <LineChart
-                                                                width={parent.width}
-                                                                height={parent.height}
+                                                            <PlotlyLineChart
+                                                                title={item.name}
                                                                 data={data}
+                                                                color={`lightblue`}
                                                             />
                                                         );
                                                     case VisualisationType.THRESHOLD:
                                                         return (
-                                                            <ThresholdChart
+                                                            <PlotlyThresholdChart
+                                                                title={item.name}
                                                                 data={data}
-                                                                height={parent.height}
-                                                                width={parent.width}
+                                                                color={`lightblue`}
                                                             />
                                                         );
                                                     default:

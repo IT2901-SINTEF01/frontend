@@ -10,7 +10,7 @@ import { random } from 'faker';
  * @param max Maximum value of time entry value.
  */
 export default function (size: number, [min, max]: [number, number] = [0, 100]): ChartEntry[] {
-    const values = new Array(size).fill(null).map(() => random.number(max) + min);
+    const values = new Array(size).fill(null).map(() => random.number({ min, max })); //Math.random() * (max - min) + min);
     const timeseries = Object.keys(new Array(size).fill(null)).map((i) => addDays(new Date(2020, 12, 31), Number(i)));
     return values.map((e, i) => ({ y: e, x: timeseries[i].toISOString() }));
 }
