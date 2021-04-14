@@ -37,7 +37,7 @@ const PlotlyLineChart: React.FC<PlotlyLineChartProps> = ({
                 margin: {
                     l: 40,
                     r: 10,
-                    b: 20,
+                    b: 40,
                     t: 40,
                     pad: 4,
                 },
