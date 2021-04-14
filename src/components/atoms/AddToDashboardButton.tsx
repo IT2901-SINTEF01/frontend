@@ -10,14 +10,14 @@ type AddToDashboardButtonType = {
 const AddToDashboardButton: React.FC<AddToDashboardButtonType> = (props) => {
     if (props.added) {
         return (
-            <Button appearance="primary" intent="danger" iconBefore={CrossIcon} onClick={props.onRemove}>
+            <Button width="100%" appearance="primary" intent="danger" iconBefore={CrossIcon} onClick={props.onRemove}>
                 Fjern fra ditt dashboard
             </Button>
         );
     }
 
     return (
-        <Button appearance="primary" iconBefore={PlusIcon} onClick={props.onAdd}>
+        <Button width="100%" appearance="primary" iconBefore={PlusIcon} onClick={props.onAdd}>
             Legg til i ditt dashboard
         </Button>
     );

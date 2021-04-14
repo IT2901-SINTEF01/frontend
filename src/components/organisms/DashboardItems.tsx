@@ -23,6 +23,7 @@ const DashboardItems: React.FC = () => {
                     height="100%"
                     gridColumn={`span ${visualisation.options.size}`}
                     className="dashboardItem"
+                    backgroundColor="white"
                 >
                     <DashboardItem
                         title={visualisation.dataSourceId}
