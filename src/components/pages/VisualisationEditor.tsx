@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Pane, Text } from 'evergreen-ui';
-import { useQuery, useReactiveVar } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
@@ -9,27 +9,12 @@ import DataInfoBox from '../atoms/DatasetInfoBox';
 import VisualisationSelector from '../atoms/VisualisationSelector';
 import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
 import { VisualisationType } from '../../types/Metadata';
-import { dashboardItemsVar } from '../../cache';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
     const { id } = useParams<{ id: string }>();
-    const dashboardItems = useReactiveVar(dashboardItemsVar);
 
     const [selectedVisualisation, setSelectedVisualisation] = useState<VisualisationType>();
-
-    // Default to first available visualisation
-    useEffect(() => {
-        if (dashboardItems) {
-            const item = dashboardItems.find((el) => el.id === id);
-            if (item?.visualisationType) {
-                setSelectedVisualisation(item.visualisationType);
-                return;
-            }
-        }
-        if (!data) return;
-        setSelectedVisualisation(metadata.visualisations[0].type);
-    }, [data]);
 
     if (error) {
         return <Text>{error.message}</Text>;

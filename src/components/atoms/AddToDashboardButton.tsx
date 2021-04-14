@@ -1,11 +1,9 @@
 import React from 'react';
 import { Button, CrossIcon, PlusIcon } from 'evergreen-ui';
-import { DashboardItemInfo } from '../../types/dashboard';
 
 type AddToDashboardButtonType = {
     onAdd: () => void;
     onRemove: () => void;
-    dashboardItemInfo: DashboardItemInfo;
     added: boolean;
 };
 

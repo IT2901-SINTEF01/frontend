@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import ThresholdChart, { ThresholdChartProps } from '../components/charts/ThresholdChart';
+import ThresholdChart, { ThresholdChartProps } from '../components/visualisations/ThresholdChart';
 import { Story } from '@storybook/react';
 import { historicAppleStockPrice, numericAppleStockPrice } from '../mockdata/appleStock';
 

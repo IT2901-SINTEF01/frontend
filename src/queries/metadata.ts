@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
-import { DataSourceID } from '../utils/dataSourceMappings';
 import { VisualisationType } from '../types/Metadata';
+import { DataSourceID } from '../types/DataSource';
 
 export const METADATA = gql`
     query {

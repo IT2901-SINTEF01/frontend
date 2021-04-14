@@ -1,33 +1,8 @@
-import React, { useMemo } from 'react';
-import { useReactiveVar } from '@apollo/client';
-import { dashboardItemsVar } from '../../cache';
-import { DashboardItemInfo } from '../../types/dashboard';
+import React from 'react';
 import AddToDashboardButton from '../atoms/AddToDashboardButton';
 
-type AddToDashboardProps = {
-    dashboardItemInfo: DashboardItemInfo;
-};
-
-const AddToDashboard: React.FC<AddToDashboardProps> = (props) => {
-    const dashboardItems = useReactiveVar(dashboardItemsVar);
-    const added = useMemo(() => dashboardItems.some((el) => el.id === props.dashboardItemInfo.id), [dashboardItems]);
-
-    const addDashboardItem = () => {
-        dashboardItemsVar([...dashboardItemsVar(), props.dashboardItemInfo]);
-    };
-
-    const removeDashboardItem = () => {
-        dashboardItemsVar(dashboardItemsVar().filter((el) => el.id !== props.dashboardItemInfo.id));
-    };
-
-    return (
-        <AddToDashboardButton
-            added={added}
-            onAdd={addDashboardItem}
-            onRemove={removeDashboardItem}
-            dashboardItemInfo={props.dashboardItemInfo}
-        />
-    );
+const AddToDashboard: React.FC = () => {
+    return <AddToDashboardButton added={true} onAdd={() => null} onRemove={() => null} />;
 };
 
 export default AddToDashboard;
