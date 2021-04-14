@@ -22,13 +22,13 @@ const AddToDashboard: React.FC<Props> = (props) => {
 
     const add = () => {
         dispatch(dashboard.actions.add(props.dashboardItem));
-        toaster.success('Visualiseringen ble lagt til i dashboardet ditt.');
+        toaster.success('Visualiseringen ble lagt til i dashboardet.');
         history.push('/');
     };
 
     const remove = () => {
         dispatch(dashboard.actions.remove(key));
-        toaster.success('Visualiseringen ble fjernet.');
+        toaster.success('Visualiseringen ble fjernet fra dashboardet.');
     };
 
     return <AddToDashboardButton added={added} onAdd={add} onRemove={remove} />;
