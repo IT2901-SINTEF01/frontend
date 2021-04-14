@@ -11,6 +11,7 @@ import { friendlyNameForVisualisationType } from '../../utils/visualisationLabel
 import { VisualisationType } from '../../types/Metadata';
 
 import { useHistory } from 'react-router';
+import AddToDashboard from '../molecules/AddToDashboard';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -64,6 +65,13 @@ const VisualisationEditor: React.FC = () => {
                     metadata.visualisations.map((value) => [friendlyNameForVisualisationType(value.type), value.type]),
                 )}
                 onChange={(e) => setSelectedVisualisation(e.currentTarget.value as VisualisationType)}
+            />
+            <AddToDashboard
+                dashboardItem={{
+                    visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
+                    dataSourceId: metadata.datasourceId,
+                    options: {},
+                }}
             />
         </Pane>
     );
