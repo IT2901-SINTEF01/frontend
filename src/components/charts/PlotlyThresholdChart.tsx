@@ -29,7 +29,6 @@ const PlotlyThresholdChart: React.FC<PlotlyThresholdChartProps> = ({
                 {
                     x: data.map((d) => d.x),
                     y: data.map((d) => d.y),
-                    /*fill: 'tozeroy',*/
                     fillcolor: 'rgba(0,0,255,0.10)',
                     type: 'scatter',
                     mode: 'lines+markers',
