@@ -12,6 +12,8 @@ import { VisualisationType } from '../../types/Metadata';
 
 import { useHistory } from 'react-router';
 import AddToDashboard from '../molecules/AddToDashboard';
+import { DashboardItemSize } from '../../types/DashboardVisualisation';
+import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -19,6 +21,9 @@ const VisualisationEditor: React.FC = () => {
     const history = useHistory();
 
     const [selectedVisualisation, setSelectedVisualisation] = useState<VisualisationType>();
+
+    const [paragraph, setParagraph] = useState<string>();
+    const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
 
     if (error) {
         return <Text>{error.message}</Text>;
@@ -57,6 +62,13 @@ const VisualisationEditor: React.FC = () => {
             <VisualisationPreview
                 metadata={metadata}
                 selectedVisualisation={selectedVisualisation as VisualisationType}
+                size={size}
+            />
+            <VisualisationParameterSelector
+                size={size}
+                setSize={setSize}
+                paragraph={paragraph}
+                setParagraph={setParagraph}
             />
             <VisualisationSelector
                 label="Velg visualisering"
@@ -70,7 +82,7 @@ const VisualisationEditor: React.FC = () => {
                 dashboardItem={{
                     visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
                     dataSourceId: metadata.datasourceId,
-                    options: {},
+                    options: { size, paragraph },
                 }}
             />
         </Pane>

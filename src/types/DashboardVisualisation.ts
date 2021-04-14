@@ -6,7 +6,7 @@ import { VisualisationType } from './Metadata';
  */
 
 // This is the set of options for all visualisations
-export type BaseChartCustomisationOption = { description?: string };
+export type BaseChartCustomisationOption = { description?: string; size: DashboardItemSize; paragraph?: string };
 
 // Add a customisation option for each visualisation possible
 export type LineChartCustomisationOption = BaseChartCustomisationOption;

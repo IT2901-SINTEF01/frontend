@@ -17,8 +17,20 @@ const DashboardItems: React.FC = () => {
     return (
         <>
             {Object.entries(visualisations).map(([mappingPath, visualisation]) => (
-                <Pane key={mappingPath} width="100%" height="100%" gridColumn={'span 6'} className="dashboardItem">
-                    <DashboardItem title={'abc'} height="100%" width="100%" titleSize={100}>
+                <Pane
+                    key={mappingPath}
+                    width="100%"
+                    height="100%"
+                    gridColumn={`span ${visualisation.options.size}`}
+                    className="dashboardItem"
+                >
+                    <DashboardItem
+                        title={visualisation.dataSourceId}
+                        height="100%"
+                        width="100%"
+                        titleSize={100}
+                        paragraph={visualisation.options.paragraph}
+                    >
                         <ParentSize>
                             {(parent) => (
                                 <DataWrapper
