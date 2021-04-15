@@ -1,14 +1,12 @@
 /* eslint-disable react/display-name */
 import React, { useMemo } from 'react';
-import { Heading, InfoSignIcon, Pane, Tooltip } from 'evergreen-ui';
+import { Heading, InfoSignIcon, Pane, Tooltip, Text } from 'evergreen-ui';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import { VisualisationType } from '../../types/Metadata';
-import ThresholdChart from '../visualisations/ThresholdChart';
-import LineChart from '../visualisations/LineChart';
-import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { DashboardItemSize } from '../../types/DashboardVisualisation';
 import { ParentSize } from '@visx/responsive';
+import MockedVisualisation from './MockedVisualisation';
 
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;
@@ -27,52 +25,6 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
         metadata,
         selectedVisualisation,
     ]);
-
-    const child = useMemo(() => {
-        if (visualisation === undefined) {
-            return () => null;
-        }
-
-        const timeEntryMockData = mockTimeEntry(
-            100,
-            selectedVisualisation === VisualisationType.THRESHOLD ? [-100, 100] : visualisation.axes.y.limit,
-        );
-
-        switch (visualisation.type) {
-            case VisualisationType.THRESHOLD:
-                return (width: number) => (
-                    <ThresholdChart
-                        data={timeEntryMockData}
-                        thresholdValue={visualisation.threshold}
-                        yLabel={visualisation.axes.y.name}
-                        isPreview={true}
-                        height="100%"
-                        width={width}
-                    />
-                );
-            case VisualisationType.LINE:
-                return (width: number) => (
-                    <LineChart
-                        data={timeEntryMockData}
-                        yLabel={visualisation.axes.y.name}
-                        strokeColor="#66CCCC"
-                        isPreview={true}
-                        height="100%"
-                        width={width}
-                    />
-                );
-            case VisualisationType.BAR:
-                return () => null; // TODO: replace with proper
-            case VisualisationType.PIE:
-                return () => null; // TODO: replace with proper
-            default:
-                return () => null;
-        }
-    }, [visualisation]);
-
-    if (visualisation === undefined) {
-        return null;
-    }
 
     const getSizeInPercentage = () => {
         switch (size) {
@@ -105,7 +57,19 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                         titleSize={400}
                         paragraph={paragraph}
                     >
-                        <ParentSize>{(parent) => child(parent.width)}</ParentSize>
+                        <ParentSize>
+                            {(parent) =>
+                                visualisation ? (
+                                    <MockedVisualisation
+                                        visualisationType={visualisation.type as VisualisationType}
+                                        height="100%"
+                                        width={parent.width}
+                                    />
+                                ) : (
+                                    <Text>Finner ikke visualisering</Text>
+                                )
+                            }
+                        </ParentSize>
                     </DashboardItem>
                 </Pane>
             </Pane>
