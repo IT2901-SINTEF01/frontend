@@ -9,8 +9,10 @@ export type ThresholdChartProps = {
     strokeColor?: string;
     isPreview?: boolean;
     thresholdValue?: number;
-    aboveThreholdColor?: string;
-    belowThreholdColor?: string;
+    aboveThresholdColor?: string;
+    belowThresholdColor?: string;
+    height: string | number;
+    width: string | number;
 };
 
 const ThresholdChart: React.FC<ThresholdChartProps> = ({
@@ -19,12 +21,14 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
     strokeColor = 'lightblue',
     isPreview = false,
     thresholdValue = 0,
-    aboveThreholdColor = 'red',
-    belowThreholdColor = 'blue',
+    aboveThresholdColor = 'red',
+    belowThresholdColor = 'blue',
+    height,
+    width,
     yLabel,
 }) => {
     const markerColors = data.map((d) => {
-        return d.y > thresholdValue ? aboveThreholdColor : belowThreholdColor;
+        return d.y > thresholdValue ? aboveThresholdColor : belowThresholdColor;
     });
 
     return (
@@ -41,7 +45,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
                     marker: { color: markerColors, size: 3 },
                 },
             ]}
-            style={{ width: '100%', height: '100%', margin: '0' }}
+            style={{ width: width, height: height, margin: '0' }}
             layout={{
                 autosize: true,
                 title: title,

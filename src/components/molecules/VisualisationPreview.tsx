@@ -45,6 +45,8 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                         thresholdValue={visualisation.threshold}
                         yLabel={visualisation.axes.y.name}
                         isPreview={true}
+                        height="100%"
+                        width="100%"
                     />
                 );
             case VisualisationType.LINE:
@@ -54,6 +56,8 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                         yLabel={visualisation.axes.y.name}
                         strokeColor="#66CCCC"
                         isPreview={true}
+                        height="100%"
+                        width="100%"
                     />
                 );
             case VisualisationType.BAR:

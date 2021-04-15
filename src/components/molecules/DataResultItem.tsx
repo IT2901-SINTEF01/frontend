@@ -19,9 +19,27 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
     const visualisation = () => {
         switch (visualisationType) {
             case VisualisationType.LINE:
-                return <LineChart data={timeEntryMockData} strokeColor="#66CCCC" yLabel="y" isPreview={true} />;
+                return (
+                    <LineChart
+                        data={timeEntryMockData}
+                        strokeColor="#66CCCC"
+                        yLabel="y"
+                        isPreview={true}
+                        height="100%"
+                        width="100%"
+                    />
+                );
             case VisualisationType.THRESHOLD:
-                return <ThresholdChart data={timeEntryMockData} strokeColor="#66CCCC" yLabel="y" isPreview={true} />;
+                return (
+                    <ThresholdChart
+                        data={timeEntryMockData}
+                        strokeColor="#66CCCC"
+                        yLabel="y"
+                        isPreview={true}
+                        height="100%"
+                        width="100%"
+                    />
+                );
             default:
                 return <Text>{visualisationType}</Text>;
         }

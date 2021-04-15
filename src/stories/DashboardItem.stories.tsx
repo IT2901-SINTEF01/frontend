@@ -16,8 +16,10 @@ const Template: Story<DashboardItemProps> = (args) => (
             data={historicAppleStockPrice}
             thresholdValue={150}
             yLabel="Price"
-            aboveThreholdColor="green"
-            belowThreholdColor="red"
+            aboveThresholdColor="green"
+            belowThresholdColor="red"
+            height="100%"
+            width="100%"
         />
     </DashboardItem>
 );
