@@ -71,7 +71,7 @@ const DashboardItems: React.FC = () => {
                             >
                                 {(data) => {
                                     const Vis = Visualisations[visualisation.visualisationType];
-                                    return <Vis data={data} yLabel="y label" />;
+                                    return <Vis data={data} yLabel="y label" height="100%" width="100%" />;
                                 }}
                             </DataWrapper>
                         </DashboardItem>

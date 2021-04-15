@@ -9,6 +9,8 @@ export type LineChartProps = {
     markerColor?: string;
     data: CartesianChartInput;
     isPreview?: boolean;
+    height: string | number;
+    width: string | number;
 };
 
 const LineChart: React.FC<LineChartProps> = ({
@@ -18,6 +20,8 @@ const LineChart: React.FC<LineChartProps> = ({
     markerColor = 'black',
     data,
     isPreview = false,
+    height,
+    width,
 }) => {
     return (
         <Plot
@@ -33,13 +37,13 @@ const LineChart: React.FC<LineChartProps> = ({
                     marker: { color: markerColor, size: 3 },
                 },
             ]}
-            style={{ width: '100%', height: '100%', margin: '0' }}
+            style={{ width: width, height: height, margin: '0' }}
             layout={{
                 autosize: true,
                 title: { text: title, x: 0, y: 0.975 },
                 margin: {
                     l: 40,
-                    r: 10,
+                    r: 40,
                     b: 40,
                     t: 40,
                     pad: 4,
