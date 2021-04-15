@@ -18,7 +18,6 @@ const AddToDashboard: React.FC<Props> = (props) => {
 
     const dispatch = useDispatch();
     const added = useSelector((state: RootState) => !!state.dashboard[key]);
-
     const add = () => {
         dispatch(dashboard.actions.add(props.dashboardItem));
         history.push('/');

@@ -1,17 +1,12 @@
 import { gql } from '@apollo/client';
+import { store } from '../redux/index';
 
-const code = localStorage.getItem('municipality') || 'K-0301';
-const beginYear = localStorage.getItem('beginYear') || '1986';
-const endYear = localStorage.getItem('endYear') || '2020';
-const years = new Array<string>();
-for (let index = Number(beginYear); index <= Number(endYear); index++) {
-    years.push(index.toString());
-}
+const municipality = store.getState().municipality.selected;
 
 export const POPULATION_IN_NORWAY = gql`
     query {
         populationsInNorway {
-            dataset(years: [${years.map((x) => `"` + x + `",`)}], municipalities: ["${code}"]) {
+            dataset(years: ["2014", "2015", "2016", "2017", "2018", "2019", "2020"], municipalities: ["${municipality}"]) {
                 value {
                     populationForYear {
                         population

@@ -14,6 +14,8 @@ import { useHistory } from 'react-router';
 import AddToDashboard from '../molecules/AddToDashboard';
 import { DashboardItemSize } from '../../types/DashboardVisualisation';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
+import MunicipalityEditor from '../molecules/MunicipalityEditor';
+import { DataSourceID } from '../../types/DataSource';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -95,6 +97,7 @@ const VisualisationEditor: React.FC = () => {
                         }}
                     />
                 </Pane>
+                {metadata.datasourceId === DataSourceID.SSB_POPULATION && <MunicipalityEditor />}
             </Pane>
         </>
     );

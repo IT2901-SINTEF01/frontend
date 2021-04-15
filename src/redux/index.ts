@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dashboard from './slices/dashboard';
+import municipality from './slices/municipality';
 
 const LS_STATE_KEY = 'DVT_PERSISTED_STATE' as const;
 
@@ -9,6 +10,7 @@ const recoveredStorage = JSON.parse(localStorage.getItem(LS_STATE_KEY) ?? '{}');
 export const store = configureStore({
     reducer: {
         dashboard: dashboard.reducer,
+        municipality: municipality.reducer,
     },
     preloadedState: recoveredStorage,
 });

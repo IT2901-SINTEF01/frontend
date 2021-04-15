@@ -4,9 +4,12 @@ import { MunicipalityInNorway, MUNICIPALITY_IN_NORWAY } from '../../queries/muni
 import { Text } from 'evergreen-ui';
 import MunicipalitySelector from '../atoms/MunicipalitySelector';
 import { Combobox } from 'evergreen-ui';
+import { useDispatch } from 'react-redux';
+import municipality from '../../redux/slices/municipality';
 
 const MunicipalityEditor: React.FC = () => {
     const { loading, data, error } = useQuery<MunicipalityInNorway>(MUNICIPALITY_IN_NORWAY);
+    const dispatch = useDispatch();
 
     if (error) {
         return <Text>{error.message}</Text>;
@@ -21,7 +24,7 @@ const MunicipalityEditor: React.FC = () => {
     }
 
     const setMunicipality = (name: string) => {
-        localStorage.setItem('municipality', name);
+        dispatch(municipality.actions.update(name));
     };
 
     return (
