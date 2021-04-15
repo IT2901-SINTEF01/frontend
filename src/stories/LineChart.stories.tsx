@@ -11,37 +11,21 @@ export default {
 } as Meta;
 
 const Template: Story<LineChartProps> = (args) => (
-    <LineChart
-        data={args.data}
-        width={args.width}
-        background={args.background}
-        height={args.height}
-        yLabel={args.yLabel}
-        strokeColor={args.strokeColor}
-        colorBottom={args.colorBottom}
-    />
+    <LineChart data={args.data} yLabel={args.yLabel} strokeColor={args.strokeColor} />
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
     data: historicAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0)),
-    width: 600,
-    height: 400,
     yLabel: 'Price',
-    background: '#fff',
     strokeColor: '#222',
-    colorBottom: '#BF55EC',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     data: numericAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0)),
-    width: 600,
-    height: 400,
     yLabel: 'Some value',
-    background: '#fff',
     strokeColor: '#222',
-    colorBottom: '#BF55EC',
 };
 
 Primary.argTypes = {

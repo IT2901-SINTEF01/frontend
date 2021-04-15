@@ -13,43 +13,28 @@ export default {
 const Template: Story<ThresholdChartProps> = (args) => (
     <ThresholdChart
         data={args.data}
-        width={args.width}
-        background={args.background}
-        height={args.height}
         thresholdValue={args.thresholdValue}
-        aboveThresholdColor={args.aboveThresholdColor}
-        belowThresholdColor={args.belowThresholdColor}
         yLabel={args.yLabel}
+        aboveThreholdColor={args.aboveThreholdColor}
+        belowThreholdColor={args.belowThreholdColor}
     />
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
     data: historicAppleStockPrice,
-    width: 600,
-    height: 400,
     yLabel: 'Price',
     thresholdValue: 150,
-    aboveThresholdColor: 'green',
-    belowThresholdColor: 'red',
-    background: '#fff',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     data: numericAppleStockPrice,
-    width: 600,
-    height: 400,
     yLabel: 'Price',
     thresholdValue: 150,
-    aboveThresholdColor: 'green',
-    belowThresholdColor: 'red',
-    background: '#fff',
 };
 
 Primary.argTypes = {
-    width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
-    height: { control: { type: 'range', min: 100, max: 1600, step: 10 } },
     thresholdValue: { control: { type: 'range', min: 10, max: 400, step: 5 } },
     aboveThresholdColor: { control: 'color' },
     belowThresholdColor: { control: 'color' },
