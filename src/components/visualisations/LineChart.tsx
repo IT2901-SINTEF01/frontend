@@ -3,7 +3,7 @@ import { CartesianChartInput } from '../../types/ChartInput';
 import Plot from 'react-plotly.js';
 
 export type LineChartProps = {
-    yLabel: string;
+    yLabel?: string;
     title?: string;
     strokeColor?: string;
     markerColor?: string;
