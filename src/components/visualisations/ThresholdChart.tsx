@@ -3,7 +3,7 @@ import { CartesianChartInput } from '../../types/ChartInput';
 import Plot from 'react-plotly.js';
 
 export type ThresholdChartProps = {
-    yLabel: string;
+    yLabel?: string;
     title?: string;
     data: CartesianChartInput;
     strokeColor?: string;
