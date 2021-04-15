@@ -5,7 +5,6 @@ import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import { VisualisationType } from '../../types/Metadata';
 import ThresholdChart from '../visualisations/ThresholdChart';
-import { ParentSize } from '@visx/responsive';
 import LineChart from '../visualisations/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { DashboardItemSize } from '../../types/DashboardVisualisation';
@@ -33,28 +32,28 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
             return () => null;
         }
 
-        const timeEntryMockData = mockTimeEntry(100, visualisation.axes.y.limit);
+        const timeEntryMockData = mockTimeEntry(
+            100,
+            selectedVisualisation === VisualisationType.THRESHOLD ? [-100, 100] : visualisation.axes.y.limit,
+        );
 
         switch (visualisation.type) {
             case VisualisationType.THRESHOLD:
-                return (width: number, height: number) => (
+                return (
                     <ThresholdChart
-                        width={width}
-                        height={height}
                         data={timeEntryMockData}
                         thresholdValue={visualisation.threshold}
                         yLabel={visualisation.axes.y.name}
+                        isPreview={true}
                     />
                 );
             case VisualisationType.LINE:
-                return (width: number, height: number) => (
+                return (
                     <LineChart
-                        width={width}
-                        height={height}
                         data={timeEntryMockData}
                         yLabel={visualisation.axes.y.name}
                         strokeColor="#66CCCC"
-                        colorBottom="#E0EEEE"
+                        isPreview={true}
                     />
                 );
             case VisualisationType.BAR:
@@ -101,11 +100,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                         titleSize={400}
                         paragraph={paragraph}
                     >
-                        <ParentSize debounceTime={400}>
-                            {(parent) => {
-                                return child(parent.width, parent.height);
-                            }}
-                        </ParentSize>
+                        {child}
                     </DashboardItem>
                 </Pane>
             </Pane>
