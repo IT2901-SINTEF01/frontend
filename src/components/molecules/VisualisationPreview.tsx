@@ -8,6 +8,7 @@ import ThresholdChart from '../visualisations/ThresholdChart';
 import LineChart from '../visualisations/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { DashboardItemSize } from '../../types/DashboardVisualisation';
+import { ParentSize } from '@visx/responsive';
 
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;
@@ -39,25 +40,25 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
 
         switch (visualisation.type) {
             case VisualisationType.THRESHOLD:
-                return (
+                return (width: number) => (
                     <ThresholdChart
                         data={timeEntryMockData}
                         thresholdValue={visualisation.threshold}
                         yLabel={visualisation.axes.y.name}
                         isPreview={true}
                         height="100%"
-                        width="100%"
+                        width={width}
                     />
                 );
             case VisualisationType.LINE:
-                return (
+                return (width: number) => (
                     <LineChart
                         data={timeEntryMockData}
                         yLabel={visualisation.axes.y.name}
                         strokeColor="#66CCCC"
                         isPreview={true}
                         height="100%"
-                        width="100%"
+                        width={width}
                     />
                 );
             case VisualisationType.BAR:
@@ -104,7 +105,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                         titleSize={400}
                         paragraph={paragraph}
                     >
-                        {child}
+                        <ParentSize>{(parent) => child(parent.width)}</ParentSize>
                     </DashboardItem>
                 </Pane>
             </Pane>
