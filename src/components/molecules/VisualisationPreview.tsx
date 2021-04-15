@@ -1,39 +1,28 @@
 /* eslint-disable react/display-name */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Heading, InfoSignIcon, Pane, Tooltip } from 'evergreen-ui';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
-import { DashboardItemSize } from '../../types/dashboard';
-import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
-import { WEATHER_MET_API } from '../../queries/metApi';
-import AddToDashboard from './AddToDashboard';
 import { VisualisationType } from '../../types/Metadata';
-import ThresholdChart from '../charts/ThresholdChart';
+import ThresholdChart from '../visualisations/ThresholdChart';
 import { ParentSize } from '@visx/responsive';
-import LineChart from '../charts/LineChart';
+import LineChart from '../visualisations/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
-import { useReactiveVar } from '@apollo/client';
-import { dashboardItemsVar } from '../../cache';
+import { DashboardItemSize } from '../../types/DashboardVisualisation';
 
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;
     selectedVisualisation: VisualisationType;
+    size: DashboardItemSize;
+    paragraph?: string;
 };
 
-const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, selectedVisualisation }) => {
-    const [paragraph, setParagraph] = useState<string>();
-    const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
-    const dashboardItems = useReactiveVar(dashboardItemsVar);
-
-    useEffect(() => {
-        if (!dashboardItems) return;
-        const item = dashboardItems.find((el) => el.id === metadata.id);
-        if (item?.size) {
-            setSize(item.size);
-        }
-        setParagraph(item?.paragraph);
-    }, [DashboardItem]);
-
+const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
+    metadata,
+    selectedVisualisation,
+    size,
+    paragraph,
+}) => {
     const visualisation = useMemo(() => metadata.visualisations.find((md) => md.type === selectedVisualisation), [
         metadata,
         selectedVisualisation,
@@ -99,28 +88,17 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                     <Heading size={400}>
                         Forhåndsvisning
                         <Tooltip content="Forhåndsvisningen er kun ment som referanse. Størrelse og endelig data vil endres i dashbordet.">
-                            <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} />
+                            <InfoSignIcon color="disabled" marginLeft={12} marginTop={3} verticalAlign="sub" />
                         </Tooltip>
                     </Heading>
                     <Pane flex="1" />
-                    <AddToDashboard
-                        dashboardItemInfo={{
-                            size,
-                            name: metadata.name,
-                            datasourceId: metadata.datasourceId,
-                            paragraph,
-                            id: metadata.id,
-                            query: WEATHER_MET_API,
-                            visualisationType: selectedVisualisation,
-                        }}
-                    />
                 </Pane>
-                <Pane flex="1" height="100%">
+                <Pane backgroundColor="white">
                     <DashboardItem
                         title={metadata.name}
                         height="20rem"
                         width={getSizeInPercentage()}
-                        titleSize={100}
+                        titleSize={400}
                         paragraph={paragraph}
                     >
                         <ParentSize debounceTime={400}>
@@ -130,14 +108,6 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({ metadata, s
                         </ParentSize>
                     </DashboardItem>
                 </Pane>
-            </Pane>
-            <Pane gridColumn="span 1">
-                <VisualisationParameterSelector
-                    size={size}
-                    setSize={setSize}
-                    paragraph={paragraph}
-                    setParagraph={setParagraph}
-                />
             </Pane>
         </>
     );

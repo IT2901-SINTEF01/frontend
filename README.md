@@ -1,6 +1,6 @@
 # Open Data Visualisation Platform – Frontend
 
-![Build, lint, and test](https://github.com/IT2901-SINTEF01/frontend/workflows/Build,%20lint,%20and%20test/badge.svg) ![Issues](https://img.shields.io/github/issues/IT2901-SINTEF01/frontend) ![License](https://img.shields.io/github/license/IT2901-SINTEF01/frontend) ![Version](https://img.shields.io/github/v/release/IT2901-SINTEF01/frontend?include_prereleases) ![Deployment badge](https://img.shields.io/github/deployments/it2901-sintef01/frontend/Production?label=Production%20deployment) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/aa2ba28a1a1c4609b04c3bde2d822bcb)](https://www.codacy.com/gh/IT2901-SINTEF01/frontend/dashboard?utm_source=github.com&utm_medium=referral&utm_content=IT2901-SINTEF01/frontend&utm_campaign=Badge_Grade)
+![Build, lint, and test](https://github.com/IT2901-SINTEF01/frontend/workflows/Build,%20lint,%20and%20test/badge.svg) ![Issues](https://img.shields.io/github/issues/IT2901-SINTEF01/frontend) ![License](https://img.shields.io/github/license/IT2901-SINTEF01/frontend) ![Version](https://img.shields.io/github/v/release/IT2901-SINTEF01/frontend?include_prereleases) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/aa2ba28a1a1c4609b04c3bde2d822bcb)](https://www.codacy.com/gh/IT2901-SINTEF01/frontend/dashboard?utm_source=github.com&utm_medium=referral&utm_content=IT2901-SINTEF01/frontend&utm_campaign=Badge_Grade)
 
 <img src="./SINTEF_logo.png" alt="SINTEF" height=50 />
 
@@ -44,6 +44,42 @@ Run the entire test suite with auto-running on file changes with:
 
 ```bash
 yarn test
+```
+
+## Installation of NPM package
+
+Our NPM package can be found [here](https://www.npmjs.com/package/data-visualisation-platform). More information about this package can be found in the wiki.
+
+```bash
+npm i data-visualisation-platform --save
+
+or
+
+yarn add data-visualisation-platform
+```
+
+### Example usage
+
+```JSX
+import React from 'react';
+import { MetApi, SsbBefolkning, VisualiserProvider } from 'data-visualisation-platform';
+
+const App: React.FC = () => {
+    return (
+        <VisualiserProvider>
+            <Charts />
+        </VisualiserProvider>
+    );
+};
+
+const Charts: React.FC = () => {
+    return (
+        <div>
+            <MetApi.Line width={600} height={200} />
+            <SsbBefolkning.Threshold width={600} height={300} thresholdValue={4} />
+        </div>
+    );
+};
 ```
 
 ## License

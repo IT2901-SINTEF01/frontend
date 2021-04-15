@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Heading, Pane, Text } from 'evergreen-ui';
 import DatasetInfoBox from '../atoms/DatasetInfoBox';
 import { ParentSize } from '@visx/responsive';
-import ThresholdChart from '../charts/ThresholdChart';
-import LineChart from '../charts/LineChart';
+import ThresholdChart from '../visualisations/ThresholdChart';
+import LineChart from '../visualisations/LineChart';
 import mockTimeEntry from '../../mockdata/mockTimeEntry';
 import { VisualisationType } from '../../types/Metadata';
 
@@ -23,7 +23,7 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
             height="20rem"
             elevation={1}
             display="flex"
-            padding="1rem"
+            padding="1.5rem"
             role="button"
             aria-pressed="false"
             aria-label={`Gå til visualiseringsvelger for ${title}.`}

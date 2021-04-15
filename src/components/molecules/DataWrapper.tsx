@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
 import Loading from '../atoms/Loading';
 import ErrorMessage from '../atoms/ErrorMessage';
@@ -9,7 +9,7 @@ import ErrorMessage from '../atoms/ErrorMessage';
  */
 export type DataWrapperProps<T, U> = {
     query: DocumentNode;
-    children: (data: U) => JSX.Element;
+    children: (data: U) => ReactElement;
     mappingFunction: (data: T) => U;
 };
 
@@ -18,7 +18,7 @@ export type DataWrapperProps<T, U> = {
  * child function. It is a generic component to support arbitrary children.
  */
 
-const DataWrapper = <T, U>(props: DataWrapperProps<T, U>): JSX.Element => {
+const DataWrapper = <T, U>(props: DataWrapperProps<T, U>): ReactElement => {
     const { loading, error, data } = useQuery<T>(props.query);
 
     if (loading) {
