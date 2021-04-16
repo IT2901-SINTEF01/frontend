@@ -59,6 +59,21 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
                 yaxis: {
                     title: yLabel,
                 },
+                shapes: [
+                    {
+                        type: 'line',
+                        xref: 'paper',
+                        x0: 0,
+                        y0: thresholdValue,
+                        x1: 1,
+                        y1: thresholdValue,
+                        line: {
+                            color: strokeColor,
+                            width: 2,
+                            dash: 'dot',
+                        },
+                    },
+                ],
             }}
             config={{ staticPlot: isPreview }}
         />
