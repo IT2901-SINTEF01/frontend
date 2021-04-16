@@ -48,21 +48,20 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                     </Heading>
                     <Pane flex="1" />
                 </Pane>
-                <Pane>
-                    <DashboardItem
-                        title={metadata.name}
-                        height="20rem"
-                        width={getSizeInPercentage()}
-                        titleSize={400}
-                        paragraph={paragraph}
-                    >
-                        {visualisation ? (
-                            <MockedVisualisation visualisationType={visualisation.type} height="100%" width="100%" />
-                        ) : (
-                            <Text>Finner ikke visualisering</Text>
-                        )}
-                    </DashboardItem>
-                </Pane>
+
+                <DashboardItem
+                    title={metadata.name}
+                    height="20rem"
+                    width={getSizeInPercentage()}
+                    titleSize={400}
+                    paragraph={paragraph}
+                >
+                    {visualisation ? (
+                        <MockedVisualisation visualisationType={visualisation.type} height="100%" width="100%" />
+                    ) : (
+                        <Text>Finner ikke visualisering</Text>
+                    )}
+                </DashboardItem>
             </Pane>
         </>
     );
