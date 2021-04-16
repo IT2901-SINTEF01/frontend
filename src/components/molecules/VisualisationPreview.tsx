@@ -5,7 +5,6 @@ import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import { VisualisationType } from '../../types/Metadata';
 import { DashboardItemSize } from '../../types/DashboardVisualisation';
-import { ParentSize } from '@visx/responsive';
 import MockedVisualisation from './MockedVisualisation';
 
 type VisualisationPreviewProps = {
@@ -57,19 +56,11 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                         titleSize={400}
                         paragraph={paragraph}
                     >
-                        <ParentSize>
-                            {(parent) =>
-                                visualisation ? (
-                                    <MockedVisualisation
-                                        visualisationType={visualisation.type as VisualisationType}
-                                        height="100%"
-                                        width={parent.width}
-                                    />
-                                ) : (
-                                    <Text>Finner ikke visualisering</Text>
-                                )
-                            }
-                        </ParentSize>
+                        {visualisation ? (
+                            <MockedVisualisation visualisationType={visualisation.type} height="100%" width="100%" />
+                        ) : (
+                            <Text>Finner ikke visualisering</Text>
+                        )}
                     </DashboardItem>
                 </Pane>
             </Pane>
