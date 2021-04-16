@@ -48,7 +48,7 @@ const VisualisationPreview: React.FC<VisualisationPreviewProps> = ({
                     </Heading>
                     <Pane flex="1" />
                 </Pane>
-                <Pane backgroundColor="white">
+                <Pane>
                     <DashboardItem
                         title={metadata.name}
                         height="20rem"
