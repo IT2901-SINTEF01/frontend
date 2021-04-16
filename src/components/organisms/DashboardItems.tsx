@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pane, Spinner } from 'evergreen-ui';
+import { Pane, Spinner, toaster } from 'evergreen-ui';
 import DashboardItem from '../molecules/DashboardItem';
 import DataWrapper from '../molecules/DataWrapper';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,8 +21,10 @@ const DashboardItems: React.FC = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const deleteDashboardVisualisation = (key: string) => () =>
+    const deleteDashboardVisualisation = (key: string) => () => {
         dispatch(dashboard.actions.remove(key as VisualisationMappingFunctionPath));
+        toaster.success('Visualiseringen ble fjernet.');
+    };
 
     if (loading) {
         return (
