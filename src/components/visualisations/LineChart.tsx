@@ -6,10 +6,10 @@ import { GridColumns, GridRows } from '@visx/grid';
 import { Group } from '@visx/group';
 import { scaleLinear, scaleTime } from '@visx/scale';
 import { AreaClosed, LinePath } from '@visx/shape';
-import { VisualisationProps, ChartEntry } from '../../types/visualisation';
+import { CartesianChartInput, VisualisationProps } from '../../types/ChartInput';
 
 export type LineChartProps = VisualisationProps & {
-    data: ChartEntry[];
+    data: CartesianChartInput;
     yLabel?: string;
     strokeColor?: string;
     colorBottom?: string;
@@ -26,11 +26,11 @@ const LineChart: React.FC<LineChartProps> = ({
     colorBottom = '#000',
 }) => {
     // accessors
-    const xValue = (d: ChartEntry): number => {
+    const xValue = (d: CartesianChartInput[number]): number => {
         return typeof d.x === 'number' ? d.x : new Date(d.x).valueOf();
     };
 
-    const yValue = (d: ChartEntry) => d.y;
+    const yValue = (d: CartesianChartInput[number]) => d.y;
 
     //bounds
     const xMax = width - margin.left - margin.right;

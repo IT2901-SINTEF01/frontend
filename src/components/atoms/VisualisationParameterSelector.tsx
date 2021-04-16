@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pane, SelectField, Textarea, Label } from 'evergreen-ui';
-import { DashboardItemSize } from '../../types/dashboard';
+import { DashboardItemSize } from '../../types/DashboardVisualisation';
 
 type VisualisationParameterSelectorProps = {
     paragraph?: string;
@@ -25,7 +25,6 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
 
     return (
         <Pane height="100%" display="flex" flexDirection="column">
-            <Pane height="32px" marginBottom="1rem" />
             <SelectField label="Velg størrelse" onChange={handleSizeChange} defaultValue={size}>
                 <option value={DashboardItemSize.SMALL}>Liten</option>
                 <option value={DashboardItemSize.MEDIUM}>Medium</option>

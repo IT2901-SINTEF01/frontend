@@ -1,10 +1,46 @@
 {
     "name": "data-visualisation-platform",
-    "version": "0.1.0",
-    "private": true,
+    "version": "1.1.3",
+    "description": "A simple library for visualising open data",
+    "private": false,
+    "license": "Apache-2.0",
+    "author": {
+        "name": "Jonathan Brooks",
+        "email": "brooks.jonathan1@gmail.com"
+    },
+    "contributors": [
+        {
+            "name": "Emil Ommundsen"
+        },
+        {
+            "name": "Fredrik August Madsen-Malmo",
+            "email": "fredrik.malmo@icloud.com"
+        },
+        {
+            "name": "Thomas Everleigh Rankin"
+        },
+        {
+            "name": "Karl Petter Aubert"
+        },
+        {
+            "name": "Fredrik Wilhelm Butler Wang",
+            "email": "fredriwb@stud.ntnu.no"
+        }
+    ],
+    "files": [
+        "dist/index.js",
+        "dist/index.d.ts"
+    ],
+    "main": "dist/index.js",
     "proxy": "http://localhost:5000",
+    "babel": {
+        "presets": [
+            "@babel/preset-react"
+        ]
+    },
     "dependencies": {
         "@apollo/client": "^3.3.6",
+        "@reduxjs/toolkit": "^1.5.1",
         "@types/classnames": "^2.2.11",
         "@types/faker": "^5.1.7",
         "@types/jest": "^26.0.15",
@@ -31,10 +67,11 @@
         "postcss": "^7",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
+        "react-redux": "^7.2.3",
         "react-router-dom": "^5.2.0",
         "react-scripts": "^4.0.3",
         "react-select": "^3.1.1",
-        "typescript": "^4.2.2",
+        "typescript": "^4.2.4",
         "web-vitals": "^0.2.4"
     },
     "scripts": {
@@ -45,7 +82,13 @@
         "lint-fix": "eslint --fix \"src/**/*\"",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public",
-        "chromatic": "npx chromatic"
+        "chromatic": "npx chromatic",
+        "build-rollup": "rollup -c",
+        "start-rollup": "rollup -c -w"
+    },
+    "peerDependencies": {
+        "react": "^16.8.0",
+        "react-dom": "^16.8.0"
     },
     "browserslist": {
         "production": [
@@ -60,7 +103,9 @@
         ]
     },
     "devDependencies": {
+        "@babel/preset-react": "^7.13.13",
         "@cypress/react": "^4.16.4",
+        "@rollup/plugin-replace": "^2.4.2",
         "@storybook/addon-actions": "^6.1.17",
         "@storybook/addon-essentials": "^6.1.17",
         "@storybook/addon-links": "^6.1.17",
@@ -72,10 +117,15 @@
         "@typescript-eslint/parser": "^4.9.1",
         "chromatic": "^5.6.3",
         "cypress": "^6.4.0",
+        "dotenv": "^8.2.0",
         "eslint": "^7.15.0",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-prettier": "^3.3.1",
         "eslint-plugin-react": "^7.21.5",
-        "prettier": "^2.2.1"
+        "prettier": "^2.2.1",
+        "rollup": "^2.44.0",
+        "rollup-plugin-dts": "^3.0.1",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "tslib": "^2.2.0"
     }
 }
