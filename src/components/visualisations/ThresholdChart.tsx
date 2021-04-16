@@ -58,6 +58,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
                 },
                 yaxis: {
                     title: yLabel,
+                    automargin: true,
                 },
                 shapes: [
                     {

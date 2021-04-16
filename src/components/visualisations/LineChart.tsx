@@ -50,6 +50,7 @@ const LineChart: React.FC<LineChartProps> = ({
                 },
                 yaxis: {
                     title: yLabel,
+                    automargin: true,
                 },
             }}
             config={{ staticPlot: isPreview }}
