@@ -3,7 +3,7 @@ import { VisualisationType } from '../../types/Metadata';
 import LineChart from '../visualisations/LineChart';
 import ThresholdChart from '../visualisations/ThresholdChart';
 import { Text } from 'evergreen-ui';
-import mockTimeEntry from '../../mockdata/mockTimeEntry';
+import mockCartesianChartInput from '../../mockdata/mockCartesianChartInput';
 import { CartesianChartInput } from '../../types/ChartInput';
 
 type MockedVisualisationProps = {
@@ -13,10 +13,10 @@ type MockedVisualisationProps = {
 };
 
 const MockedVisualisation: React.FC<MockedVisualisationProps> = ({ visualisationType, height, width }) => {
-    const [data, setData] = useState<CartesianChartInput>(mockTimeEntry(100, visualisationType));
+    const [data, setData] = useState<CartesianChartInput>(mockCartesianChartInput(100, visualisationType));
 
     useEffect(() => {
-        setData(mockTimeEntry(100, visualisationType));
+        setData(mockCartesianChartInput(100, visualisationType));
     }, [visualisationType]);
 
     switch (visualisationType) {
