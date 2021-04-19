@@ -1,35 +1,41 @@
+import React from 'react';
 import { Heading, Pane } from 'evergreen-ui';
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ActiveFilters from '../atoms/ActiveFilters';
-import SelectMunicipality from '../atoms/SelectMunicipality';
-import { municipalityList } from '../../utils/municipalityList';
+import SelectTag from '../atoms/SelectTag';
+import { RootState } from '../../redux';
+import filter from '../../redux/slices/filter';
 
-const FilterController: React.FC = () => {
-    const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+type FilterControllerProps = {
+    size: string;
+};
 
-    const addFilter = (filter: string) => {
-        if (municipalityList.includes(filter) && !selectedFilters.includes(filter))
-            setSelectedFilters((oldState) => [...oldState, filter]);
-    };
-
-    const removeFilter = (filter: string) => {
-        setSelectedFilters((oldState) => oldState.filter((el) => el !== filter));
-    };
+const FilterController: React.FC<FilterControllerProps> = ({ size }) => {
+    const selectedFilters = useSelector((state: RootState) => state.filter.filters);
+    const dispatch = useDispatch();
 
     return (
-        <Pane width="20%">
-            <Pane display="flex" justifyContent="center" alignItems="center" background="blueTint" height="4rem">
+        <Pane
+            width={size}
+            background="white"
+            elevation={1}
+            position="fixed"
+            top="0"
+            left="0"
+            zIndex={1}
+            overflowX="hidden"
+            height="100%"
+        >
+            <Pane display="flex" justifyContent="center" alignItems="center" background="#F7F9FD" height="4rem">
                 <Heading>Filter</Heading>
             </Pane>
             <Pane padding="1rem">
                 <ActiveFilters
                     tags={selectedFilters}
-                    removeTag={removeFilter}
-                    removeAll={() => {
-                        setSelectedFilters([]);
-                    }}
+                    removeTag={(tag) => dispatch(filter.actions.remove(tag))}
+                    removeAll={() => dispatch(filter.actions.reset())}
                 />
-                <SelectMunicipality addMunicipality={addFilter} />
+                <SelectTag addTag={(tag) => dispatch(filter.actions.add(tag))} />
             </Pane>
         </Pane>
     );

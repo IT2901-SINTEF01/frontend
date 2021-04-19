@@ -7,7 +7,7 @@ export default {
     component: FilterController,
 } as Meta;
 
-const Template: Story = () => <FilterController />;
+const Template: Story = () => <FilterController size={'20rem'} />;
 
 export const Primary = Template.bind({});
 Primary.storyName = 'Search and filter';
