@@ -9,14 +9,14 @@ type ActiveFiltersProps = {
 
 const ActiveFilters: React.FC<ActiveFiltersProps> = ({ tags, removeTag, removeAll }) => {
     return (
-        <Pane>
+        <Pane marginBottom="1rem">
             <Pane display="flex" justifyContent="space-between" alignItems="center">
                 <Text size={300}>AKTIVE FILTERE</Text>
                 <Button appearance="minimal" intent="none" onClick={removeAll}>
                     Nullstill
                 </Button>
             </Pane>
-            <Card border="default" display="flex" flexWrap="wrap" minHeight="4rem" padding="0.2rem">
+            <Card border="default" display="flex" flexWrap="wrap" minHeight="4rem" padding="0.2rem" background="white">
                 {tags.length === 0 && <Text color="muted">Ingen filtere valgt</Text>}
                 {tags.map((tag) => (
                     <Badge key={tag} color="neutral" margin="0.5rem" display="flex" alignItems="center">
