@@ -6,47 +6,34 @@ import DataWrapper from '../../components/molecules/DataWrapper';
 import visualisationMapping from '../../utils/visualisationMapping';
 import { WEATHER_MET_API } from '../../queries/metApi';
 
-const MetApiLine: React.FC<Omit<LineChartProps, 'data'>> = ({
-    width = 600,
-    height = 200,
-    yLabel,
-    strokeColor,
-    colorBottom,
-}) => {
+const MetApiLine: React.FC<Omit<LineChartProps, 'data'>> = ({ yLabel, strokeColor, height, width }) => {
     return (
         <DataWrapper mappingFunction={visualisationMapping[`MET_API-linechart`]} query={WEATHER_MET_API}>
             {(data) => (
-                <LineChart
-                    data={data}
-                    width={width}
-                    height={height}
-                    yLabel={yLabel}
-                    strokeColor={strokeColor}
-                    colorBottom={colorBottom}
-                />
+                <LineChart data={data} yLabel={yLabel} strokeColor={strokeColor} height={height} width={width} />
             )}
         </DataWrapper>
     );
 };
 
 const MetApiThreshold: React.FC<Omit<ThresholdChartProps, 'data'>> = ({
-    width = 600,
-    height = 200,
     thresholdValue,
     aboveThresholdColor,
     belowThresholdColor,
     yLabel,
+    height,
+    width,
 }) => {
     return (
         <DataWrapper mappingFunction={visualisationMapping[`MET_API-thresholdchart`]} query={WEATHER_MET_API}>
             {(data) => (
                 <ThresholdChart
                     data={data}
-                    width={width}
-                    height={height}
                     thresholdValue={thresholdValue}
                     aboveThresholdColor={aboveThresholdColor}
                     belowThresholdColor={belowThresholdColor}
+                    height={height}
+                    width={width}
                     yLabel={yLabel}
                 />
             )}

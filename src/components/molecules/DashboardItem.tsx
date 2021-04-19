@@ -33,6 +33,7 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
                 padding="1rem"
                 paddingBottom="0"
                 display="flex"
+                background="white"
             >
                 <Pane width="20%" display="flex" flexDirection="column" paddingBottom="1em">
                     <Heading size={titleSize} marginBottom="0.5rem">
@@ -60,7 +61,7 @@ const DashboardItem: React.FC<DashboardItemProps> = ({
     }
 
     return (
-        <Card width={width} height={height} border="default" elevation={1} padding="1rem">
+        <Card width={width} height={height} border="default" elevation={1} padding="1rem" background="white">
             <Pane display="flex">
                 <Heading size={titleSize} marginBottom="0.5em">
                     {title}

@@ -31,7 +31,7 @@ const VisualisationParameterSelector: React.FC<VisualisationParameterSelectorPro
                 <option value={DashboardItemSize.LARGE}>Stor</option>
             </SelectField>
             <Label htmlFor="visualisation-text-input" marginBottom={12}>
-                Legg til text (valgfritt)
+                Legg til tekst (valgfritt)
             </Label>
             <Pane flex="1">
                 <Textarea

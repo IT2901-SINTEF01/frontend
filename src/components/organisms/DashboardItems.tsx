@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Pane, Spinner, toaster } from 'evergreen-ui';
 import DashboardItem from '../molecules/DashboardItem';
-import { ParentSize } from '@visx/responsive';
 import DataWrapper from '../molecules/DataWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux';
@@ -68,21 +67,15 @@ const DashboardItems: React.FC = () => {
                             onEdit={() => history.push(`/explore/edit/${metadataEntry?.id}`)}
                             onDelete={deleteDashboardVisualisation(mappingPath)}
                         >
-                            <ParentSize>
-                                {(parent) => (
-                                    <DataWrapper
-                                        mappingFunction={
-                                            visualisationMapping[mappingPath as VisualisationMappingFunctionPath]
-                                        }
-                                        query={queries[visualisation.dataSourceId]}
-                                    >
-                                        {(data) => {
-                                            const Vis = Visualisations[visualisation.visualisationType];
-                                            return <Vis data={data} height={parent.height} width={parent.width} />;
-                                        }}
-                                    </DataWrapper>
-                                )}
-                            </ParentSize>
+                            <DataWrapper
+                                mappingFunction={visualisationMapping[mappingPath as VisualisationMappingFunctionPath]}
+                                query={queries[visualisation.dataSourceId]}
+                            >
+                                {(data) => {
+                                    const Vis = Visualisations[visualisation.visualisationType];
+                                    return <Vis data={data} height="100%" width="100%" />;
+                                }}
+                            </DataWrapper>
                         </DashboardItem>
                     </Pane>
                 );
