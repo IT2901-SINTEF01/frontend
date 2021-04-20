@@ -2,16 +2,20 @@ import React from 'react';
 import { Combobox, Label } from 'evergreen-ui';
 import { TAGS, AllTags } from '../../queries/metadata';
 import { useQuery } from '@apollo/client';
+import ErrorMessage from './ErrorMessage';
+import Loading from './Loading';
 
 type SelectTagProps = {
     addTag: (tag: string) => void;
 };
 
 const SelectTag: React.FC<SelectTagProps> = ({ addTag }) => {
-    const { data } = useQuery<AllTags>(TAGS);
-
+    const { data, error, loading } = useQuery<AllTags>(TAGS);
     const tags = data?.allMetadata.map((e) => e.tags).flat(1);
-    if (!tags) return <p>Rip, ingen tags</p>;
+
+    if (error || !tags) return <ErrorMessage message="Noe gikk galt, finner ikke filter" />;
+
+    if (loading) return <Loading size={30} />;
 
     return (
         <>
