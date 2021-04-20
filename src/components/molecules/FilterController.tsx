@@ -1,19 +1,15 @@
 import React from 'react';
 import { Heading, Pane } from 'evergreen-ui';
-import { useDispatch, useSelector } from 'react-redux';
 import ActiveFilters from '../atoms/ActiveFilters';
 import SelectTag from '../atoms/SelectTag';
-import { RootState } from '../../redux';
-import filter from '../../redux/slices/filter';
 
 type FilterControllerProps = {
     size: string;
+    activeFilters: string[];
+    setActiveFilters: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-const FilterController: React.FC<FilterControllerProps> = ({ size }) => {
-    const selectedFilters = useSelector((state: RootState) => state.filter.filters);
-    const dispatch = useDispatch();
-
+const FilterController: React.FC<FilterControllerProps> = ({ size, activeFilters, setActiveFilters }) => {
     return (
         <Pane
             width={size}
@@ -31,11 +27,15 @@ const FilterController: React.FC<FilterControllerProps> = ({ size }) => {
             </Pane>
             <Pane padding="1rem">
                 <ActiveFilters
-                    tags={selectedFilters}
-                    removeTag={(tag) => dispatch(filter.actions.remove(tag))}
-                    removeAll={() => dispatch(filter.actions.reset())}
+                    tags={activeFilters}
+                    removeTag={(tag) => setActiveFilters(activeFilters.filter((el) => el !== tag))}
+                    removeAll={() => setActiveFilters([])}
                 />
-                <SelectTag addTag={(tag) => dispatch(filter.actions.add(tag))} />
+                <SelectTag
+                    addTag={(tag) => {
+                        if (tag) setActiveFilters((prev) => [...prev, tag]);
+                    }}
+                />
             </Pane>
         </Pane>
     );
