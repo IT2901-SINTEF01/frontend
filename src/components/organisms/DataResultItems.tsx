@@ -6,16 +6,17 @@ import { METADATA, AllMetadataResult } from '../../queries/metadata';
 import Loading from '../atoms/Loading';
 import ErrorMessage from '../atoms/ErrorMessage';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux';
 
-const DataResultItems: React.FC = () => {
+type DataResultItemsProps = {
+    activeFilters: string[];
+};
+
+const DataResultItems: React.FC<DataResultItemsProps> = ({ activeFilters }) => {
     const { data, loading, error } = useQuery<AllMetadataResult>(METADATA);
-    const activeFilters = useSelector((state: RootState) => state.filter.filters);
     const result = useMemo(() => {
         if (!data) return null;
         if (activeFilters.length === 0) return data.allMetadata;
-        return data?.allMetadata.filter((el) => el.tags.some((v) => activeFilters.indexOf(v) !== -1));
+        return data.allMetadata.filter((el) => el.tags.some((v) => activeFilters.includes(v)));
     }, [data, activeFilters]);
 
     if (loading) {
@@ -37,7 +38,7 @@ const DataResultItems: React.FC = () => {
         );
     }
 
-    if (!result) {
+    if (!result || result.length === 0) {
         return (
             <Pane height="100%" display="flex" justifyContent="center" alignItems="center">
                 <InlineAlert intent="warning">Vi fant dessverre ingen datasett knyttet til ditt søk.</InlineAlert>

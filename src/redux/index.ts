@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dashboard from './slices/dashboard';
-import filter from './slices/filter';
 
 const LS_STATE_KEY = 'DVT_PERSISTED_STATE' as const;
 
@@ -10,7 +9,6 @@ const recoveredStorage = JSON.parse(localStorage.getItem(LS_STATE_KEY) ?? '{}');
 export const store = configureStore({
     reducer: {
         dashboard: dashboard.reducer,
-        filter: filter.reducer,
     },
     preloadedState: recoveredStorage,
 });
