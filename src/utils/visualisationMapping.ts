@@ -1,5 +1,3 @@
-// import { DataSourceID } from '../types/DataSource';
-// import { VisualisationType } from '../types/Metadata';
 import { PopulationInNorway } from '../queries/populationInNorway';
 import LineChart from '../components/visualisations/LineChart';
 import { ComponentProps } from 'react';

@@ -1,13 +1,10 @@
 import React from 'react';
-
 import { Pane, Spinner, toaster } from 'evergreen-ui';
 import DashboardItem from '../molecules/DashboardItem';
 import { ParentSize } from '@visx/responsive';
 import DataWrapper from '../molecules/DataWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux';
-// import visualisationMapping, { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
-
 import queries from '../../queries';
 import Visualisations from '../visualisations';
 import { useQuery } from '@apollo/client';
