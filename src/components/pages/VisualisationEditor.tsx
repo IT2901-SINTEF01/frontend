@@ -1,23 +1,30 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
-import { useQuery } from '@apollo/client';
+
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router';
+
+import { RootState } from '../../redux';
+import { useSelector } from 'react-redux';
+
+import { useQuery } from '@apollo/client';
+
 import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
-import VisualisationPreview from '../molecules/VisualisationPreview';
+import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
+
+import { VisualisationType } from '../../types/Metadata';
+import { DashboardItemSize } from '../../types/VisualisationOption';
+import { DataSourceVariables, defaultVariables } from '../../types/DataSource';
+
 import DataInfoBox from '../atoms/DatasetInfoBox';
 import VisualisationSelector from '../atoms/VisualisationSelector';
-import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
-import { VisualisationType } from '../../types/Metadata';
-
-import { useHistory } from 'react-router';
-import AddToDashboard from '../molecules/AddToDashboard';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux';
-import { DashboardItemSize } from '../../types/VisualisationOption';
+
+import VisualisationPreview from '../molecules/VisualisationPreview';
+import AddToDashboard from '../molecules/AddToDashboard';
 import DataSourceOptions from '../molecules/DataSourceOptions';
-import { defaultVariables, DataSourceVariables } from '../../types/DataSource';
+
+import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
