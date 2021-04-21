@@ -24,8 +24,8 @@ const DashboardItems: React.FC = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const deleteDashboardVisualisation = (visualisation: DashboardVisualisation) => () => {
-        dispatch(dashboard.actions.remove(visualisation));
+    const deleteDashboardVisualisation = (key: string) => () => {
+        dispatch(dashboard.actions.remove(key));
         toaster.success('Visualiseringen ble fjernet.');
     };
 
@@ -68,7 +68,7 @@ const DashboardItems: React.FC = () => {
                             titleSize={400}
                             paragraph={visualisation.options.paragraph}
                             onEdit={() => history.push(`/explore/edit/${metadataEntry?.id}`)}
-                            onDelete={deleteDashboardVisualisation(visualisation)}
+                            onDelete={deleteDashboardVisualisation(mappingPath)}
                         >
                             <ParentSize>
                                 {(parent) => (

@@ -28,7 +28,7 @@ const AddToDashboard: React.FC<Props> = (props) => {
     };
 
     const remove = () => {
-        dispatch(dashboard.actions.remove(props.dashboardItem));
+        dispatch(dashboard.actions.remove(props.dashboardItem.id ?? ''));
         toaster.success('Visualiseringen ble fjernet fra dashboardet.');
     };
 
