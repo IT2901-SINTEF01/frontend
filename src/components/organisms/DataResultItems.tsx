@@ -56,6 +56,9 @@ const DataResultItems: React.FC<DataResultItemsProps> = ({ activeFilters }) => {
                             description={el.description}
                             tags={el.tags}
                             visualisationType={el.visualisations[0].type}
+                            source={el.source}
+                            published={el.published}
+                            updated={el.updated}
                         />
                     </Link>
                 </Pane>
