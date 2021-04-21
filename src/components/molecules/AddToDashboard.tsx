@@ -18,7 +18,8 @@ const AddToDashboard: React.FC<Props> = (props) => {
     const key = useMemo(() => props.dashboardItem.id ?? uuidv4(), []);
 
     const dispatch = useDispatch();
-    const added = useSelector((state: RootState) => !!state.dashboard[key]);
+    const visualisation = useSelector((state: RootState) => state.dashboard[key]);
+    const added = !!visualisation;
 
     const add = () => {
         dispatch(dashboard.actions.add(props.dashboardItem));
@@ -29,7 +30,7 @@ const AddToDashboard: React.FC<Props> = (props) => {
     const remove = () => {
         dispatch(dashboard.actions.remove(key));
         toaster.success('Visualiseringen ble fjernet fra dashboardet.');
-        history.push('/');
+        history.push(`/explore/edit/${visualisation.metadataId}`);
     };
 
     return <AddToDashboardButton added={added} onAdd={add} onRemove={remove} />;
