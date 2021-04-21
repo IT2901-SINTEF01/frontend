@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { AllMetadataResult, METADATA, MetadataEntry } from '../../queries/metadata';
+import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
 import VisualisationPreview from '../molecules/VisualisationPreview';
 import DataInfoBox from '../atoms/DatasetInfoBox';
