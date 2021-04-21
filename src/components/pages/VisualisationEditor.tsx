@@ -44,7 +44,7 @@ const VisualisationEditor: React.FC = () => {
     }
 
     const metadata = visualisation
-        ? data.allMetadata.find((el) => el.id === visualisation.metadataId)
+        ? data.allMetadata.find((el) => el.datasourceId === visualisation.dataSourceId)
         : data.allMetadata.find((el) => el.id === id);
 
     if (!metadata) {

@@ -8,9 +8,7 @@ export default createSlice({
     reducers: {
         add: (state, action: PayloadAction<DashboardVisualisation>) => {
             const key = uuidv4();
-            state[key] = {
-                ...action.payload,
-            };
+            state[key] = action.payload;
         },
         remove: (state, action: PayloadAction<string>) => {
             const key = action.payload;
@@ -19,7 +17,7 @@ export default createSlice({
             }
         },
         update: (state, action: PayloadAction<DashboardVisualisation>) => {
-            const key = action.payload.id ?? '';
+            const key = action.payload.id;
             if (state[key]) {
                 state[key] = action.payload;
             }
