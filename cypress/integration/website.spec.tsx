@@ -5,7 +5,11 @@ describe('Dashboard', () => {
         cy.intercept('POST', '/graphql', (req) => {
             if (req.body.query.includes('allMetadata')) {
                 req.alias = 'METADATA';
-                req.reply({ data: { allMetadata: makeMetadata() } });
+                req.reply({
+                    data: {
+                        allMetadata: makeMetadata().map((value) => ({ ...value, id: 'hardwired to self-destruct' })),
+                    },
+                });
             } else if (req.body.query.includes('forecast')) {
                 req.alias = 'WEATHER_MET_API';
                 req.reply({

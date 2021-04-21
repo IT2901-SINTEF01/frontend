@@ -13,6 +13,8 @@ import { VisualisationType } from '../../types/Metadata';
 import { useHistory } from 'react-router';
 import AddToDashboard from '../molecules/AddToDashboard';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
 import { DashboardItemSize } from '../../types/VisualisationOption';
 import DataSourceOptions from '../molecules/DataSourceOptions';
 import { defaultVariables, DataSourceVariables } from '../../types/DataSource';
@@ -23,6 +25,8 @@ const VisualisationEditor: React.FC = () => {
     const history = useHistory();
 
     const [selectedVisualisation, setSelectedVisualisation] = useState<VisualisationType>();
+
+    const visualisation = useSelector((state: RootState) => state.dashboard[id]);
 
     const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
@@ -37,15 +41,19 @@ const VisualisationEditor: React.FC = () => {
         return <Text>Loading…</Text>;
     }
 
-    if (!data || !data.allMetadata.some((el) => el.id === id)) {
+    if (!data || (!data.allMetadata.some((el) => el.id === id) && !visualisation)) {
         // No metadata was found. Go back
         history.push('/explore');
         return null;
     }
 
-    // Safe non-null-assertion due to the .some above
-    // eslint-disable-next-line
-    const metadata = data.allMetadata.find((el) => el.id === id)!;
+    const metadata = visualisation
+        ? data.allMetadata.find((el) => el.datasourceId === visualisation.dataSourceId)
+        : data.allMetadata.find((el) => el.id === id);
+
+    if (!metadata) {
+        return null;
+    }
 
     // Set the first available visualisation to active
     useEffect(() => {
@@ -101,11 +109,13 @@ const VisualisationEditor: React.FC = () => {
                 <Pane gridColumn={6}>
                     <AddToDashboard
                         dashboardItem={{
+                            id,
                             visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
                             dataSourceId: metadata.datasourceId,
                             options: { size, paragraph },
                             variables,
                         }}
+                        metadataId={metadata.id}
                     />
                 </Pane>
                 <DataSourceOptions

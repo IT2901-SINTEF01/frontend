@@ -7,6 +7,7 @@ import { ChartCustomisationOption } from './VisualisationOption';
  */
 
 export type DashboardVisualisation = {
+    id: string; // UUID
     dataSourceId: DataSourceID;
     visualisationType: VisualisationType;
     options: ChartCustomisationOption;
