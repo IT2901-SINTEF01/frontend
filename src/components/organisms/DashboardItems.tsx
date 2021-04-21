@@ -67,10 +67,10 @@ const DashboardItems: React.FC = () => {
                         >
                             <DataWrapper
                                 mappingFunction={
-                                            visualisationMapping[
-                                                `${visualisation.dataSourceId}-${visualisation.visualisationType}` as VisualisationMappingFunctionPath
-                                            ]
-                                        }
+                                    visualisationMapping[
+                                        `${visualisation.dataSourceId}-${visualisation.visualisationType}` as VisualisationMappingFunctionPath
+                                    ]
+                                }
                                 query={queries[visualisation.dataSourceId]}
                             >
                                 {(data) => {
