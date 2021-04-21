@@ -11,7 +11,7 @@ const ActiveFilters: React.FC<ActiveFiltersProps> = ({ tags, removeTag, removeAl
     return (
         <Pane marginBottom="2rem">
             <Pane display="flex" justifyContent="space-between" alignItems="center">
-                <Text size={300}>AKTIVE FILTERE</Text>
+                <Text size={300}>AKTIVE FILTER</Text>
                 <Button
                     style={{ backgroundColor: 'white' }}
                     paddingRight="4px"
