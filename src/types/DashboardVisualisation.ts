@@ -30,4 +30,5 @@ export type DashboardVisualisation = {
     dataSourceId: DataSourceID;
     visualisationType: VisualisationType;
     options: ChartCustomisationOption;
+    metadataId: string;
 };

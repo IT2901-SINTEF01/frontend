@@ -13,6 +13,7 @@ export default createSlice({
                 dataSourceId: action.payload.dataSourceId,
                 visualisationType: action.payload.visualisationType,
                 options: action.payload.options,
+                metadataId: action.payload.metadataId,
             };
         },
         remove: (state, action: PayloadAction<string>) => {

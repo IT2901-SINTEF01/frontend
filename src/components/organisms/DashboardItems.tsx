@@ -16,7 +16,6 @@ import ErrorMessage from '../atoms/ErrorMessage';
 import { useHistory } from 'react-router';
 import dashboard from '../../redux/slices/dashboard';
 import visualisationMapping, { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
-import { DashboardVisualisation } from '../../types/DashboardVisualisation';
 
 const DashboardItems: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -67,7 +66,7 @@ const DashboardItems: React.FC = () => {
                             width="100%"
                             titleSize={400}
                             paragraph={visualisation.options.paragraph}
-                            onEdit={() => history.push(`/explore/edit/${metadataEntry?.id}`)}
+                            onEdit={() => history.push(`/explore/edit/${mappingPath}`)}
                             onDelete={deleteDashboardVisualisation(mappingPath)}
                         >
                             <ParentSize>

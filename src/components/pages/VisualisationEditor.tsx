@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { AllMetadataResult, METADATA } from '../../queries/metadata';
+import { AllMetadataResult, METADATA, MetadataEntry } from '../../queries/metadata';
 
 import VisualisationPreview from '../molecules/VisualisationPreview';
 import DataInfoBox from '../atoms/DatasetInfoBox';
@@ -14,6 +14,8 @@ import { useHistory } from 'react-router';
 import AddToDashboard from '../molecules/AddToDashboard';
 import { DashboardItemSize } from '../../types/DashboardVisualisation';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -21,6 +23,8 @@ const VisualisationEditor: React.FC = () => {
     const history = useHistory();
 
     const [selectedVisualisation, setSelectedVisualisation] = useState<VisualisationType>();
+
+    const visualisation = useSelector((state: RootState) => state.dashboard[id]);
 
     const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
@@ -33,15 +37,19 @@ const VisualisationEditor: React.FC = () => {
         return <Text>Loading…</Text>;
     }
 
-    if (!data || !data.allMetadata.some((el) => el.id === id)) {
+    if (typeof data === 'undefined' || ((!data || !data.allMetadata.some((el) => el.id === id)) && !visualisation)) {
         // No metadata was found. Go back
         history.push('/explore');
         return null;
     }
 
-    // Safe non-null-assertion due to the .some above
-    // eslint-disable-next-line
-    const metadata = data.allMetadata.find((el) => el.id === id)!;
+    const metadata = visualisation
+        ? data.allMetadata.find((el) => el.id === visualisation.metadataId)
+        : data.allMetadata.find((el) => el.id === id);
+
+    if (typeof metadata === 'undefined') {
+        return null;
+    }
 
     // Set the first available visualisation to active
     useEffect(() => setSelectedVisualisation(metadata.visualisations[0].type), [metadata]);
@@ -89,9 +97,11 @@ const VisualisationEditor: React.FC = () => {
                 <Pane gridColumn={6}>
                     <AddToDashboard
                         dashboardItem={{
+                            id,
                             visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
                             dataSourceId: metadata.datasourceId,
                             options: { size, paragraph },
+                            metadataId: metadata.id,
                         }}
                     />
                 </Pane>
