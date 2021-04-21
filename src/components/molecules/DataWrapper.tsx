@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
 import Loading from '../atoms/Loading';
 import ErrorMessage from '../atoms/ErrorMessage';
+import { DataSourceVariables } from '../../types/DataSource';
 
 /**
  * @param T The raw output of the GraphQL query.
@@ -11,6 +12,7 @@ export type DataWrapperProps<T, U> = {
     query: DocumentNode;
     children: (data: U) => ReactElement;
     mappingFunction: (data: T) => U;
+    variables: DataSourceVariables;
 };
 
 /**
@@ -19,7 +21,7 @@ export type DataWrapperProps<T, U> = {
  */
 
 const DataWrapper = <T, U>(props: DataWrapperProps<T, U>): ReactElement => {
-    const { loading, error, data } = useQuery<T>(props.query);
+    const { loading, error, data } = useQuery<T>(props.query, { variables: props.variables });
 
     if (loading) {
         return <Loading />;

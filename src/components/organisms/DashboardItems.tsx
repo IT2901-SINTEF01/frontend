@@ -70,6 +70,7 @@ const DashboardItems: React.FC = () => {
                             <DataWrapper
                                 mappingFunction={visualisationMapping[mappingPath as VisualisationMappingFunctionPath]}
                                 query={queries[visualisation.dataSourceId]}
+                                variables={visualisation.variables}
                             >
                                 {(data) => {
                                     const Vis = Visualisations[visualisation.visualisationType];

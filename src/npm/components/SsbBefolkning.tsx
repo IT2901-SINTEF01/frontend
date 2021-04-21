@@ -4,11 +4,21 @@ import LineChart, { LineChartProps } from '../../components/visualisations/LineC
 import ThresholdChart, { ThresholdChartProps } from '../../components/visualisations/ThresholdChart';
 import DataWrapper from '../../components/molecules/DataWrapper';
 import visualisationMapping from '../../utils/visualisationMapping';
-import { POPULATION_IN_NORWAY } from '../../queries/populationInNorway';
+import { POPULATION_IN_NORWAY, SSBPopulationVariables } from '../../queries/populationInNorway';
 
-const SsbBefolkningLine: React.FC<Omit<LineChartProps, 'data'>> = ({ yLabel, strokeColor, height, width }) => {
+const SsbBefolkningLine: React.FC<Omit<LineChartProps, 'data'> & SSBPopulationVariables> = ({
+    municipalities,
+    yLabel,
+    strokeColor,
+    height,
+    width,
+}) => {
     return (
-        <DataWrapper mappingFunction={visualisationMapping[`SSB_POPULATION-linechart`]} query={POPULATION_IN_NORWAY}>
+        <DataWrapper
+            mappingFunction={visualisationMapping[`SSB_POPULATION-linechart`]}
+            query={POPULATION_IN_NORWAY}
+            variables={{ municipalities }}
+        >
             {(data) => (
                 <LineChart data={data} yLabel={yLabel} strokeColor={strokeColor} height={height} width={width} />
             )}
@@ -16,7 +26,7 @@ const SsbBefolkningLine: React.FC<Omit<LineChartProps, 'data'>> = ({ yLabel, str
     );
 };
 
-const SsbBefolkningThreshold: React.FC<Omit<ThresholdChartProps, 'data'>> = ({
+const SsbBefolkningThreshold: React.FC<Omit<ThresholdChartProps, 'data'> & SSBPopulationVariables> = ({
     strokeColor,
     aboveThresholdColor,
     belowThresholdColor,
@@ -24,11 +34,13 @@ const SsbBefolkningThreshold: React.FC<Omit<ThresholdChartProps, 'data'>> = ({
     yLabel,
     height,
     width,
+    municipalities,
 }) => {
     return (
         <DataWrapper
             mappingFunction={visualisationMapping[`SSB_POPULATION-thresholdchart`]}
             query={POPULATION_IN_NORWAY}
+            variables={{ municipalities }}
         >
             {(data) => (
                 <ThresholdChart
