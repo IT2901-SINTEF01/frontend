@@ -12,8 +12,8 @@ import { VisualisationType } from '../../types/Metadata';
 
 import { useHistory } from 'react-router';
 import AddToDashboard from '../molecules/AddToDashboard';
-import { DashboardItemSize } from '../../types/DashboardVisualisation';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
+import { DashboardItemSize } from '../../types/VisualisationOption';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
