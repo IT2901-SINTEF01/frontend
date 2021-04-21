@@ -29,6 +29,20 @@ export const METADATA = gql`
     }
 `;
 
+export const TAGS = gql`
+    query {
+        allMetadata {
+            tags
+        }
+    }
+`;
+
+export type AllTags = {
+    allMetadata: {
+        tags: string[];
+    }[];
+};
+
 export type MetadataEntry = {
     id: string;
     name: string;
