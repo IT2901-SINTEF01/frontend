@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pane, Heading, Text, Badge, Link, Strong } from 'evergreen-ui';
-import { format, formatDistanceToNow } from 'date-fns';
+import { format, formatDistanceToNow, isEqual } from 'date-fns';
 
 type DatasetInfoBoxProps = {
     title: string;
@@ -15,8 +15,31 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
     const updatedDate = new Date(updated);
     const publishedDate = new Date(published);
 
+    const Published = () => {
+        return (
+            <Text title={`Published: ${format(publishedDate, 'dd/MM/yyyy;HH:mm')}`} size={300} marginTop="0.15rem">
+                Published: <Strong size={300}>{formatDistanceToNow(publishedDate, { addSuffix: true })}</Strong>
+            </Text>
+        );
+    };
+
+    const LastUpdated = () => {
+        return (
+            <Text
+                title={`Published: ${format(publishedDate, 'dd/MM/yyyy;HH:mm')}, Updated: ${format(
+                    updatedDate,
+                    'dd/MM/yyyy;HH:mm',
+                )}`}
+                size={300}
+                marginTop="0.15rem"
+            >
+                Last updated: <Strong size={300}>{formatDistanceToNow(updatedDate, { addSuffix: true })}</Strong>
+            </Text>
+        );
+    };
+
     return (
-        <Pane width="100%" height="100%">
+        <Pane width="100%" height="100%" display="flex" flexDirection="column">
             <Heading size={600} marginBottom="1rem">
                 {title}
             </Heading>
@@ -39,16 +62,14 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
                     </Badge>
                 ))}
             </Pane>
-            <Pane marginTop="1rem" display="flex" flexDirection="column">
+            <Pane marginTop="auto" display="flex" flexDirection="column">
                 <Text size={300}>
-                    URL: <Link size={300}>{url}</Link>
+                    URL:{' '}
+                    <Link href={url} size={300}>
+                        {url}
+                    </Link>
                 </Text>
-                <Text size={300} marginTop="0.15rem">
-                    Last updated: <Strong size={300}>{formatDistanceToNow(updatedDate)}</Strong>
-                </Text>
-                <Text size={300} marginTop="0.15rem">
-                    Published: <Strong size={300}>{format(publishedDate, 'dd/MM/yyyy')}</Strong>
-                </Text>
+                {isEqual(updatedDate, publishedDate) ? <Published /> : <LastUpdated />}
             </Pane>
         </Pane>
     );
