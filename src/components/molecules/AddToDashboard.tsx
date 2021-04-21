@@ -3,7 +3,6 @@ import AddToDashboardButton from '../atoms/AddToDashboardButton';
 import { DashboardVisualisation } from '../../types/DashboardVisualisation';
 import { useDispatch, useSelector } from 'react-redux';
 import dashboard from '../../redux/slices/dashboard';
-// import { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
 import { RootState } from '../../redux';
 import { useHistory } from 'react-router';
 import { toaster } from 'evergreen-ui';
