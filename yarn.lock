@@ -3095,7 +3095,7 @@
 
 "@types/d3-random@^2.2.0":
   version "2.2.0"
-  resolved "https://registry.npmjs.org/@types/d3-random/-/d3-random-2.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/@types/d3-random/-/d3-random-2.2.0.tgz#fc44cabb966917459490b758f31f5359adeabe5b"
   integrity sha512-Hjfj9m68NmYZzushzEG7etPvKH/nj9b9s9+qtkNG3/dbRBjQZQg1XS6nRuHJcCASTjxXlyXZnKu2gDxyQIIu9A==
 
 "@types/d3@^3":
@@ -3485,6 +3485,11 @@
   resolved "https://registry.npmjs.org/@types/unist/-/unist-2.0.3.tgz"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
 
+"@types/uuid@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.0.tgz#215c231dff736d5ba92410e6d602050cce7e273f"
+  integrity sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ==
+
 "@types/webpack-env@^1.15.3":
   version "1.16.0"
   resolved "https://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.16.0.tgz"
@@ -3640,9 +3645,9 @@
   resolved "https://registry.npmjs.org/@ungap/global-this/-/global-this-0.4.4.tgz"
   integrity sha512-mHkm6FvepJECMNthFuIgpAEFmPOk71UyXuIxYfjytvFTnSDBIz7jmViO+LfHI/AjrazWije0PnSP3+/NlwzqtA==
 
-"@visx/mock-data@^1.5.0":
+"@visx/mock-data@^1.7.0":
   version "1.7.0"
-  resolved "https://registry.npmjs.org/@visx/mock-data/-/mock-data-1.7.0.tgz"
+  resolved "https://registry.yarnpkg.com/@visx/mock-data/-/mock-data-1.7.0.tgz#b56e30604ab0e775ada741cb96e6c9c1eaaac56d"
   integrity sha512-v7DGro/4q382ReSWmPCKdRR1AtNUp9ERM129omMaTcf52i8RbSYNfMdxucMaEBIbATI905vYqQKA8S6xopPupQ==
   dependencies:
     "@types/d3-random" "^2.2.0"
@@ -7035,7 +7040,7 @@ d3-quadtree@1:
 
 d3-random@^2.2.2:
   version "2.2.2"
-  resolved "https://registry.npmjs.org/d3-random/-/d3-random-2.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/d3-random/-/d3-random-2.2.2.tgz#5eebd209ef4e45a2b362b019c1fb21c2c98cbb6e"
   integrity sha512-0D9P8TRj6qDAtHhRQn6EfdOtHMfsUWanl3yb/84C4DqpZ+VsgfI5iTVRNRbELCfNvRfpMr8OrqqUTQ6ANGCijw==
 
 d3-shape@^1.2.0:
@@ -7054,7 +7059,7 @@ d3-time-format@^2.2.3:
 
 d3-time@1:
   version "1.1.0"
-  resolved "https://registry.npmjs.org/d3-time/-/d3-time-1.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.1.0.tgz#b1e19d307dae9c900b7e5b25ffc5dcc249a8a0f1"
   integrity sha512-Xh0isrZ5rPYYdqhAVk8VLnMEidhz5aP7htAADH6MfzgmmicPkTo8LhkLxci61/lCB7n7UmE3bN0leRt+qvkLxA==
 
 d3-timer@1:
