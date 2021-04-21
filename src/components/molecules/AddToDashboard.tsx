@@ -9,6 +9,7 @@ import { toaster } from 'evergreen-ui';
 
 type Props = {
     dashboardItem: DashboardVisualisation;
+    metadataId: string;
 };
 
 const AddToDashboard: React.FC<Props> = (props) => {
@@ -29,7 +30,7 @@ const AddToDashboard: React.FC<Props> = (props) => {
     const remove = () => {
         dispatch(dashboard.actions.remove(key));
         toaster.success('Visualiseringen ble fjernet fra dashboardet.');
-        history.push(`/explore/edit/${visualisation.metadataId}`);
+        history.push(`/explore/edit/${props.metadataId}`);
     };
 
     return <AddToDashboardButton added={added} onAdd={add} onRemove={remove} />;

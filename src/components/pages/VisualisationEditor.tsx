@@ -102,8 +102,8 @@ const VisualisationEditor: React.FC = () => {
                             visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
                             dataSourceId: metadata.datasourceId,
                             options: { size, paragraph },
-                            metadataId: metadata.id,
                         }}
+                        metadataId={metadata.id}
                     />
                 </Pane>
             </Pane>
