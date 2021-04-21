@@ -61,7 +61,14 @@ const VisualisationEditor: React.FC = () => {
                 padding="2rem"
             >
                 <Pane gridColumn="span 1">
-                    <DataInfoBox title={metadata.name} description={metadata.description} tags={metadata.tags} />
+                    <DataInfoBox
+                        title={metadata.name}
+                        description={metadata.description}
+                        tags={metadata.tags}
+                        url={metadata.source}
+                        published={metadata.published}
+                        updated={metadata.updated}
+                    />
                 </Pane>
                 {/* Safe type cast as we don't render before metadata has been loaded. */}
                 <VisualisationPreview

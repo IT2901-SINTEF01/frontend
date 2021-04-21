@@ -52,6 +52,9 @@ const DataExplorer: React.FC = () => {
                             description={el.description}
                             tags={el.tags}
                             visualisationType={el.visualisations[0].type}
+                            source={el.source}
+                            updated={el.updated}
+                            published={el.published}
                         />
                     </Link>
                 </Pane>
