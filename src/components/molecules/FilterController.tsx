@@ -25,7 +25,7 @@ const FilterController: React.FC<FilterControllerProps> = ({ size, activeFilters
             <Pane display="flex" justifyContent="center" alignItems="center" background="#F7F9FD" height="4rem">
                 <Heading>Filter</Heading>
             </Pane>
-            <Pane padding="1rem">
+            <Pane padding="2rem">
                 <ActiveFilters
                     tags={activeFilters}
                     removeTag={(tag) => setActiveFilters(activeFilters.filter((el) => el !== tag))}

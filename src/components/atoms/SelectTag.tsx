@@ -21,6 +21,7 @@ const SelectTag: React.FC<SelectTagProps> = ({ addTag }) => {
         <>
             <Label htmlFor="choose-municipality-combobox">Filtrer på datatyper</Label>
             <Combobox
+                paddingTop="0.5rem"
                 id="choose-municipality-combobox"
                 width="100%"
                 openOnFocus
