@@ -33,7 +33,7 @@ const FilterController: React.FC<FilterControllerProps> = ({ size, activeFilters
                 />
                 <SelectTag
                     addTag={(tag) => {
-                        if (tag) setActiveFilters((prev) => [...prev, tag]);
+                        if (tag && !activeFilters.includes(tag)) setActiveFilters((prev) => [...prev, tag]);
                     }}
                 />
             </Pane>
