@@ -7,23 +7,19 @@ export default createSlice({
     initialState: {} as Record<string, DashboardVisualisation>,
     reducers: {
         add: (state, action: PayloadAction<DashboardVisualisation>) => {
-            const key = `${uuidv4()}`;
+            const key = uuidv4();
             state[key] = {
-                id: key,
-                dataSourceId: action.payload.dataSourceId,
-                visualisationType: action.payload.visualisationType,
-                options: action.payload.options,
-                metadataId: action.payload.metadataId,
+                ...action.payload,
             };
         },
         remove: (state, action: PayloadAction<string>) => {
-            const key = `${action.payload}`;
+            const key = action.payload;
             if (state[key]) {
                 delete state[key];
             }
         },
         update: (state, action: PayloadAction<DashboardVisualisation>) => {
-            const key = `${action.payload.id}`;
+            const key = action.payload.id ?? '';
             if (state[key]) {
                 state[key] = action.payload;
             }

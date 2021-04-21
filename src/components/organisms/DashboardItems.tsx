@@ -43,14 +43,14 @@ const DashboardItems: React.FC = () => {
 
     return (
         <>
-            {Object.entries(visualisations).map(([mappingPath, visualisation]) => {
+            {Object.entries(visualisations).map(([uuid, visualisation]) => {
                 const metadataEntry = data.allMetadata.find((md) => md.datasourceId === visualisation.dataSourceId);
 
                 const name = metadataEntry?.name ?? 'Ingen navn her.';
 
                 return (
                     <Pane
-                        key={mappingPath}
+                        key={uuid}
                         width="100%"
                         height="100%"
                         gridColumn={`span ${visualisation.options.size}`}
@@ -63,8 +63,8 @@ const DashboardItems: React.FC = () => {
                             width="100%"
                             titleSize={400}
                             paragraph={visualisation.options.paragraph}
-                            onEdit={() => history.push(`/explore/edit/${mappingPath}`)}
-                            onDelete={deleteDashboardVisualisation(mappingPath)}
+                            onEdit={() => history.push(`/explore/edit/${uuid}`)}
+                            onDelete={deleteDashboardVisualisation(uuid)}
                         >
                             <ParentSize>
                                 {(parent) => (
