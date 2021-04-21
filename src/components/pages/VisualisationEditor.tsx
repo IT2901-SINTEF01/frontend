@@ -37,7 +37,7 @@ const VisualisationEditor: React.FC = () => {
         return <Text>Loading…</Text>;
     }
 
-    if (typeof data === 'undefined' || ((!data || !data.allMetadata.some((el) => el.id === id)) && !visualisation)) {
+    if (!data || (!data.allMetadata.some((el) => el.id === id) && !visualisation)) {
         // No metadata was found. Go back
         history.push('/explore');
         return null;
@@ -47,7 +47,7 @@ const VisualisationEditor: React.FC = () => {
         ? data.allMetadata.find((el) => el.id === visualisation.metadataId)
         : data.allMetadata.find((el) => el.id === id);
 
-    if (typeof metadata === 'undefined') {
+    if (!metadata) {
         return null;
     }
 
