@@ -34,7 +34,7 @@ describe('Dashboard', () => {
         cy.contains('Legg til nytt komponent').click();
         cy.wait('@METADATA');
         cy.get('a').first().click();
-        cy.contains('Legg til i ditt dashboard').click();
+        cy.contains('Legg til i dashboard').click();
         cy.get('.dashboardItem').should('be.visible');
     });
     it('removes component', () => {
@@ -42,7 +42,7 @@ describe('Dashboard', () => {
         cy.contains('Legg til nytt komponent').click();
         cy.wait('@METADATA');
         cy.get('a').first().click();
-        cy.contains('Legg til i ditt dashboard').click();
+        cy.contains('Legg til i dashboard').click();
         cy.get('[data-icon=trash]').click();
         cy.get('.dashboardItem').should('not.exist');
     });
