@@ -6,6 +6,7 @@ import dashboard from '../../redux/slices/dashboard';
 import { RootState } from '../../redux';
 import { useHistory } from 'react-router';
 import { toaster } from 'evergreen-ui';
+import { v4 as uuidv4 } from 'uuid';
 
 type Props = {
     dashboardItem: DashboardVisualisation;
@@ -14,7 +15,7 @@ type Props = {
 const AddToDashboard: React.FC<Props> = (props) => {
     const history = useHistory();
 
-    const key = useMemo(() => props.dashboardItem.id, []);
+    const key = useMemo(() => props.dashboardItem.id ?? uuidv4(), []);
 
     const dispatch = useDispatch();
     const added = useSelector((state: RootState) => !!state.dashboard[key]);
