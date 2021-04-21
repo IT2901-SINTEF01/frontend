@@ -6,7 +6,7 @@ import FilterController from '../molecules/FilterController';
 
 const DataExplorer: React.FC = () => {
     const history = useHistory();
-    const sidebarSize = '18rem';
+    const sidebarSize = '20rem';
     const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
     return (
