@@ -20,8 +20,8 @@ const LatLonInputSet: React.FC<LatLonInputSetProps> = (props) => {
 
     return (
         <>
-            <TextInputField value={state.lat} label="Lengdegrad" onChange={update('lat')} />
-            <TextInputField value={state.lon} label="Breddegrad" onChange={update('lon')} />
+            <TextInputField value={state.lat} label="Breddegrad" onChange={update('lat')} />
+            <TextInputField value={state.lon} label="Lengdegrad" onChange={update('lon')} />
         </>
     );
 };
