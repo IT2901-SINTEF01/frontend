@@ -76,6 +76,7 @@ const VisualisationEditor: React.FC = () => {
                     metadata={metadata}
                     selectedVisualisation={selectedVisualisation as VisualisationType}
                     size={size}
+                    paragraph={paragraph}
                 />
                 <VisualisationParameterSelector
                     size={size}

@@ -13,49 +13,42 @@ export default {
 const Template: Story<ThresholdChartProps> = (args) => (
     <ThresholdChart
         data={args.data}
-        width={args.width}
-        background={args.background}
-        height={args.height}
         thresholdValue={args.thresholdValue}
+        yLabel={args.yLabel}
         aboveThresholdColor={args.aboveThresholdColor}
         belowThresholdColor={args.belowThresholdColor}
-        yLabel={args.yLabel}
+        height={args.height}
+        width={args.width}
     />
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
     data: historicAppleStockPrice,
-    width: 600,
-    height: 400,
     yLabel: 'Price',
     thresholdValue: 150,
-    aboveThresholdColor: 'green',
-    belowThresholdColor: 'red',
-    background: '#fff',
+    width: 600,
+    height: 400,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     data: numericAppleStockPrice,
-    width: 600,
-    height: 400,
     yLabel: 'Price',
     thresholdValue: 150,
-    aboveThresholdColor: 'green',
-    belowThresholdColor: 'red',
-    background: '#fff',
+    width: 600,
+    height: 400,
 };
 
 Primary.argTypes = {
-    width: { control: { type: 'range', min: 100, max: 1200, step: 10 } },
-    height: { control: { type: 'range', min: 100, max: 1600, step: 10 } },
     thresholdValue: { control: { type: 'range', min: 10, max: 400, step: 5 } },
     aboveThresholdColor: { control: 'color' },
     belowThresholdColor: { control: 'color' },
     background: { control: 'color' },
     data: { table: { disable: true } },
     margin: { table: { disable: true } },
+    height: { control: { type: 'range', min: 10, max: 1200, step: 5 } },
+    width: { control: { type: 'range', min: 10, max: 1200, step: 5 } },
 };
 
 Secondary.argTypes = Primary.argTypes;
