@@ -1,10 +1,12 @@
-import { DataSourceID } from '../types/DataSource';
-import { VisualisationType } from '../types/Metadata';
+// import { DataSourceID } from '../types/DataSource';
+// import { VisualisationType } from '../types/Metadata';
 import { PopulationInNorway } from '../queries/populationInNorway';
 import LineChart from '../components/visualisations/LineChart';
 import { ComponentProps } from 'react';
 import { MetApiCompactAirTemperature } from '../queries/metApi';
 import ThresholdChart from '../components/visualisations/ThresholdChart';
+import { DataSourceID } from '../types/DataSource';
+import { VisualisationType } from '../types/Metadata';
 import { MappingFunction } from '../types/Chart';
 
 // A typed string with the path to the mapping function

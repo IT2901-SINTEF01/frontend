@@ -3,10 +3,11 @@ import AddToDashboardButton from '../atoms/AddToDashboardButton';
 import { DashboardVisualisation } from '../../types/DashboardVisualisation';
 import { useDispatch, useSelector } from 'react-redux';
 import dashboard from '../../redux/slices/dashboard';
-import { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
+// import { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
 import { RootState } from '../../redux';
 import { useHistory } from 'react-router';
 import { toaster } from 'evergreen-ui';
+import { v4 as uuidv4 } from 'uuid';
 
 type Props = {
     dashboardItem: DashboardVisualisation;
@@ -15,7 +16,7 @@ type Props = {
 const AddToDashboard: React.FC<Props> = (props) => {
     const history = useHistory();
 
-    const key = `${props.dashboardItem.dataSourceId}-${props.dashboardItem.visualisationType}` as VisualisationMappingFunctionPath;
+    const key = props.dashboardItem.id ?? uuidv4();
 
     const dispatch = useDispatch();
     const added = useSelector((state: RootState) => !!state.dashboard[key]);
@@ -27,7 +28,7 @@ const AddToDashboard: React.FC<Props> = (props) => {
     };
 
     const remove = () => {
-        dispatch(dashboard.actions.remove(key));
+        dispatch(dashboard.actions.remove(props.dashboardItem));
         toaster.success('Visualiseringen ble fjernet fra dashboardet.');
     };
 

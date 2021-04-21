@@ -6,7 +6,7 @@ import { ParentSize } from '@visx/responsive';
 import DataWrapper from '../molecules/DataWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux';
-import visualisationMapping, { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
+// import visualisationMapping, { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
 
 import queries from '../../queries';
 import Visualisations from '../visualisations';
@@ -15,6 +15,8 @@ import { AllMetadataResult, METADATA } from '../../queries/metadata';
 import ErrorMessage from '../atoms/ErrorMessage';
 import { useHistory } from 'react-router';
 import dashboard from '../../redux/slices/dashboard';
+import visualisationMapping, { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
+import { DashboardVisualisation } from '../../types/DashboardVisualisation';
 
 const DashboardItems: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -22,8 +24,8 @@ const DashboardItems: React.FC = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const deleteDashboardVisualisation = (key: string) => () => {
-        dispatch(dashboard.actions.remove(key as VisualisationMappingFunctionPath));
+    const deleteDashboardVisualisation = (visualisation: DashboardVisualisation) => () => {
+        dispatch(dashboard.actions.remove(visualisation));
         toaster.success('Visualiseringen ble fjernet.');
     };
 
@@ -66,13 +68,15 @@ const DashboardItems: React.FC = () => {
                             titleSize={400}
                             paragraph={visualisation.options.paragraph}
                             onEdit={() => history.push(`/explore/edit/${metadataEntry?.id}`)}
-                            onDelete={deleteDashboardVisualisation(mappingPath)}
+                            onDelete={deleteDashboardVisualisation(visualisation)}
                         >
                             <ParentSize>
                                 {(parent) => (
                                     <DataWrapper
                                         mappingFunction={
-                                            visualisationMapping[mappingPath as VisualisationMappingFunctionPath]
+                                            visualisationMapping[
+                                                `${visualisation.dataSourceId}-${visualisation.visualisationType}` as VisualisationMappingFunctionPath
+                                            ]
                                         }
                                         query={queries[visualisation.dataSourceId]}
                                     >
