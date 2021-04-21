@@ -21,7 +21,7 @@ const MunicipalityEditor: React.FC<MunicipalityEditorProps> = (props) => {
     }
 
     if (!data) {
-        return <Text>Empty</Text>;
+        return <Text>Tomt</Text>;
     }
 
     const setMunicipality = (name: string) => {
