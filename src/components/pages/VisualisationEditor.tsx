@@ -51,6 +51,7 @@ const VisualisationEditor: React.FC = () => {
 
         setSelectedVisualisation(visualisation ? visualisation.visualisationType : metadata.visualisations[0].type);
         setVariables(visualisation ? visualisation.variables : defaultVariables[metadata.datasourceId]);
+        setParagraph(visualisation ? visualisation.options.paragraph : '');
     }, [metadata, visualisation]);
 
     if (error) {
