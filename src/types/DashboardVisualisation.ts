@@ -26,6 +26,7 @@ export enum DashboardItemSize {
 }
 
 export type DashboardVisualisation = {
+    id: string; // UUID
     dataSourceId: DataSourceID;
     visualisationType: VisualisationType;
     options: ChartCustomisationOption;
