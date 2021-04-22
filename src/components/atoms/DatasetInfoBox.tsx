@@ -63,9 +63,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
                 ))}
             </Pane>
             <Pane marginTop="auto" display="flex" flexDirection="column">
-                <Text size={300}>
-                    URL:{' '}
-                    <Link href={url} size={300}>
+                    <Text size={300}>Origin: </Text>
                         {url}
                     </Link>
                 </Text>
