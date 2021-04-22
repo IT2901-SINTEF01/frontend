@@ -18,7 +18,10 @@ const DataSourceOptions: React.FC<DataSourceOptionsProps> = (props) => {
         switch (props.dataSource) {
             case DataSourceID.SSB_POPULATION:
                 return (
-                    <MunicipalityEditor setState={props.setState as Dispatch<SetStateAction<SSBPopulationVariables>>} />
+                    <MunicipalityEditor
+                        state={props.state as SSBPopulationVariables}
+                        setState={props.setState as Dispatch<SetStateAction<SSBPopulationVariables>>}
+                    />
                 );
             case DataSourceID.MET_API_FORECAST:
                 return (
