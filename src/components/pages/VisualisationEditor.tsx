@@ -126,6 +126,7 @@ const VisualisationEditor: React.FC = () => {
                             variables,
                         }}
                         metadataId={metadata.id}
+                        visualisation={visualisation}
                     />
                 </Pane>
                 <DataSourceOptions
