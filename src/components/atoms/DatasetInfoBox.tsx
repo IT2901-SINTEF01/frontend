@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pane, Heading, Text, Badge, Link, Strong } from 'evergreen-ui';
-import { format, formatDistanceToNow, isEqual } from 'date-fns';
+import { formatISO, formatDistanceToNow, isEqual } from 'date-fns';
 
 type DatasetInfoBoxProps = {
     title: string;
@@ -17,7 +17,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
 
     const Published: React.FC = () => {
         return (
-            <Text title={`Published: ${format(publishedDate, 'dd/MM/yyyy;HH:mm')}`} size={300} marginTop="0.15rem">
+            <Text title={`Published: ${formatISO(publishedDate)}`} size={300} marginTop="0.15rem">
                 Published: <Strong size={300}>{formatDistanceToNow(publishedDate, { addSuffix: true })}</Strong>
             </Text>
         );
@@ -26,10 +26,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
     const LastUpdated: React.FC = () => {
         return (
             <Text
-                title={`Published: ${format(publishedDate, 'dd/MM/yyyy;HH:mm')}, Updated: ${format(
-                    updatedDate,
-                    'dd/MM/yyyy;HH:mm',
-                )}`}
+                title={`Published: ${formatISO(publishedDate)}, Updated: ${formatISO(updatedDate)}`}
                 size={300}
                 marginTop="0.15rem"
             >
