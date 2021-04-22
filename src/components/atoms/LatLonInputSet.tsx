@@ -8,7 +8,10 @@ type LatLonInputSetProps = {
 };
 
 const LatLonInputSet: React.FC<LatLonInputSetProps> = (props) => {
-    const [state, setState] = useState<{ lat: string; lon: string }>({ lat: '63', lon: '11' });
+    const [state, setState] = useState<{ lat: string; lon: string }>({
+        lat: String(props.state.lat),
+        lon: String(props.state.lon),
+    });
 
     // To avoid problems with difficult digit entry for user
     useEffect(() => {
