@@ -62,6 +62,7 @@ const DataResultItems: React.FC<DataResultItemsProps> = ({ activeFilters }) => {
                     backgroundColor="white"
                     onClick={() => HandleItemClick(el.id)}
                     style={{ cursor: 'pointer' }}
+                    className={'dataResultItems'}
                 >
                     <DataResultItem
                         title={el.name}
