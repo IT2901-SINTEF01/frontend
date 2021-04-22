@@ -25,6 +25,7 @@ import AddToDashboard from '../molecules/AddToDashboard';
 import DataSourceOptions from '../molecules/DataSourceOptions';
 
 import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
+import { DashboardVisualisation } from '../../types/DashboardVisualisation';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -33,7 +34,7 @@ const VisualisationEditor: React.FC = () => {
 
     const [selectedVisualisation, setSelectedVisualisation] = useState<VisualisationType>();
 
-    const visualisation = useSelector((state: RootState) => state.dashboard[id]);
+    const visualisation = useSelector((state: RootState) => state.dashboard[id] as DashboardVisualisation | undefined);
 
     const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
@@ -64,8 +65,8 @@ const VisualisationEditor: React.FC = () => {
 
     // Set the first available visualisation to active
     useEffect(() => {
-        setSelectedVisualisation(metadata.visualisations[0].type);
-        setVariables(defaultVariables[metadata.datasourceId]);
+        setSelectedVisualisation(visualisation ? visualisation.visualisationType : metadata.visualisations[0].type);
+        setVariables(visualisation ? visualisation.variables : defaultVariables[metadata.datasourceId]);
     }, [metadata]);
 
     if (variables === undefined) {
