@@ -1,21 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
-import { useQuery } from '@apollo/client';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router';
+
+import { RootState } from '../../redux';
+import { useSelector } from 'react-redux';
+
+import { useQuery } from '@apollo/client';
+
 import { AllMetadataResult, METADATA } from '../../queries/metadata';
 
-import VisualisationPreview from '../molecules/VisualisationPreview';
+import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
+
+import { VisualisationType } from '../../types/Metadata';
+import { DashboardItemSize } from '../../types/VisualisationOption';
+import { DataSourceVariables, defaultVariables } from '../../types/DataSource';
+
 import DataInfoBox from '../atoms/DatasetInfoBox';
 import VisualisationSelector from '../atoms/VisualisationSelector';
-import { friendlyNameForVisualisationType } from '../../utils/visualisationLabels';
-import { VisualisationType } from '../../types/Metadata';
-
-import { useHistory } from 'react-router';
-import AddToDashboard from '../molecules/AddToDashboard';
-import { DashboardItemSize } from '../../types/DashboardVisualisation';
 import VisualisationParameterSelector from '../atoms/VisualisationParameterSelector';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux';
+
+import VisualisationPreview from '../molecules/VisualisationPreview';
+import AddToDashboard from '../molecules/AddToDashboard';
+import DataSourceOptions from '../molecules/DataSourceOptions';
+
+import { Button, CircleArrowLeftIcon, Pane, Text } from 'evergreen-ui';
 
 const VisualisationEditor: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -28,6 +37,8 @@ const VisualisationEditor: React.FC = () => {
 
     const [paragraph, setParagraph] = useState<string>();
     const [size, setSize] = useState<DashboardItemSize>(DashboardItemSize.LARGE);
+
+    const [variables, setVariables] = useState<DataSourceVariables>();
 
     if (error) {
         return <Text>{error.message}</Text>;
@@ -52,7 +63,14 @@ const VisualisationEditor: React.FC = () => {
     }
 
     // Set the first available visualisation to active
-    useEffect(() => setSelectedVisualisation(metadata.visualisations[0].type), [metadata]);
+    useEffect(() => {
+        setSelectedVisualisation(metadata.visualisations[0].type);
+        setVariables(defaultVariables[metadata.datasourceId]);
+    }, [metadata]);
+
+    if (variables === undefined) {
+        return null;
+    }
 
     return (
         <>
@@ -109,10 +127,16 @@ const VisualisationEditor: React.FC = () => {
                             visualisationType: selectedVisualisation ?? metadata.visualisations[0].type,
                             dataSourceId: metadata.datasourceId,
                             options: { size, paragraph },
+                            variables,
                         }}
                         metadataId={metadata.id}
                     />
                 </Pane>
+                <DataSourceOptions
+                    state={variables}
+                    setState={setVariables as Dispatch<SetStateAction<DataSourceVariables>>}
+                    dataSource={metadata.datasourceId}
+                />
             </Pane>
         </>
     );
