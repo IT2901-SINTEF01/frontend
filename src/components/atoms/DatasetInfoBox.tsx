@@ -35,6 +35,10 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
         );
     };
 
+    const HandleLinkClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
+
     return (
         <Pane width="100%" height="100%" display="flex" flexDirection="column">
             <Heading size={600} marginBottom="1rem">
@@ -43,13 +47,13 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
             <Text overflow="auto" display="block">
                 {description}
             </Text>
-            <Pane display="flex" flexWrap="wrap">
+            <Pane display="flex" flexWrap="wrap" marginBottom="1.5rem">
                 {tags.map((tag) => (
                     <Badge
                         key={tag}
                         color="neutral"
                         marginRight="1rem"
-                        marginTop="1rem"
+                        marginTop="0.5rem"
                         overflow="hidden"
                         wordWrap="break-word"
                         whiteSpace="pre-wrap"
@@ -60,10 +64,12 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
                 ))}
             </Pane>
             <Pane marginTop="auto" display="flex" flexDirection="column">
+                <Pane>
                     <Text size={300}>Origin: </Text>
+                    <Link href={url} target="_blank" onClick={(e: React.MouseEvent) => HandleLinkClick(e)} size={300}>
                         {url}
                     </Link>
-                </Text>
+                </Pane>
                 {isEqual(updatedDate, publishedDate) ? <Published /> : <LastUpdated />}
             </Pane>
         </Pane>
