@@ -41,6 +41,18 @@ const VisualisationEditor: React.FC = () => {
 
     const [variables, setVariables] = useState<DataSourceVariables>();
 
+    const metadata = visualisation
+        ? data?.allMetadata.find((el) => el.datasourceId === visualisation.dataSourceId)
+        : data?.allMetadata.find((el) => el.id === id);
+
+    // Set the first available visualisation to active
+    useEffect(() => {
+        if (metadata === undefined) return;
+
+        setSelectedVisualisation(visualisation ? visualisation.visualisationType : metadata.visualisations[0].type);
+        setVariables(visualisation ? visualisation.variables : defaultVariables[metadata.datasourceId]);
+    }, [metadata, visualisation]);
+
     if (error) {
         return <Text>{error.message}</Text>;
     }
@@ -55,19 +67,9 @@ const VisualisationEditor: React.FC = () => {
         return null;
     }
 
-    const metadata = visualisation
-        ? data.allMetadata.find((el) => el.datasourceId === visualisation.dataSourceId)
-        : data.allMetadata.find((el) => el.id === id);
-
     if (!metadata) {
         return null;
     }
-
-    // Set the first available visualisation to active
-    useEffect(() => {
-        setSelectedVisualisation(visualisation ? visualisation.visualisationType : metadata.visualisations[0].type);
-        setVariables(visualisation ? visualisation.variables : defaultVariables[metadata.datasourceId]);
-    }, [metadata]);
 
     if (variables === undefined) {
         return null;
