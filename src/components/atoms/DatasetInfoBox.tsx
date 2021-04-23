@@ -35,7 +35,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
         );
     };
 
-    const HandleLinkClick = (e: React.MouseEvent) => {
+    const handleLinkClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
         e.stopPropagation();
     };
 
@@ -66,7 +66,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
             <Pane marginTop="auto" display="flex" flexDirection="column">
                 <Pane>
                     <Text size={300}>Origin: </Text>
-                    <Link href={url} target="_blank" onClick={(e: React.MouseEvent) => HandleLinkClick(e)} size={300}>
+                    <Link href={url} target="_blank" onClick={handleLinkClick} size={300}>
                         {url}
                     </Link>
                 </Pane>
