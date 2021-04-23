@@ -1,4 +1,5 @@
 import { makeMetadata, makeTimeseries } from '../../src/mockdata/mocks';
+const mockedMetadata = makeMetadata();
 
 describe('Dashboard', () => {
     beforeEach(() => {
@@ -7,7 +8,7 @@ describe('Dashboard', () => {
                 req.alias = 'METADATA';
                 req.reply({
                     data: {
-                        allMetadata: makeMetadata().map((value) => ({ ...value, id: 'hardwired to self-destruct' })),
+                        allMetadata: mockedMetadata,
                     },
                 });
             } else if (req.body.query.includes('forecast')) {
@@ -33,7 +34,7 @@ describe('Dashboard', () => {
         cy.visit('/');
         cy.contains('Legg til nytt komponent').click();
         cy.wait('@METADATA');
-        cy.get('a').first().click();
+        cy.get('.dataResultItems').first().click();
         cy.contains('Legg til i dashboard').click();
         cy.get('.dashboardItem').should('be.visible');
     });
@@ -41,7 +42,7 @@ describe('Dashboard', () => {
         cy.visit('/');
         cy.contains('Legg til nytt komponent').click();
         cy.wait('@METADATA');
-        cy.get('a').first().click();
+        cy.get('.dataResultItems').first().click();
         cy.contains('Legg til i dashboard').click();
         cy.get('[data-icon=trash]').click();
         cy.get('.dashboardItem').should('not.exist');

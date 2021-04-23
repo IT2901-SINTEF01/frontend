@@ -72,6 +72,7 @@ const DashboardItems: React.FC = () => {
                                     ]
                                 }
                                 query={queries[visualisation.dataSourceId]}
+                                variables={visualisation.variables}
                             >
                                 {(data) => {
                                     const Vis = Visualisations[visualisation.visualisationType];

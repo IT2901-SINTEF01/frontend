@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import VisualisationPreview from '../components/molecules/VisualisationPreview';
 import { makeMetadata } from '../mockdata/mocks';
 import { VisualisationType } from '../types/Metadata';
-import { DashboardItemSize } from '../types/DashboardVisualisation';
+import { DashboardItemSize } from '../types/VisualisationOption';
 
 export default {
     title: 'Visualisation editor/Visualisation preview',
