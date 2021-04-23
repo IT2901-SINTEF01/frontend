@@ -75,8 +75,8 @@ const App: React.FC = () => {
 const Charts: React.FC = () => {
     return (
         <div>
-            <MetApi.Line width={600} height={200} />
-            <SsbBefolkning.Threshold width={600} height={300} thresholdValue={4} />
+            <MetApi.Line width={600} height={200 lat={63} lon={10} />
+            <SsbBefolkning.Threshold width={600} height={300} thresholdValue={4} municipalities={'Bærum'} />
         </div>
     );
 };
