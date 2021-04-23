@@ -4,8 +4,8 @@ import { Heading, InfoSignIcon, Pane, Tooltip, Text } from 'evergreen-ui';
 import { MetadataEntry } from '../../queries/metadata';
 import DashboardItem from './DashboardItem';
 import { VisualisationType } from '../../types/Metadata';
-import { DashboardItemSize } from '../../types/DashboardVisualisation';
 import MockedVisualisation from './MockedVisualisation';
+import { DashboardItemSize } from '../../types/VisualisationOption';
 
 type VisualisationPreviewProps = {
     metadata: MetadataEntry;

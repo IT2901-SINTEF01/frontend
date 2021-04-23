@@ -1,12 +1,9 @@
 import React from 'react';
-
 import { Pane, Spinner, toaster } from 'evergreen-ui';
 import DashboardItem from '../molecules/DashboardItem';
 import DataWrapper from '../molecules/DataWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux';
-import visualisationMapping, { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
-
 import queries from '../../queries';
 import Visualisations from '../visualisations';
 import { useQuery } from '@apollo/client';
@@ -14,6 +11,7 @@ import { AllMetadataResult, METADATA } from '../../queries/metadata';
 import ErrorMessage from '../atoms/ErrorMessage';
 import { useHistory } from 'react-router';
 import dashboard from '../../redux/slices/dashboard';
+import visualisationMapping, { VisualisationMappingFunctionPath } from '../../utils/visualisationMapping';
 
 const DashboardItems: React.FC = () => {
     const { loading, data, error } = useQuery<AllMetadataResult>(METADATA);
@@ -22,7 +20,7 @@ const DashboardItems: React.FC = () => {
     const dispatch = useDispatch();
 
     const deleteDashboardVisualisation = (key: string) => () => {
-        dispatch(dashboard.actions.remove(key as VisualisationMappingFunctionPath));
+        dispatch(dashboard.actions.remove(key));
         toaster.success('Visualiseringen ble fjernet.');
     };
 
@@ -44,14 +42,14 @@ const DashboardItems: React.FC = () => {
 
     return (
         <>
-            {Object.entries(visualisations).map(([mappingPath, visualisation]) => {
+            {Object.entries(visualisations).map(([uuid, visualisation]) => {
                 const metadataEntry = data.allMetadata.find((md) => md.datasourceId === visualisation.dataSourceId);
 
                 const name = metadataEntry?.name ?? 'Ingen navn her.';
 
                 return (
                     <Pane
-                        key={mappingPath}
+                        key={uuid}
                         width="100%"
                         height="100%"
                         gridColumn={`span ${visualisation.options.size}`}
@@ -64,12 +62,17 @@ const DashboardItems: React.FC = () => {
                             width="100%"
                             titleSize={400}
                             paragraph={visualisation.options.paragraph}
-                            onEdit={() => history.push(`/explore/edit/${metadataEntry?.id}`)}
-                            onDelete={deleteDashboardVisualisation(mappingPath)}
+                            onEdit={() => history.push(`/explore/edit/${uuid}`)}
+                            onDelete={deleteDashboardVisualisation(uuid)}
                         >
                             <DataWrapper
-                                mappingFunction={visualisationMapping[mappingPath as VisualisationMappingFunctionPath]}
+                                mappingFunction={
+                                    visualisationMapping[
+                                        `${visualisation.dataSourceId}-${visualisation.visualisationType}` as VisualisationMappingFunctionPath
+                                    ]
+                                }
                                 query={queries[visualisation.dataSourceId]}
+                                variables={visualisation.variables}
                             >
                                 {(data) => {
                                     const Vis = Visualisations[visualisation.visualisationType];
