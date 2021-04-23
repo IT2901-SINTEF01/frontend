@@ -12,7 +12,7 @@ export type BarChartProps = {
     width: string | number;
 };
 
-const BarChart: React.FC<BarChartProps> = ({ title, yLabel, data, isPreview = false, height, width, barNames }) => {
+const BarChart: React.FC<BarChartProps> = ({ title, yLabel, data, isPreview = false, height, width }) => {
     /*
     data.map((el, index) => ({
                 type: 'bar',
@@ -30,7 +30,6 @@ const BarChart: React.FC<BarChartProps> = ({ title, yLabel, data, isPreview = fa
                     type: 'bar',
                     x: data.map((d) => d.x),
                     y: data.map((d) => d.y),
-                    name: 'hei',
                 },
             ]}
             style={{ width: width, height: height, margin: '0' }}
