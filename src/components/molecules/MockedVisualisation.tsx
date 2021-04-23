@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { VisualisationType } from '../../types/Metadata';
 import LineChart from '../visualisations/LineChart';
 import ThresholdChart from '../visualisations/ThresholdChart';
+import BarChart from '../visualisations/BarChart';
 import { Text } from 'evergreen-ui';
 import mockCartesianChartInput from '../../mockdata/mockCartesianChartInput';
 
@@ -19,6 +20,8 @@ const MockedVisualisation: React.FC<MockedVisualisationProps> = ({ visualisation
             return <LineChart data={data} strokeColor="#66CCCC" isPreview={true} height={height} width={width} />;
         case VisualisationType.THRESHOLD:
             return <ThresholdChart data={data} strokeColor="#66CCCC" isPreview={true} height={height} width={width} />;
+        case VisualisationType.BAR:
+            return <BarChart data={data} height={height} width={width} isPreview={true} barNames={['Verdi']} />;
         default:
             return <Text>{visualisationType}</Text>;
     }

@@ -41,6 +41,7 @@ export default {
     // SSB
     [`${DataSourceID.SSB_POPULATION}-${VisualisationType.LINE}`]: populationInNorwayToCartesian,
     [`${DataSourceID.SSB_POPULATION}-${VisualisationType.THRESHOLD}`]: populationInNorwayToCartesian,
+    [`${DataSourceID.SSB_POPULATION}-${VisualisationType.BAR}`]: populationInNorwayToCartesian,
 
     // METAPI
     [`${DataSourceID.MET_API_FORECAST}-${VisualisationType.LINE}`]: metAPICompactToCartesian,
