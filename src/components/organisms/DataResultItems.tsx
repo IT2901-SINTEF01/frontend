@@ -47,7 +47,7 @@ const DataResultItems: React.FC<DataResultItemsProps> = ({ activeFilters }) => {
         );
     }
 
-    const HandleItemClick = (id: string) => {
+    const handleItemClick = (id: string) => {
         history.push(`/explore/edit/${id}`);
     };
 
@@ -60,8 +60,7 @@ const DataResultItems: React.FC<DataResultItemsProps> = ({ activeFilters }) => {
                     marginTop="2rem"
                     key={el.id}
                     backgroundColor="white"
-                    onClick={() => HandleItemClick(el.id)}
-                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleItemClick(el.id)}
                     className={'dataResultItems'}
                     cursor="pointer"
                 >
