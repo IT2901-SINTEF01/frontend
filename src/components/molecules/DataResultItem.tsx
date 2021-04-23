@@ -8,13 +8,24 @@ export type DataResultItemProps = {
     visualisationType: VisualisationType;
     title: string;
     description: string;
+    source: string;
+    published: string;
+    updated: string;
     tags: string[];
 };
 
-const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tags, visualisationType }) => (
+const DataResultItem: React.FC<DataResultItemProps> = ({
+    title,
+    description,
+    tags,
+    visualisationType,
+    source,
+    updated,
+    published,
+}) => (
     <Card
         width="100%"
-        height="20rem"
+        height="22rem"
         elevation={1}
         display="flex"
         padding="1.5rem"
@@ -23,7 +34,14 @@ const DataResultItem: React.FC<DataResultItemProps> = ({ title, description, tag
         aria-label={`Gå til visualiseringsvelger for ${title}.`}
     >
         <Pane flex="1" marginRight="2rem">
-            <DatasetInfoBox title={title} description={description} tags={tags} />
+            <DatasetInfoBox
+                title={title}
+                description={description}
+                tags={tags}
+                url={source}
+                updated={updated}
+                published={published}
+            />
         </Pane>
         <Pane flex="2">
             <Heading marginBottom="1rem">Forslag til visualisering</Heading>

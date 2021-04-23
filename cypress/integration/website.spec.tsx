@@ -1,4 +1,5 @@
 import { makeMetadata, makeTimeseries } from '../../src/mockdata/mocks';
+const mockedMetadata = makeMetadata();
 
 describe('Dashboard', () => {
     beforeEach(() => {
@@ -7,7 +8,7 @@ describe('Dashboard', () => {
                 req.alias = 'METADATA';
                 req.reply({
                     data: {
-                        allMetadata: makeMetadata().map((value) => ({ ...value, id: 'hardwired to self-destruct' })),
+                        allMetadata: mockedMetadata,
                     },
                 });
             } else if (req.body.query.includes('forecast')) {

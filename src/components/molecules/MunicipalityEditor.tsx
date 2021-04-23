@@ -6,6 +6,7 @@ import { MUNICIPALITIES_IN_NORWAY, MunicipalitiesInNorway } from '../../queries/
 import { SSBPopulationVariables } from '../../queries/populationInNorway';
 
 export type MunicipalityEditorProps = {
+    state: SSBPopulationVariables;
     setState: Dispatch<SetStateAction<SSBPopulationVariables>>;
 };
 
@@ -30,6 +31,7 @@ const MunicipalityEditor: React.FC<MunicipalityEditorProps> = (props) => {
 
     return (
         <MunicipalitySelector
+            defaultValue={props.state.municipalities[0]}
             label="Velg kommune"
             options={data.populationsInNorway.municipalitiesWithKeys}
             onChange={(selected) => setMunicipality(selected.currentTarget.value as string)}
