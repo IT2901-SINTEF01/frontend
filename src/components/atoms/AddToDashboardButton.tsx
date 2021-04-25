@@ -19,6 +19,7 @@ const AddToDashboardButton: React.FC<AddToDashboardButtonType> = (props) => {
                 intent="success"
                 iconBefore={RefreshIcon}
                 onClick={props.onUpdate}
+                lineHeight="1.2em"
             >
                 Oppdater visualisering
             </Button>
