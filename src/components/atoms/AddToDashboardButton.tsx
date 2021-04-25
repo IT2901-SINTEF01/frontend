@@ -27,7 +27,14 @@ const AddToDashboardButton: React.FC<AddToDashboardButtonType> = (props) => {
 
     if (props.added) {
         return (
-            <Button width="100%" appearance="primary" iconBefore={CrossIcon} onClick={props.onAdd} lineHeight="1.2em">
+            <Button
+                width="100%"
+                intent="danger"
+                appearance="primary"
+                iconBefore={CrossIcon}
+                onClick={props.onAdd}
+                lineHeight="1.2em"
+            >
                 Fjern fra dashboard
             </Button>
         );
