@@ -64,6 +64,8 @@ const DashboardItems: React.FC = () => {
                             paragraph={visualisation.options.paragraph}
                             onEdit={() => history.push(`/explore/edit/${uuid}`)}
                             onDelete={deleteDashboardVisualisation(uuid)}
+                            variables={visualisation.variables}
+                            dataSourceId={visualisation.dataSourceId}
                         >
                             <DataWrapper
                                 mappingFunction={
