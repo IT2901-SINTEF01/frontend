@@ -48,7 +48,7 @@ const LatLonFromLocationSearch: React.FC<LatLonInputSetProps> = (props) => {
         }
         const locationList = locationData.adresser.map((address: Address) => {
             return {
-                label: address.adressetekst,
+                label: `${address.adressetekst} (${address.kommunenavn})`,
                 lat: address.representasjonspunkt.lat,
                 lon: address.representasjonspunkt.lon,
             };
