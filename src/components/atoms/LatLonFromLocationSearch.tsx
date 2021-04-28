@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, SyntheticEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { MetAPIVariables } from '../../queries/metApi';
 import { Button, Combobox, TextInputField, toaster } from 'evergreen-ui';
 import { Address } from '../../types/Address';
@@ -15,7 +15,13 @@ const LatLonFromLocationSearch: React.FC<LatLonInputSetProps> = (props) => {
         lon: String(props.state.lon),
     });
 
-    const [locations, setLocations] = useState<string[]>([]);
+    const [locations, setLocations] = useState<
+        {
+            label: string;
+            lat: number;
+            lon: number;
+        }[]
+    >([]);
 
     // To avoid problems with difficult digit entry for user
     useEffect(() => {
@@ -35,28 +41,25 @@ const LatLonFromLocationSearch: React.FC<LatLonInputSetProps> = (props) => {
             },
         );
     };
-    // TODO: This is a SyntheticBaseEvent, don't know how to import that type. Any ideas, August?
-    const onInputChange = async (e: any): Promise<void> => {
+
+    const onInputChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
         const locationData = await fetch(
             `https://ws.geonorge.no/adresser/v1/sok?sok=${e.target.value}&treffPerSide=10`,
         ).then((res) => res.json());
-        // TODO: Don't know how we should handle errors like these
-        //.catch((err) => console.log(err));
-        if (locationData.adresser.length === 0) {
-            setLocations([]);
-            return;
-        }
-        const locationList = locationData.adresser.map((address: Address) => {
-            return {
-                label: `${address.adressetekst} (${address.kommunenavn})`,
-                lat: address.representasjonspunkt.lat,
-                lon: address.representasjonspunkt.lon,
-            };
-        });
+        const locationList =
+            locationData.adresser.length > 0
+                ? locationData.adresser.map((address: Address) => {
+                      return {
+                          label: `${address.adressetekst} (${address.kommunenavn})`,
+                          lat: address.representasjonspunkt.lat,
+                          lon: address.representasjonspunkt.lon,
+                      };
+                  })
+                : [];
         setLocations(locationList);
     };
 
-    const inputChanged = (address: { label: string; lat: number; lon: number }): void => {
+    const selectionChanged = (address: { label: string; lat: number; lon: number }): void => {
         if (address === null) return;
         setState({ lat: address.lat.toString(), lon: address.lon.toString() });
     };
@@ -68,7 +71,7 @@ const LatLonFromLocationSearch: React.FC<LatLonInputSetProps> = (props) => {
                 placeholder="Adresse"
                 onInput={debounce(onInputChange, 500)}
                 itemToString={(item) => (item ? item.label : '')}
-                onChange={inputChanged}
+                onChange={selectionChanged}
             />
             <TextInputField value={state.lat} label="Breddegrad" onChange={update('lat')} />
             <TextInputField value={state.lon} label="Lengdegrad" onChange={update('lon')} />
