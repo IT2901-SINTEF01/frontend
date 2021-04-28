@@ -13,9 +13,9 @@ const SelectTag: React.FC<SelectTagProps> = ({ addTag }) => {
     const { data, error, loading } = useQuery<AllTags>(TAGS);
     const tags = data?.allMetadata.map((e) => e.tags).flat(1);
 
-    if (error || !tags) return <ErrorMessage message="Noe gikk galt, finner ikke filter" />;
+    if (error) return <ErrorMessage message="Noe gikk galt, finner ikke filter" />;
 
-    if (loading) return <Loading size={30} />;
+    if (loading || !tags) return <Loading size={30} />;
 
     return (
         <>

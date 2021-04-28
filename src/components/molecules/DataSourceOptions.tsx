@@ -3,8 +3,8 @@ import { Heading, Pane } from 'evergreen-ui';
 import { DataSourceID, DataSourceVariables } from '../../types/DataSource';
 import MunicipalityEditor from './MunicipalityEditor';
 import { SSBPopulationVariables } from '../../queries/populationInNorway';
-import LatLonInputSet from '../atoms/LatLonInputSet';
 import { MetAPIVariables } from '../../queries/metApi';
+import LatLonFromLocationSearch from '../atoms/LatLonFromLocationSearch';
 
 type DataSourceOptionsProps = {
     state: DataSourceVariables;
@@ -25,7 +25,7 @@ const DataSourceOptions: React.FC<DataSourceOptionsProps> = (props) => {
                 );
             case DataSourceID.MET_API_FORECAST:
                 return (
-                    <LatLonInputSet
+                    <LatLonFromLocationSearch
                         state={props.state as MetAPIVariables}
                         setState={props.setState as Dispatch<SetStateAction<MetAPIVariables>>}
                     />
