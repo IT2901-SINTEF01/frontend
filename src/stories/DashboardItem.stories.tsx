@@ -13,7 +13,7 @@ export default {
 const Template: Story<DashboardItemProps> = (args) => (
     <DashboardItem {...args}>
         <ThresholdChart
-            data={historicAppleStockPrice}
+            data={[historicAppleStockPrice]}
             thresholdValue={150}
             yLabel="Price"
             aboveThresholdColor="green"
