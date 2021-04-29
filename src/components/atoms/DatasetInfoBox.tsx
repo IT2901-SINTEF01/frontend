@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pane, Heading, Text, Badge, Link, Strong } from 'evergreen-ui';
-import { formatISO, formatDistanceToNow, isEqual } from 'date-fns';
+import { formatISO, formatDistanceToNow, isEqual, parseISO } from 'date-fns';
 
 type DatasetInfoBoxProps = {
     title: string;
@@ -12,8 +12,8 @@ type DatasetInfoBoxProps = {
 };
 
 const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tags, url, updated, published }) => {
-    const updatedDate = new Date(updated);
-    const publishedDate = new Date(published);
+    const updatedDate = new Date(parseISO(updated));
+    const publishedDate = new Date(parseISO(published));
 
     const Published: React.FC = () => {
         return (
