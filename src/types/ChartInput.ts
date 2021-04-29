@@ -1,6 +1,7 @@
 export type CartesianChartInput = Array<{
     x: number | string | Date;
     y: number;
+    name?: string;
 }>;
 
 export type VisualisationProps = {
