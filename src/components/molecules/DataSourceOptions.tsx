@@ -5,6 +5,7 @@ import MunicipalityEditor from './MunicipalityEditor';
 import { SSBPopulationVariables } from '../../queries/populationInNorway';
 import { MetAPIVariables } from '../../queries/metApi';
 import LatLonFromLocationSearch from '../atoms/LatLonFromLocationSearch';
+import { MUNICIPALITIES_IN_NORWAY, MUNICIPALITIES_IN_NORWAY_TAX } from '../../queries/municipalitiesInNorway';
 
 type DataSourceOptionsProps = {
     state: DataSourceVariables;
@@ -19,6 +20,7 @@ const DataSourceOptions: React.FC<DataSourceOptionsProps> = (props) => {
             case DataSourceID.SSB_POPULATION:
                 return (
                     <MunicipalityEditor
+                        query={MUNICIPALITIES_IN_NORWAY}
                         state={props.state as SSBPopulationVariables}
                         setState={props.setState as Dispatch<SetStateAction<SSBPopulationVariables>>}
                     />
@@ -28,6 +30,14 @@ const DataSourceOptions: React.FC<DataSourceOptionsProps> = (props) => {
                     <LatLonFromLocationSearch
                         state={props.state as MetAPIVariables}
                         setState={props.setState as Dispatch<SetStateAction<MetAPIVariables>>}
+                    />
+                );
+            case DataSourceID.SSB_TAX:
+                return (
+                    <MunicipalityEditor
+                        query={MUNICIPALITIES_IN_NORWAY_TAX}
+                        state={props.state as SSBPopulationVariables}
+                        setState={props.setState as Dispatch<SetStateAction<SSBPopulationVariables>>}
                     />
                 );
         }
