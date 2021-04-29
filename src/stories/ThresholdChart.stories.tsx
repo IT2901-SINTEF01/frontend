@@ -24,7 +24,7 @@ const Template: Story<ThresholdChartProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-    data: historicAppleStockPrice,
+    data: [historicAppleStockPrice],
     yLabel: 'Price',
     thresholdValue: 150,
     width: 600,
@@ -33,7 +33,7 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-    data: numericAppleStockPrice,
+    data: [numericAppleStockPrice],
     yLabel: 'Price',
     thresholdValue: 150,
     width: 600,

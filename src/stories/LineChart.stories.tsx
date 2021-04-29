@@ -22,7 +22,7 @@ const Template: Story<LineChartProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-    data: historicAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0)),
+    data: [historicAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0))],
     yLabel: 'Price',
     strokeColor: '#222',
     height: 400,
@@ -31,7 +31,7 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-    data: numericAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0)),
+    data: [numericAppleStockPrice.slice(Math.max(historicAppleStockPrice.length - 30, 0))],
     yLabel: 'Some value',
     strokeColor: '#222',
     height: 400,
