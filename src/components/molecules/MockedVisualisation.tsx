@@ -21,7 +21,18 @@ const MockedVisualisation: React.FC<MockedVisualisationProps> = ({ visualisation
         case VisualisationType.THRESHOLD:
             return <ThresholdChart data={data} strokeColor="#66CCCC" isPreview={true} height={height} width={width} />;
         case VisualisationType.BAR:
-            return <BarChart data={data} height={height} width={width} isPreview={true} barNames={['Verdi']} />;
+            return (
+                <BarChart
+                    data={[
+                        ...data,
+                        ...mockCartesianChartInput(20, visualisationType),
+                        ...mockCartesianChartInput(20, visualisationType),
+                    ]}
+                    height={height}
+                    width={width}
+                    isPreview={true}
+                />
+            );
         default:
             return <Text>{visualisationType}</Text>;
     }
