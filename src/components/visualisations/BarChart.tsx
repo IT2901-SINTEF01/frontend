@@ -3,35 +3,25 @@ import { CartesianChartInput } from '../../types/ChartInput';
 import Plot from 'react-plotly.js';
 
 export type BarChartProps = {
-    barNames?: string[];
     yLabel?: string;
     title?: string;
-    data: CartesianChartInput;
+    data: CartesianChartInput[];
     isPreview?: boolean;
     height: string | number;
     width: string | number;
 };
 
 const BarChart: React.FC<BarChartProps> = ({ title, yLabel, data, isPreview = false, height, width }) => {
-    /*
-    data.map((el, index) => ({
-                type: 'bar',
-                x: el.map((d) => d.x),
-                y: el.map((d) => d.y),
-                name: barNames[index],
-            }))
-    */
-
     return (
         <Plot
             useResizeHandler
-            data={[
-                {
-                    type: 'bar',
-                    x: data.map((d) => d.x),
-                    y: data.map((d) => d.y),
-                },
-            ]}
+            data={data.map((el, index) => ({
+                type: 'bar',
+                x: el.map((d) => d.x),
+                y: el.map((d) => d.y),
+                name: el[0].name,
+                opacity: 0.7,
+            }))}
             style={{ width: width, height: height, margin: '0' }}
             layout={{
                 autosize: true,

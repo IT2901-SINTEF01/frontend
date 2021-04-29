@@ -7,7 +7,7 @@ export type LineChartProps = {
     title?: string;
     strokeColor?: string;
     markerColor?: string;
-    data: CartesianChartInput;
+    data: CartesianChartInput[];
     isPreview?: boolean;
     height: string | number;
     width: string | number;
@@ -26,17 +26,15 @@ const LineChart: React.FC<LineChartProps> = ({
     return (
         <Plot
             useResizeHandler
-            data={[
-                {
-                    x: data.map((d) => d.x),
-                    y: data.map((d) => d.y),
-                    fillcolor: 'rgba(0,0,255,0.10)',
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    line: { color: strokeColor, shape: 'spline', width: 1.337 },
-                    marker: { color: markerColor, size: 3 },
-                },
-            ]}
+            data={data.map((el) => ({
+                x: el.map((d) => d.x),
+                y: el.map((d) => d.y),
+                fillcolor: 'rgba(0,0,255,0.10)',
+                type: 'scatter',
+                mode: 'lines+markers',
+                line: { color: strokeColor, shape: 'spline', width: 1.337 },
+                marker: { color: markerColor, size: 3 },
+            }))}
             style={{ width: width, height: height, margin: '0' }}
             layout={{
                 autosize: true,
