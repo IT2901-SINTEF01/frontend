@@ -23,11 +23,7 @@ const MockedVisualisation: React.FC<MockedVisualisationProps> = ({ visualisation
         case VisualisationType.BAR:
             return (
                 <BarChart
-                    data={[
-                        ...data,
-                        ...mockCartesianChartInput(20, visualisationType),
-                        ...mockCartesianChartInput(20, visualisationType),
-                    ]}
+                    data={mockCartesianChartInput(20, VisualisationType.BAR, 3)}
                     height={height}
                     width={width}
                     isPreview={true}

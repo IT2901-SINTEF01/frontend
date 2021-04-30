@@ -17,10 +17,7 @@ const Template: Story<BarChartProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-    data: [
-        ...mockCartesianChartInput(20, VisualisationType.LINE),
-        ...mockCartesianChartInput(20, VisualisationType.LINE),
-    ],
+    data: mockCartesianChartInput(20, VisualisationType.LINE, 2),
     yLabel: 'Price',
     height: 400,
     width: 600,

@@ -6,14 +6,28 @@ import { VisualisationType } from '../types/Metadata';
 /**
  * Generate sample time entries for use in vis. editor.
  *
- * @param size Size of the returned array.
- * @param min Minimum value of time entry value.
- * @param max Maximum value of time entry value.
+ * @param arrayLength How long is each array
+ * @param numberOfArrays How many arrays
+ * @param visualisationType What type of visualisation
  */
-export default function (size: number, visualisationType: VisualisationType): CartesianChartInput[] {
-    const min = visualisationType === VisualisationType.THRESHOLD ? -20 : 0;
-    const max = visualisationType === VisualisationType.THRESHOLD ? 20 : 100;
-    const values = new Array(size).fill(null).map(() => random.number({ min, max }));
-    const timeseries = Object.keys(new Array(size).fill(null)).map((i) => addDays(new Date(2020, 12, 31), Number(i)));
-    return [values.map((e, i) => ({ y: e, x: timeseries[i].toISOString() }))];
+export default function (
+    arrayLength: number,
+    visualisationType: VisualisationType,
+    numberOfArrays = 1,
+): CartesianChartInput[] {
+    const [min, max] = visualisationType === VisualisationType.THRESHOLD ? [-20, 20] : [0, 100];
+
+    const generateCartesianChartInput = (): [number[], Date[]] => {
+        const values = new Array(arrayLength).fill(null).map(() => random.number({ min, max }));
+
+        // Object.keys of an array returns the indices
+        const timeseries = Object.keys(values).map((i) => addDays(new Date(2020, 12, 31), Number(i)));
+
+        return [values, timeseries];
+    };
+
+    return new Array(numberOfArrays).fill(null).map(() => {
+        const [values, timeseries] = generateCartesianChartInput();
+        return values.map((e, i) => ({ y: e, x: timeseries[i].toISOString() }));
+    });
 }
