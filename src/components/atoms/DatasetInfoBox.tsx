@@ -12,8 +12,8 @@ type DatasetInfoBoxProps = {
 };
 
 const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tags, url, updated, published }) => {
-    const updatedDate = new Date(parseISO(updated));
-    const publishedDate = new Date(parseISO(published));
+    const updatedDate = parseISO(updated);
+    const publishedDate = parseISO(published);
 
     const Published: React.FC = () => {
         return (
