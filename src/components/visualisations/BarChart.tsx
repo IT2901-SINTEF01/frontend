@@ -15,7 +15,7 @@ const BarChart: React.FC<BarChartProps> = ({ title, yLabel, data, isPreview = fa
     return (
         <Plot
             useResizeHandler
-            data={data.map((el, index) => ({
+            data={data.map((el) => ({
                 type: 'bar',
                 x: el.map((d) => d.x),
                 y: el.map((d) => d.y),

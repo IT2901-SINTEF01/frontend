@@ -67,14 +67,6 @@ const taxAssesmentToCartesuanList = (rawData: TaxAssesment): BarChartData => {
     return result;
 };
 
-/**
- * { x: el.year, y: el.averageBankDeposits },
-            { x: el.year, y: el.averageDebt },
- */
-
-/**
- * Default export
- */
 export default {
     // SSB
     [`${DataSourceID.SSB_POPULATION}-${VisualisationType.LINE}`]: populationInNorwayToCartesian,
