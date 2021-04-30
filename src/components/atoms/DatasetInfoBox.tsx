@@ -17,8 +17,8 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
 
     const Published: React.FC = () => {
         return (
-            <Text title={`Published: ${formatISO(publishedDate)}`} size={300} marginTop="0.15rem">
-                Published: <Strong size={300}>{formatDistanceToNow(publishedDate, { addSuffix: true })}</Strong>
+            <Text title={`Publisert: ${formatISO(publishedDate)}`} size={300} marginTop="0.15rem">
+                Publisert: <Strong size={300}>{formatDistanceToNow(publishedDate, { addSuffix: true })}</Strong>
             </Text>
         );
     };
@@ -26,11 +26,11 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
     const LastUpdated: React.FC = () => {
         return (
             <Text
-                title={`Published: ${formatISO(publishedDate)}, Updated: ${formatISO(updatedDate)}`}
+                title={`Publisert: ${formatISO(publishedDate)}, Sist oppdatert: ${formatISO(updatedDate)}`}
                 size={300}
                 marginTop="0.15rem"
             >
-                Last updated: <Strong size={300}>{formatDistanceToNow(updatedDate, { addSuffix: true })}</Strong>
+                Sist oppdatert: <Strong size={300}>{formatDistanceToNow(updatedDate, { addSuffix: true })}</Strong>
             </Text>
         );
     };
