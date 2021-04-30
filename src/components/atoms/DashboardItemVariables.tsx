@@ -22,6 +22,8 @@ const DashboardItemVariables: React.FC<DashboardItemVariablesProps> = (props) =>
             const metApiVars = props.variables as MetAPIVariables;
             content = `Værmelding for ${convertDMS(metApiVars.lat, metApiVars.lon)}.`;
             break;
+        default:
+            content = '';
     }
 
     return <Paragraph size={300}>{content}</Paragraph>;
