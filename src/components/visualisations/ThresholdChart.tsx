@@ -1,6 +1,7 @@
 import React from 'react';
 import { CartesianChartInput } from '../../types/ChartInput';
 import Plot from 'react-plotly.js';
+import { plotlyLineMapper } from '../../utils/plotlyLineMapper';
 
 export type ThresholdChartProps = {
     yLabel?: string;
@@ -34,15 +35,7 @@ const ThresholdChart: React.FC<ThresholdChartProps> = ({
     return (
         <Plot
             useResizeHandler
-            data={data.map((el) => ({
-                x: el.map((d) => d.x),
-                y: el.map((d) => d.y),
-                fillcolor: 'rgba(0,0,255,0.10)',
-                type: 'scatter',
-                mode: 'lines+markers',
-                line: { color: strokeColor, shape: 'spline', width: 1.337 },
-                marker: { color: markerColors, size: 3 },
-            }))}
+            data={plotlyLineMapper(data, strokeColor, markerColors)}
             style={{ width: width, height: height, margin: '0' }}
             layout={{
                 autosize: true,
