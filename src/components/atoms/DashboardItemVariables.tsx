@@ -4,6 +4,7 @@ import { Paragraph } from 'evergreen-ui';
 import { SSBPopulationVariables } from '../../queries/populationInNorway';
 import { MetAPIVariables } from '../../queries/metApi';
 import { convertDMS } from '../../utils/latLonDMS';
+import { TaxAssesmentVariables } from '../../queries/taxInNorway';
 
 type DashboardItemVariablesProps = {
     dataSourceId: DataSourceID;
@@ -22,8 +23,10 @@ const DashboardItemVariables: React.FC<DashboardItemVariablesProps> = (props) =>
             const metApiVars = props.variables as MetAPIVariables;
             content = `Værmelding for ${convertDMS(metApiVars.lat, metApiVars.lon)}.`;
             break;
-        default:
-            content = '';
+        case DataSourceID.SSB_TAX:
+            const ssbTaxVars = props.variables as TaxAssesmentVariables;
+            content = `Skatteoppgjør for ${ssbTaxVars.municipalities[0]}.`;
+            break;
     }
 
     return <Paragraph size={300}>{content}</Paragraph>;
