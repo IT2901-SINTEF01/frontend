@@ -17,10 +17,10 @@ export const makeMetadata = (): MetadataEntry[] => {
         datasourceId: faker.random.arrayElement(Object.values(DataSourceID)),
         name: faker.hacker.phrase(),
         description: faker.lorem.paragraph(),
-        published: faker.date.recent().toString(),
+        published: faker.date.recent().toISOString(),
         source: faker.internet.url(),
         tags: randomListOfWords(Number(i)),
-        updated: faker.date.recent().toString(),
+        updated: faker.date.recent().toISOString(),
         visualisations: [
             {
                 type: VisualisationType.LINE,
