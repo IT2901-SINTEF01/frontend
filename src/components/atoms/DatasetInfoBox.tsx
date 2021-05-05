@@ -73,7 +73,7 @@ const DatasetInfoBox: React.FC<DatasetInfoBoxProps> = ({ title, description, tag
             </Pane>
             <Pane marginTop="auto" display="flex" flexDirection="column">
                 <Pane>
-                    <Text size={300}>Origin: </Text>
+                    <Text size={300}>Kilde: </Text>
                     <Link href={url} target="_blank" onClick={handleLinkClick} size={300}>
                         {url}
                     </Link>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pane } from 'evergreen-ui';
 import AddComponentButton from '../atoms/AddComponentButton';
-import DashboardSelector from '../atoms/DashbaordSelector';
+import DashboardSelector from '../atoms/DashboardSelector';
 import DashboardItems from '../organisms/DashboardItems';
 
 const Dashboard: React.FC = () => {
